@@ -1,0 +1,9 @@
+export const TenantActionTypes = {
+   
+    ADD_TENANT : "ADD_TENANT",
+    UPDATE_TENANT : "UPDATE_TENANT",
+    DELETE_TENANT : "DELETE_TENANT",
+    GET_TENANT : "GET_TENANT",
+    GET_ALL_TENANTS : "GET_ALL_TENANTS"
+    
+}
