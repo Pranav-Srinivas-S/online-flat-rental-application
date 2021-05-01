@@ -27,6 +27,6 @@ export const tenantReducer = (state = initialState, {type, payload}) => {
 
         default : 
             return state;
-            
+
     }
 }
