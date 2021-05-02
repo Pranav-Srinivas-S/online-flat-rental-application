@@ -3,27 +3,27 @@ import { TenantActionTypes } from "../constants/TenantActionTypes"
 const initialState = {
     tenants:[],
     tenant:[],
-    selectedTenant:[],
-    isUpdated:undefined
+    isAdded:false,
+    isUpdated:false
 };
 
-export const tenantReducer = (state = initialState, {type, payload}) => {
+export const tenantReducer = (state = initialState, action) => {
     switch (type) {
         
         case TenantActionTypes.ADD_TENANT :
-            return {...state, newtenant:payload}
+            return {...state, newtenant:action.payload, isAdded:true}
 
         case TenantActionTypes.UPDATE_TENANT :
-            return {...state, tenants:payload, isUpdated:true}
+            return {...state, tenants:action.payload, isUpdated:true}
 
         case TenantActionTypes.DELETE_TENANT :
-            return {...state, tenants:payload}
+            return {...state, tenants:action.tenants}
 
         case TenantActionTypes.GET_TENANT :
-            return {...state, selectedTenant:payload}
+            return {...state, tenant:action.tenants}
 
         case TenantActionTypes.GET_ALL_TENANTS :
-            return {...state, tenants:payload}
+            return {...state, tenants:action.tenants}
 
         default : 
             return state;
