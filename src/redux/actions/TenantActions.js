@@ -4,8 +4,6 @@ import { useDispatch } from 'react-redux';
 
 const apiUrl = 'http://localhost:9191/api/ofr';
 
-const dispatch = useDispatch();
-
 export const addTenantSuccess = (tenant) => {
     return {
         type : TenantActionTypes.ADD_TENANT,
@@ -73,7 +71,7 @@ export const deleteTenantSuccess = (tenant) => {
     }
 };
 
-export const deleteProduct = (tenantId) => {
+export const deleteTenant = (tenantId) => {
     return (dispatch) => {
         return Axios.delete(apiUrl + "/tenant/delete-tenant/"+tenantId)
             .then(respose => {
@@ -114,8 +112,9 @@ export const getAllTenantsSuccess = (tenants) => {
 export const getAllTenants = () => {
     return(dispatch) => {
         return Axios.get(apiUrl + "/tenant/view-all-tenants/")
-            .then(respose => {
-                dispatch(getAllTenantsSuccess(respose.data))
+            .then(response => {
+                console.log(response.data);
+                dispatch(getAllTenantsSuccess(response.data))
             })
             .catch(error => {
                 throw (error);
