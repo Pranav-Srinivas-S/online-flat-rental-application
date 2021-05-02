@@ -62,7 +62,7 @@ export const deleteLandlordSuccess = (landlord) => {
     }
 };
 
-export const deleteProduct = (landlordId) => {
+export const DELETE_LANDLORD = (landlordId) => {
     return (dispatch) => {
         return Axios.delete(apiUrl + "/landlord/delete-landlord/"+landlordId)
             .then(respose => {
@@ -81,7 +81,7 @@ export const getLandlordSuccess = (landlord) => {
     }
 };
 
-export const getLandlord = (landlordId) => {
+export const GET_LANDLORD = (landlordId) => {
     return (dispatch) => {
         return Axios.get(apiUrl + "/landlord/view-landlord/" + landlordId)
             .then(response => {
@@ -93,14 +93,14 @@ export const getLandlord = (landlordId) => {
     };
 };
 
-export const getAlllandlordsSuccess = (landlords) => {
+export const getAllLandlordsSuccess = (landlords) => {
     return {
         type : LandlordActionTypes.GET_ALL_LANDLORDS,
         payload : landlords
     }
 };
 
-export const getAllLandlords = () => {
+export const GET_ALL_LANDLORDS = () => {
     return(dispatch) => {
         return Axios.get(apiUrl + "/landlord/view-all-landlords/")
             .then(respose => {
