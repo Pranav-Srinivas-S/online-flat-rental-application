@@ -3,12 +3,15 @@ import { useHistory } from 'react-router-dom';
 import React from 'react';
 import TenantList from './TenantList';
 import Box from '@material-ui/core/Box';
+import Header from '../../common/Header';
+import Footer from '../../common/Footer';
 
 function TenantDashBoard() {
 
     const history = useHistory();
     return (
         <div>
+            <Header />
             <Box color="primary.main" component="div" display="inline" > <h3>Add Tenant Detail:
                 <Button style={style} onClick={() => history.push("/add-tenant")}>Add Tenant</Button></h3>
             </Box>
@@ -17,8 +20,8 @@ function TenantDashBoard() {
             <Grid   >
                 <TenantList />
             </Grid>
+            <Footer />
         </div>
-
     );
 }
 
