@@ -1,8 +1,5 @@
 import { TenantActionTypes } from '../constants/TenantActionTypes'
 import axios from '../../axios/Axios';
-import { useDispatch } from 'react-redux';
-
-//const apiUrl = 'http://localhost:9191/api/ofr';
 
 const addTenantSuccess = (tenant) => ({
     type: TenantActionTypes.ADD_TENANT,
@@ -33,7 +30,7 @@ export const addTenant = (tenantData = {
             }
         };
         console.log(tenant);
-        return axios.post('/tenant/add-tenant', tenant)
+        return axios.post('/add-tenant', tenant)
             .then(() => {
                 dispatch(addTenantSuccess(tenant));
             })
@@ -43,16 +40,25 @@ export const addTenant = (tenantData = {
     };
 };
 
-const updateTenantSuccess = (tenantId, updatedTenant) => ({
+const updateTenantSuccess = (updatedTenant) => ({
     type: TenantActionTypes.UPDATE_TENANT,
-    tenantId,
     updatedTenant
 });
 
-export const updateTenant = (tenantId, updatedTenant) => {
+export const updateTenant = (updatedTenant = {
+    tenantId: '',
+    tenantName: '',
+    tenantAge: '',
+    houseNo: '',
+    street: '',
+    city: '',
+    state: '',
+    pin: '',
+    country: ''
+}) => {
     return (dispatch) => {
         const tenant = {
-            tenantId: tenantId,
+            tenantId: updatedTenant.tenantId,
             tenantName: updatedTenant.tenantName,
             tenantAge: updatedTenant.tenantAge,
             tenantAddress: {
@@ -65,9 +71,9 @@ export const updateTenant = (tenantId, updatedTenant) => {
             }
         };
         console.log(tenant);
-        return axios.put(`/tenant/update-tenant/${tenantId}`, tenant)
+        return axios.put(`/update-tenant`, tenant)
             .then(() => {
-                dispatch(updateTenantSuccess(tenantId, tenant));
+                dispatch(updateTenantSuccess(tenant));
             })
             .catch(error => {
                 throw (error);
@@ -82,7 +88,7 @@ const deleteTenantSuccess = ({ tenantId } = {}) => ({
 
 export const deleteTenant = ({ tenantId } = {}) => {
     return (dispatch) => {
-        return axios.delete(`/tenant/delete-tenant/${tenantId}`)
+        return axios.delete(`/delete-tenant/${tenantId}`)
             .then(() => {
                 dispatch(deleteTenantSuccess({ tenantId }));
             })
@@ -101,7 +107,7 @@ export const getTenantSuccess = (tenant) => {
 
 export const getTenant = (tenantId) => {
     return (dispatch) => {
-        return axios.get(`/tenant/view-tenant/${tenantId}`)
+        return axios.get(`/view-tenant/${tenantId}`)
             .then(response => {
                 dispatch(getTenantSuccess(response.data))
             })
@@ -117,22 +123,3 @@ export const getAllTenants = (tenants) => {
         payload: tenants
     }
 };
-
-// export const getAllTenants = () => {
-//     return (dispatch) => {
-//         return axios.get(apiUrl + "/tenant/view-all-tenants/")
-//             .then(response => {
-//                 console.log(response.data);
-//                 dispatch(getAllTenantsSuccess(response.data))
-//             })
-//             .catch(error => {
-//                 throw (error);
-//             });
-//     };
-// };
-
-// export const deleteTenantSuccess = () => {
-//     return {
-//         type : TenantActionTypes.DELETE_TENANT
-//     }
-// }
