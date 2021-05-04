@@ -1,4 +1,4 @@
-const TenantValidation = {  
+const TenantValidation = {
     tenantName: {
         rules: [
             {
