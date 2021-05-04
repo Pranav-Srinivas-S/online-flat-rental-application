@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 import { connect, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 import { getTenant, deleteTenant } from '../../../redux/actions/TenantActions';

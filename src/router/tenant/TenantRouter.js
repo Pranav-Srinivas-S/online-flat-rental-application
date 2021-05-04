@@ -10,7 +10,7 @@ const TenantRouter = () => (
         <Switch>
             <Route exact path={`/tenant`} component={TenantDashBoard} />
             <Route exact path={`/add-tenant`} component={AddTenant} />
-            <Route exact path={`/update-tenant`} component={UpdateTenant} />
+            <Route exact path={`/update-tenant/:tenantId`} component={UpdateTenant} />
             <Route exact path={`/view-tenant/:tenantId`} component={Tenant} />
             <Route component={TenantNotFound} />
         </Switch>

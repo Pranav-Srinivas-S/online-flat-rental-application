@@ -62,7 +62,7 @@ const TenantList = () => {
                       <td>{tenantName}</td>
                       <td>{tenantAge}</td>
                       <td><Link to={`/view-tenant/${tenantId}`}><Button color="primary" variant="contained" className="btn btn-info">View</Button></Link></td>
-                      <td><Link to="/update-tenant"><Button color="inherit" variant="contained" className="btn btn-info">Update</Button></Link></td>
+                      <td><Link to={`/update-tenant/${tenantId}`}><Button color="inherit" variant="contained" className="btn btn-info">Update</Button></Link></td>
                       <td><Link to={`/view-tenant/${tenantId}`}><Button color="secondary" variant="contained" className="btn btn-secondary">Delete</Button></Link></td>
                     </StyledTableRow>
                   )
