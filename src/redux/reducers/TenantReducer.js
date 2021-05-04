@@ -7,30 +7,77 @@ import { TenantActionTypes } from "../constants/TenantActionTypes"
 //     isUpdated:false
 // };
 
-export const tenantReducer = (state=[], action) => {
+const tenantReducerDefaultState = [];
+
+const tenantReducer = (state = tenantReducerDefaultState, action) => {
     switch (action.type) {
-        
-        case TenantActionTypes.ADD_TENANT :
-            return {...state, newtenant:action.payload, isAdded:true}
+        case TenantActionTypes.ADD_TENANT:
+            return [
+                ...state,
+                action.tenant
+            ];
+            
+        case TenantActionTypes.DELETE_TENANT:
+            return state.filter(({tenantId}) => tenantId !== action.tenantId);
 
-        case TenantActionTypes.UPDATE_TENANT :
-            return {...state, tenants:action.payload, isUpdated:true}
+        case TenantActionTypes.UPDATE_TENANT:
+            return state.map((tenant, tenantId) => {
+                if (tenantId === action.tenantId){
+                    return {
+                        ...state,
+                        ...action.tenant
+                    };
+                }else {
+                    return tenant;
+                }
+            });
 
-        case TenantActionTypes.DELETE_TENANT :
-            return {...state, tenants:action.tenants}
-
-        case TenantActionTypes.GET_TENANT :
-            return {...state, tenant:action.tenants}
-
-        case TenantActionTypes.GET_ALL_TENANTS :
-            //return {...state, tenants:action.tenants}
-            console.log(action.tenants);
-            return action.tenants;
-
-        default : 
+        case TenantActionTypes.GET_ALL_TENANTS:
+            return [
+                ...state,
+                action.tenant
+            ]
+        default:
             return state;
-
     }
 }
 
 export default tenantReducer;
+
+// export default function TenantReducer(state=[], action) {
+//     switch (action.type) {
+        
+//         case TenantActionTypes.ADD_TENANT :
+//             //return {...state, newtenant:action.payload, isAdded:true}
+//             return [
+//                 ...state,
+//                 action.payload
+//             ]
+
+//         case TenantActionTypes.UPDATE_TENANT :
+//             //return {...state, tenants:action.payload, isUpdated:true}
+//             return [
+//                 ...state,
+//                 action.payload
+//             ]
+
+//         case TenantActionTypes.DELETE_TENANT :
+//             //return {...state, tenants:action.tenants}
+//             return action.payload;
+
+//         case TenantActionTypes.GET_TENANT :
+//             //return {...state, tenant:action.tenants}
+//             return action.payload;
+
+//         case TenantActionTypes.GET_ALL_TENANTS :
+//             //return {...state, tenants:action.tenants}
+//             console.log(action.tenants);
+//             return action.payload;
+
+//         default : 
+//             return state;
+
+//     }
+// }
+
+//export default tenantReducer;
