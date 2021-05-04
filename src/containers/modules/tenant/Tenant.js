@@ -36,7 +36,7 @@ const Tenant = () => {
     
     const  deleteTenantById = async (tenantId) => {
         await axios.delete(`http://localhost:9191/api/ofr/delete-tenant/${tenantId}`).catch((err) => {console.log("Error" , err);});
-       dispatch(deleteTenant(teanantId));
+       dispatch(deleteTenant(tenantId));
        alert("Deleted Successfully");
        history.push('/tenant')
      }
@@ -45,7 +45,7 @@ const Tenant = () => {
         <div >
         <h1 class="display-4  bg-primary text-white"> Tenant Detail </h1> 
         <ul class="list-group-item">
-            <li class="list-group-item list-group-item-info"> <h3>Tenant Id : {tenantId}</h3> </li>
+            <li class="list-group-item list-group-item-info"> <h3>Tenant Id : {tenant.tenantId}</h3> </li>
             <li class="list-group-item list-group-item-info"><h3>Tenant Name : {tenant.tenantName}</h3> </li>
             <li class="list-group-item list-group-item-info"><h3>Tenant Age : {tenant.tenantAge}</h3> </li>
             <li class="list-group-item list-group-item-info"><h3>House Number : {tenant.tenantAddress.houseNo}</h3> </li>

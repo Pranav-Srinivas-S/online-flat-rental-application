@@ -1,4 +1,4 @@
-const TenantValidation = {
+const TenantValidation = {  
     tenantName: {
         rules: [
             {
@@ -21,19 +21,23 @@ const TenantValidation = {
         rules: [
             {
                 test: (value) => {
-                    return value < 0;
+                    let age = parseInt(value)
+                    return age > 0;
                 },
                 message: 'Tenant Age cannot be Negative',
             },
             {
                 test: (value) => {
-                    return value === 0;
+                    let age = parseInt(value)
+                    let defaultAge = parseInt(0);
+                    return age !== defaultAge;
                 },
                 message: 'Tenant Age cannot be Zero',
             },
             {
                 test: (value) => {
-                    return value < 18;
+                    let age = parseInt(value)
+                    return age > 18;
                 },
                 message: 'Tenant Age cannot be Minor',
             },

@@ -12,7 +12,7 @@ const AddTenant = (props) => (
          <Box color="white" bgcolor="palevioletred" p={1}> <h2>Add Tenant</h2></Box>
          <Paper elevation={3} >
         <AddTenantForm 
-             onSubmitPayment={(state) => {
+             onSubmitTenant={(state) => {
                  props.dispatch(addTenant(state));
                  alert("Added Successfully");
                  props.history.push('/tenant');
