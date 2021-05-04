@@ -17,8 +17,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Footer() {
 
-
-
     return (
 
         <div>
