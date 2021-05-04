@@ -8,8 +8,7 @@ import Box from '@material-ui/core/Box';
 import TenantValidation from './TenantValidation';
 import { withRouter } from "react-router-dom";
 
- class UpdateTenantForm extends React.Component {
-
+class UpdateTenantForm extends React.Component {
 
     constructor(props) {
         super(props);
@@ -63,13 +62,13 @@ import { withRouter } from "react-router-dom";
         if (validator && !validator.valid) {
             const errors = validator.errors.map((info, index) => {
                 return <span style={errorStyle} key={index}>* {info}</span>;
-            }); 
+            });
 
             return (
                 <div style={errorStyle} className="col s12 row">
                     {errors}
                 </div>
-            ); 
+            );
         }
         return result;
     }
@@ -104,14 +103,6 @@ import { withRouter } from "react-router-dom";
         this.setState(newState);
     }
 
-    // onTenantNameChange = (e) => {
-    //     this.setState({ type: e.target.value });
-    // }
-
-    // onTenantAgeChange = (e) => {
-    //     this.setState({ status: e.target.value });
-    // }
-
     onCancel = () => {
         this.props.history.push('/tenant');
     }
@@ -123,15 +114,15 @@ import { withRouter } from "react-router-dom";
         event.preventDefault();
         this.props.onSubmitTenant(
             {
-                tenantId : this.state.tenantId,
-                tenantName : this.state.tenantName,
-                tenantAge : this.state.tenantAge,
-                houseNo : this.state.tenantAddress.houseNo,
-                street : this.state.tenantAddress.street,
-                city : this.state.tenantAddress.city,
-                state : this.state.tenantAddress.state,
-                pin : this.state.tenantAddress.pin,
-                country : this.state.tenantAddress.country,
+                tenantId: this.state.tenantId,
+                tenantName: this.state.tenantName,
+                tenantAge: this.state.tenantAge,
+                houseNo: this.state.tenantAddress.houseNo,
+                street: this.state.tenantAddress.street,
+                city: this.state.tenantAddress.city,
+                state: this.state.tenantAddress.state,
+                pin: this.state.tenantAddress.pin,
+                country: this.state.tenantAddress.country,
             }
         );
     }
@@ -151,7 +142,7 @@ import { withRouter } from "react-router-dom";
                             <TextField
                                 required id="standard-number" label="Tenant ID" type="number" placeholder="Enter Tenant ID"
                                 value={this.state.tenantId} onChange={event => this.onTenantIdChange(event, 'tenantId')}
-                             />
+                            />
                         </FormControl>
                         {this.displayValidationErrors('tenantAge')}
                         <br />
@@ -160,7 +151,7 @@ import { withRouter } from "react-router-dom";
                             <FormLabel component="legend">Tenant Name</FormLabel>
                             <TextField
                                 required id="standard-textarea" label="Tenant Name" placeholder="Enter Tenant Name"
-                                value={this.state.tenantName} onChange={event => this.handleTenantChange(event, 'tenantName')} /> 
+                                value={this.state.tenantName} onChange={event => this.handleTenantChange(event, 'tenantName')} />
                         </FormControl>
                         <br />
                         <br />
@@ -188,7 +179,7 @@ import { withRouter } from "react-router-dom";
                         <br />
                         <br />
                         <FormControl fullWidth>
-                        <TextField
+                            <TextField
                                 required id="standard-textarea" label="Street" placeholder="Enter Street"
                                 value={this.state.tenantAddress.street} onChange={event => this.handleTenantAddressChange(event, 'street')} />
                         </FormControl>
@@ -196,7 +187,7 @@ import { withRouter } from "react-router-dom";
                         <br />
                         <br />
                         <FormControl fullWidth>
-                        <TextField
+                            <TextField
                                 required id="standard-textarea" label="City" placeholder="Enter City"
                                 value={this.state.tenantAddress.city} onChange={event => this.handleTenantAddressChange(event, 'city')} />
                         </FormControl>
@@ -204,7 +195,7 @@ import { withRouter } from "react-router-dom";
                         <br />
                         <br />
                         <FormControl fullWidth>
-                        <TextField
+                            <TextField
                                 required id="standard-textarea" label="State" placeholder="Enter State"
                                 value={this.state.tenantAddress.state} onChange={event => this.handleTenantAddressChange(event, 'state')} />
                         </FormControl>
@@ -224,7 +215,7 @@ import { withRouter } from "react-router-dom";
                         <br />
                         <br />
                         <FormControl fullWidth>
-                        <TextField
+                            <TextField
                                 required id="standard-textarea" label="Country" placeholder="Enter Country"
                                 value={this.state.tenantAddress.country} onChange={event => this.handleTenantAddressChange(event, 'country')} />
                         </FormControl>

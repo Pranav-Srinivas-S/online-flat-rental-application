@@ -3,15 +3,16 @@ import TenantDashBoard from "../../containers/modules/tenant/TenantDashBoard";
 import AddTenant from "../../containers/modules/tenant/AddTenant";
 import UpdateTenant from "../../containers/modules/tenant/UpdateTenant";
 import Tenant from "../../containers/modules/tenant/Tenant";
-
+import TenantNotFound from "../../containers/modules/tenant/TenantNotFound";
 
 const TenantRouter = () => (
     <BrowserRouter>
         <Switch>
-            <Route path={`/tenant`} component={TenantDashBoard} />
-            <Route path={`/add-tenant`} component={AddTenant} />
-            <Route path={`/update-tenant`} component={UpdateTenant} />
-            <Route path={`/view-tenant/:tenantId`} component={Tenant} />
+            <Route exact path={`/tenant`} component={TenantDashBoard} />
+            <Route exact path={`/add-tenant`} component={AddTenant} />
+            <Route exact path={`/update-tenant`} component={UpdateTenant} />
+            <Route exact path={`/view-tenant/:tenantId`} component={Tenant} />
+            <Route component={TenantNotFound} />
         </Switch>
     </BrowserRouter>
 );

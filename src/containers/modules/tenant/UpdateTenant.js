@@ -22,11 +22,6 @@ const UpdateTenant = (props) => (
   </div>
 );
 
-// const mapStateToProps = (state,props) => {
-//     return state.tenantId === props.match.params.tenantId
-
-// };
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
