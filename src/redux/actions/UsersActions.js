@@ -1,114 +1,102 @@
-import { UserActionTypes } from '../constants/UserActionTypes'
-import Axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { UserActionTypes } from '../constants/UsersActionTypes'
+import axios from '../../axios/Axios';
 
-const apiUrl = 'http://localhost:9191/api/ofr';
+const addUserSuccess = (user) => ({
+    type: UserActionTypes.ADD_USER,
+    user
+});
 
-const dispatch = useDispatch();
-
-export const addUserSuccess = (user) => {
-    return {
-        type : UserActionTypes.ADD_USER,
-        payload : user
-    }
-};
-
-export const addUser = (payload) => {
-    let data = {
-        userId : payload.userId,
-        userName : payload.userName,
-        password : payload.password,
-        userType : payload.userType
-    }
+export const addUser = (userData = {
+    userName: '',
+    password: '',
+    userType: ''
+}) => {
     return (dispatch) => {
-        return Axios.post(apiUrl + "/user/add-user", data)
-            .then(response => {
-                dispatch(adduserSuccess(response.data))
+        const user = {
+            userName: userData.userName,
+            password: userData.password,
+            userType: userData.userType,
+        };
+        console.log(user);
+        return axios.post('/add-user', user)
+            .then(() => {
+                dispatch(addUserSuccess(user));
             })
             .catch(error => {
                 throw (error);
-        });
+            });
     };
 };
 
-export const updateUserSuccess = (user) => {
-    return {
-        type : UserActionTypes.UPDATE_USER,
-        payload : user
-    }
-};
+const updateUserSuccess = (updatedUser) => ({
+    type: UserActionTypes.UPDATE_USER,
+    updatedUser
+});
 
-export const updateUser = (payload, userId) => {
-    let data = {
-        userId : payload.userId,
-        userName : payload.userName,
-        password : payload.password,
-        userType : payload.userType
-    }
+export const updateUser = (updatedUser = {
+    userId: '',
+    userName: '',
+    password: '',
+    userType: ''
+}) => {
     return (dispatch) => {
-        return Axios.put(apiUrl + "/user/update-user/" + userId, data)
-            .then(response => {
-                dispatch(updateUserSuccess(response.data))
+        const user = {
+            userId: updatedUser.userId,
+            userName: updatedUser.userName,
+            password: updatedPassword.password,
+            userType: updatedUser.userType,
+        };
+        console.log(user);
+        return axios.put(`/update-user`, user)
+            .then(() => {
+                dispatch(updateUserSuccess(user));
             })
             .catch(error => {
                 throw (error);
-        });
-    };
-};
-
-export const deleteUserSuccess = (user) => {
-    return {
-        type : UserActionTypes.DELETE_USER,
-        payload : user
+            });
     }
 };
 
-export const deleteuser = (userId) => {
+const deleteUserSuccess = ({ userId } = {}) => ({
+    type: UserActionTypes.DELETE_USER,
+    userId
+});
+
+export const deleteUser = ({ userId } = {}) => {
     return (dispatch) => {
-        return Axios.delete(apiUrl + "/user/remove-user/"+userId)
-            .then(respose => {
-                dispatch(deleteUserSuccess(respose.data))
+        return axios.delete(`/remove-user/${userId}`)
+            .then(() => {
+                dispatch(deleteUserSuccess({ userId }));
             })
             .catch(error => {
                 throw (error);
-        });
+            });
     };
 };
 
 export const getUserSuccess = (user) => {
     return {
-        type : UserActionTypes.GET_USER,
-        payload : user
+        type: UserActionTypes.GET_USER,
+        payload: user
+
     }
 };
 
 export const getUser = (userId) => {
     return (dispatch) => {
-        return Axios.get(apiUrl + "/user/view-user/" + userId)
+        return axios.get(`/view-user/${userId}`)
             .then(response => {
                 dispatch(getUserSuccess(response.data))
             })
             .catch(error => {
                 throw (error);
-        });
+            });
     };
 };
 
-export const getAllUsersSuccess = (users) => {
+export const getAllUsers = (users) => {
     return {
-        type : UserActionTypes.GET_ALL_USERS,
-        payload : users
+        type: UserActionTypes.GET_ALL_USERS,
+        payload: users
     }
-};
-
-export const getAllUsers = () => {
-    return(dispatch) => {
-        return Axios.get(apiUrl + "/users/view-all-users/")
-            .then(respose => {
-                dispatch(getAllUsersSuccess(respose.data))
-            })
-            .catch(error => {
-                throw (error);
-        });
-    };
 };
