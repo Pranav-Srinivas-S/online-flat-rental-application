@@ -1,24 +1,24 @@
 import React, { useEffect } from "react";
-import { connect, useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getAllTenants } from "../../../redux/actions/TenantActions";
-//import TenantComponent from "./TenantComponent";
-//import * as tenantActions from "../../../redux/actions/TenantActions";
-//import { Table } from "reactstrap";
-//import { Button } from "reactstrap";
-//import { bindActionCreators } from "redux";
 import axios from 'axios';
 import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
+import { deleteTenant } from '../../../redux/actions/TenantActions';
+import { useHistory, useParams } from 'react-router';
+
 
 const TenantList = () => {
     const dispatch = useDispatch();
+    //const tenantId = useParams();
+    const history = useHistory();
     const tenants = useSelector((state) => state.allTenants.tenants);
   
     const fetchTenants = async () => {
-      const result = await axios.get('http://localhost:9191/api/ofr/tenant/view-all-tenants').catch((err) => { 
+      const result = await axios.get('http://localhost:9191/api/ofr/view-all-tenants').catch((err) => { 
           console.log("Error ", err); });
       dispatch(getAllTenants(result.data))
     };
@@ -26,8 +26,16 @@ const TenantList = () => {
     useEffect(() => {
       fetchTenants();
     }, []);
-  
+
     console.log("Tenants :", tenants);
+
+    const  deleteTenantById = async (tenantId) => {
+      await axios.delete(`http://localhost:9191/api/ofr/delete-tenant/${tenantId}`).catch((err) => {console.log("Error" , err);});
+     dispatch(deleteTenant(tenantId));
+     alert("Deleted Successfully");
+     fetchTenants();
+     history.push('/tenant');
+   }
   
     return (
       <div className="">
@@ -53,9 +61,9 @@ const TenantList = () => {
                         <td>{tenantId}</td>
                         <td>{tenantName}</td>
                         <td>{tenantAge}</td>
-                        <td><Link to={`/tenant/view-tenant/${tenantId}`}><Button color="primary" variant="contained" className="btn btn-info">View </Button></Link></td>
-                        <td><Link to={`/tenant/update-tenant/${tenantId}`}><Button color="primary" variant="contained" className="btn btn-info">Update </Button></Link></td>
-                        <td><Link to={`/tenant/delete-tenant/${tenantId}`}><Button color="secondary" variant="contained" className="btn btn-secondary">Delete </Button></Link></td>
+                        <td><Link to={`/view-tenant/${tenantId}`}><Button color="primary" variant="contained" className="btn btn-info">View</Button></Link></td>
+                        <td><Link to={`/update-tenant`}><Button color="primary" variant="contained" className="btn btn-info">Update</Button></Link></td>
+                        <td><Link to={`/view-tenant/${tenantId}`}><Button color="secondary" variant="contained" className="btn btn-secondary">Delete</Button></Link></td>
                       </StyledTableRow>
                     )
                   })
