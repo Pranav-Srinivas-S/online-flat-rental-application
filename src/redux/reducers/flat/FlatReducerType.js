@@ -1,13 +1,12 @@
-import { ActionType } from "../../actions/flat/ActionType"
-
+import { FlatActionTypes} from '../../constants/FlatActionTypes';
 const initialState ={
-    customers:[]
+    flats:[]
 };
 
 export const getAllFlatsReducer = (state = initialState,{type,payload}) =>{
      switch (type) {
-        case ActionType.GET_ALL_FLATS:
-            return {...state,customer:payload}
+        case FlatActionTypes.GET_ALL_FLATS:
+            return {...state,flat:payload}
         
         default:
             return state;
@@ -16,8 +15,10 @@ export const getAllFlatsReducer = (state = initialState,{type,payload}) =>{
 
 export const getFlatReducer = (state = {},{type,payload}) => {
     switch(type){
-        case ActionType.GET_FLAT_BY_ID:
+        case FlatActionTypes.GET_FLAT:
             return {...state,...payload}
+        case FlatActionTypes.DELETE_FLAT:
+            return {}
         
             default:
                 return state;

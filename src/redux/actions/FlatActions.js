@@ -1,9 +1,11 @@
-import axios from '../../../axios/Axios';
+import axios from '../../axios/Axios';
+import {FlatActionTypes} from '../constants/FlatActionTypes';
+
 
 
 const _addFlat = (flat) => ({
 
-    type: 'ADD_FLAT',
+    type: FlatActionTypes.ADD_FLAT,
     flat
 
 });
@@ -39,13 +41,22 @@ export const addFlat = (flatData = {
 };
 
 export const _updateFlat = (updatedFlat) => ({
-    type:'UPDATE_FLAT',
+    type:FlatActionTypes.UPDATE_FLAT,
     updatedFlat
 });
-export const updateFlat = (updatedFlat) => {
-    {
+export const updateFlat = (updatedFlat = {
+    flatCost: '',
+    flatAvailabilty: '',
+    houseNo: '',
+    street: '',
+    city: '',
+    state: '',
+    country: '',
+    pin: ''
+ }) => {
         return (dispatch) => {
             const flat = {
+                flatId: updatedFlat.flatId,
                 flatCost: updatedFlat.flatCost,
                 flatAvailabilty: updatedFlat.flatAvailabilty,
                 flatAddress:
@@ -66,10 +77,10 @@ export const updateFlat = (updatedFlat) => {
             });
         }
     };
-}
+
 
 export const _deleteFlat = ({ flatId } = {}) => ({
-    type: 'DELETE_FLAT',
+    type: FlatActionTypes.DELETE_FLAT,
     flatId
 });
 
@@ -77,6 +88,38 @@ export const deleteFlat = ({ flatId } = {}) => {
     return (dispatch) => {
         return axios.delete('/tenant/delete-flat/${flatId}').then(() => {
             dispatch(_deleteFlat({ flatId }));
+        })
+        .catch(error => {
+            throw (error);
         });
+
+
     };
+};
+
+export const _getFlat = (flat) => {
+    return{
+        type:FlatActionTypes.GET_FLAT,
+        payload:flat
+    }
+}
+
+export const getFlat = (flatId) => {
+    return (dispatch) => {
+        return axios.get('/flat/view-flat/${flatId}')
+          .then(response => {
+              dispatch(_getFlat(response.data))
+          })
+          .catch(error => {
+              throw (error);
+          });
+    };
+};
+
+
+export const getAllFlats = (flats) => {
+    return{
+        type: FlatActionTypes.GET_ALL_FLATS,
+        payload: flats
+    }
 };

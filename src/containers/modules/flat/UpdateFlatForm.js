@@ -1,18 +1,19 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormLabel from '@material-ui/core/FormLabel';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
+// import Radio from '@material-ui/core/Radio';
+// import RadioGroup from '@material-ui/core/RadioGroup';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import FormLabel from '@material-ui/core/FormLabel';
+// import InputLabel from '@material-ui/core/InputLabel';
+// import MenuItem from '@material-ui/core/MenuItem';
+// import Select from '@material-ui/core/Select';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import { FormControl, TextField } from '@material-ui/core';
+import { withRouter } from 'react-router';
 
-export default class UpdateFlatForm extends React.Component {
+class UpdateFlatForm extends React.Component {
 
     constructor(props) 
     {
@@ -30,7 +31,7 @@ export default class UpdateFlatForm extends React.Component {
     country: "",
     pin: ""
     }
-    }
+    };
 }
 
     onFlatIdChange = (e) => {
@@ -191,7 +192,8 @@ export default class UpdateFlatForm extends React.Component {
         )
     }
 
-}
+} 
+export default withRouter(UpdateFlatForm);
 
 const useStyles = makeStyles((theme) => ({
     container: {

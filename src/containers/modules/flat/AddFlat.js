@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {addFlat} from '../../../redux/actions/flat/FlatActions';
+import {addFlat} from '../../../redux/actions/FlatActions';
 import AddFlatForm from "./AddFlatForm";
 
 const AddFlat = (props) => (

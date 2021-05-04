@@ -1,26 +1,28 @@
+import {FlatActionTypes} from '../../constants/FlatActionTypes'; 
 const flatReducerDefaultState = [];
 
 const flatReducer =  (state = flatReducerDefaultState, action) => {
     switch (action.type) {
-        case 'ADD_FLAT':
+        case FlatActionTypes.ADD_FLAT:
             return [
                 ...state,
                 action.flat
             ];
-        case 'DELETE_FLAT':
+        case FlatActionTypes.DELETE_FLAT:
             return state.filter(({flatId}) => flatId !== action.flatId);
-        case 'UPDATE_FLAT':
+
+        case FlatActionTypes.UPDATE_FLAT:
             return [
                 ...state,
                 action.flat
             ];
             
-        case 'GET_ALL_FLATS':
+        case FlatActionTypes.GET_ALL_FLATS:
             return [
                     ...state,
-                    action.flats 
+                    action.flat
                 ];
-        case 'GET_FLAT_BY_ID':
+        case FlatActionTypes.GET_FLAT:
             return [
                     ...state,
                     action.flat
@@ -30,4 +32,4 @@ const flatReducer =  (state = flatReducerDefaultState, action) => {
     }
 }
 
-export default customerReducer;
+export default flatReducer;

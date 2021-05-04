@@ -1,5 +1,5 @@
 import React from 'react';
-import {updateFlat} from '../../../redux/actions/flat/FlatActions';
+import {updateFlat} from '../../../redux/actions/FlatActions';
 import UpdateFlatForm from './UpdateFlatForm';
 import { connect } from 'react-redux';
 import Box from '@material-ui/core/Box';
@@ -14,18 +14,18 @@ const updateFlatComoponent = (props) => (
         <UpdateFlatForm 
             flat= {props.flat}
             onSubmitFlat = {(flat) => {
-                props.dispatch(updateFlatComoponent(flat));
-                props.history.push('/customer');
+                props.dispatch(updateFlat(flat));
+                props.history.push('/flat');
             }}
         /> 
         </Paper>
     </div>
 )
 
-const mapStateToProps = (state,props) => {
-    return state.userId === props.match.params.userId
+// const mapStateToProps = (state,props) => {
+//     return state.flatId === props.match.params.flatId
     
-};
+// };
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -39,4 +39,4 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export default connect(mapStateToProps)(updateFlat);
+export default connect()(updateFlat);
