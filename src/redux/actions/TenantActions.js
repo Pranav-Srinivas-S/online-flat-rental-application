@@ -40,9 +40,9 @@ export const addTenant = (tenantData = {
     };
 };
 
-const updateTenantSuccess = (updatedTenant) => ({
+const updateTenantSuccess = (tenant) => ({
     type: TenantActionTypes.UPDATE_TENANT,
-    updatedTenant
+    tenant
 });
 
 export const updateTenant = (updatedTenant = {
@@ -71,7 +71,7 @@ export const updateTenant = (updatedTenant = {
             }
         };
         console.log(tenant);
-        return axios.put(`/update-tenant`, tenant)
+        return axios.put('/update-tenant', tenant)
             .then(() => {
                 dispatch(updateTenantSuccess(tenant));
             })

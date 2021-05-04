@@ -98,8 +98,10 @@ import { withRouter } from "react-router-dom";
         this.updateValidators(inputPropName, event.target.value);
     }
 
-    onTenantIdChange = (e) => {
-        this.setState({ tenantId: e.target.value });
+    onTenantIdChange = (event, inputPropName) => {
+        const newState = Object.assign({}, this.state);
+        newState[inputPropName] = event.target.value;
+        this.setState(newState);
     }
 
     // onTenantNameChange = (e) => {
@@ -148,7 +150,7 @@ import { withRouter } from "react-router-dom";
                             <FormLabel component="legend">Tenant ID</FormLabel>
                             <TextField
                                 required id="standard-number" label="Tenant ID" type="number" placeholder="Enter Tenant ID"
-                                value={this.state.tenantId} onChange={event => this.onTenantIdChange(event)}
+                                value={this.state.tenantId} onChange={event => this.onTenantIdChange(event, 'tenantId')}
                              />
                         </FormControl>
                         {this.displayValidationErrors('tenantAge')}
@@ -229,7 +231,7 @@ import { withRouter } from "react-router-dom";
                         {this.displayValidationErrors('country')}
                         <br />
                         <br />
-                        <Button style={style} type="submit" >Update Tenant</Button>
+                        <Button style={style} type="submit" className={`btn btn-primary btn-block ${this.isFormValid() ? '' : 'disabled'}`}>Update Tenant</Button>
                         <Button style={style} onClick={this.onCancel}>Cancel</Button>
                     </form>
                 </div>

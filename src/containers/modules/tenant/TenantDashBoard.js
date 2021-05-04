@@ -13,7 +13,7 @@ function TenantDashBoard() {
     const history = useHistory();
     return (
         <div>
-                <Box color="primary.main"  component="div" display="inline" > <h3>Add Tenanat Detail:
+                <Box color="primary.main"  component="div" display="inline" > <h3>Add Tenant Detail:
                 <Button style={style} onClick={() => history.push("/add-tenant")}>Add Tenant</Button></h3>
                 </Box>
                 <br/>

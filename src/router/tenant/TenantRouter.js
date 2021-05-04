@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import TenantDashBoard from "../../containers/modules/tenant/TenantDashBoard";
-import TenantDetail from "../../containers/modules/tenant/TenantDetail";
 import AddTenant from "../../containers/modules/tenant/AddTenant";
 import UpdateTenant from "../../containers/modules/tenant/UpdateTenant";
 import Tenant from "../../containers/modules/tenant/Tenant";
