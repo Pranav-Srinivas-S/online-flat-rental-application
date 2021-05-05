@@ -56,13 +56,13 @@ import { withRouter } from "react-router-dom";
         if (validator && !validator.valid) {
             const errors = validator.errors.map((info, index) => {
                 return <span style={errorStyle} key={index}>* {info}</span>;
-            }); 
+            });
 
             return (
                 <div style={errorStyle} className="col s12 row">
                     {errors}
                 </div>
-            ); 
+            );
         }
         return result;
     }
@@ -118,17 +118,17 @@ import { withRouter } from "react-router-dom";
                         <FormControl fullWidth>
                             <FormLabel component="legend">User Name</FormLabel>
                             <TextField
-                                required id="standard-number" label="User Name" placeholder="Enter User Name"
+                                required id="standard-textarea" label="User Name" placeholder="Enter User Name"
                                 value={this.state.userName} onChange={event => this.handleUserChange(event, 'userName')} /> 
                         </FormControl>
-                        {this.displayValidationErrors('tusername')}
+                        {this.displayValidationErrors('userName')}
                         <br />
                         <br />
                         <FormControl fullWidth>
-                            <FormLabel component="legend">password</FormLabel>
+                            <FormLabel component="legend">Password</FormLabel>
                             <TextField
-                                required id="standard-number" label="Password" placeholder="Enter Password"
-                                value={this.state.password} onChange={event => this.handleUserChange(event, 'pasword')} /> 
+                                required id="standard-textarea" label="Password" type="password" placeholder="Enter Password"
+                                value={this.state.passsword} onChange={event => this.handleUserChange(event, 'password')} /> 
                         </FormControl>
                         {this.displayValidationErrors('password')}
                         <br />
@@ -136,8 +136,8 @@ import { withRouter } from "react-router-dom";
                         <FormControl fullWidth>
                             <FormLabel component="legend">user Type</FormLabel>
                             <TextField
-                                required id="standard-number" label="userType" placeholder="Enter userType"
-                                value={this.state.userType} onChange={event => this.handleUserChange(event, 'userTyoe')} /> 
+                                required id="standard-textarea" label="userType" placeholder="Enter userType"
+                                value={this.state.userType} onChange={event => this.handleUserChange(event, 'userType')} /> 
                         </FormControl>
                         {this.displayValidationErrors('userType')}
                         <br />

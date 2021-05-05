@@ -13,16 +13,16 @@ const User = () => {
     const [user,setUser] = useState({
         userName: '',
         password: '',
-        userType: ''
+        userType: '',
     });
 
     useEffect(() => {
         loadUser();
     },[])
 
-    const loadUser = async () => 
-    {
-        const result=await axios.get(`http://localhost:9191/api/ofr/view-user/${userId}`).catch((err) => { console.log("Error ", err); });
+   
+    const loadUser = async () => {
+        const result = await axios.get(`http://localhost:9191/api/ofr/view-user/${userId}`).catch((err) => { console.log("Error ", err); });
         dispatch(getUser(result.data));
         setUser(result.data);
     }

@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const AddUser = (props) => (
     <div >
     <div className={useStyles.root}>
-         <Box color="white" bgcolor="palevioletred" p={1}> <h2>Add USer</h2></Box>
+         <Box color="white" bgcolor="palevioletred" p={1}> <h2>Add User</h2></Box>
          <Paper elevation={3} >
         <AddUserForm 
              onSubmitUser={(state) => {

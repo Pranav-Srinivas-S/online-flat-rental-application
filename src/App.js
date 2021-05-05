@@ -1,10 +1,16 @@
 import './App.css';
-import Routes from './router/Route';
+import store from './redux/store/ConfigureStore';
+import UserRouter from './router/user/UserRouter';
+import { Provider } from 'react-redux';
+import HomeRouter from './router/HomeRouter';
 
 function App() {
   return (
     <div>
-      <Routes />
+      <Provider store={store()}>
+        {/* <UserRouter />  */}
+        <HomeRouter />
+      </Provider>
     </div>
   );
 }

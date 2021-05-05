@@ -1,124 +1,125 @@
 import { TenantActionTypes } from '../constants/TenantActionTypes'
-import Axios from 'axios';
-import { useDispatch } from 'react-redux';
+import axios from '../../axios/Axios';
 
-const apiUrl = 'http://localhost:9191/api/ofr';
+const addTenantSuccess = (tenant) => ({
+    type: TenantActionTypes.ADD_TENANT,
+    tenant
+});
 
-const dispatch = useDispatch();
-
-export const addTenantSuccess = (tenant) => {
-    return {
-        type : TenantActionTypes.ADD_TENANT,
-        payload : tenant
-    }
-};
-
-export const addTenant = (payload) => {
-    let data = {
-        tenantId : payload.tenantId,
-        tenantName : payload.tenantName,
-        tenantAge : payload.tenantAge,
-        houseNo : payload.houseNo,
-        street : payload.street,
-        city : payload.city,
-        state : payload.state,
-        pin : payload.pin,
-        country : payload.country
-    }
+export const addTenant = (tenantData = {
+    tenantName: '',
+    tenantAge: '',
+    houseNo: '',
+    street: '',
+    city: '',
+    state: '',
+    pin: '',
+    country: ''
+}) => {
     return (dispatch) => {
-        return Axios.post(apiUrl + "/tenant/add-tenant", data)
-            .then(response => {
-                dispatch(addTenantSuccess(response.data))
+        const tenant = {
+            tenantName: tenantData.tenantName,
+            tenantAge: tenantData.tenantAge,
+            tenantAddress: {
+                houseNo: tenantData.houseNo,
+                street: tenantData.street,
+                city: tenantData.city,
+                state: tenantData.state,
+                pin: tenantData.pin,
+                country: tenantData.country
+            }
+        };
+        console.log(tenant);
+        return axios.post('/add-tenant', tenant)
+            .then(() => {
+                dispatch(addTenantSuccess(tenant));
             })
             .catch(error => {
                 throw (error);
-        });
+            });
     };
 };
 
-export const updateTenantSuccess = (tenant) => {
-    return {
-        type : TenantActionTypes.UPDATE_TENANT,
-        payload : tenant
-    }
-};
+const updateTenantSuccess = (tenant) => ({
+    type: TenantActionTypes.UPDATE_TENANT,
+    tenant
+});
 
-export const updateTenant = (payload, tenantId) => {
-    let data = {
-        tenantId : payload.tenantId,
-        tenantName : payload.tenantName,
-        tenantAge : payload.tenantAge,
-        houseNo : payload.houseNo,
-        street : payload.street,
-        city : payload.city,
-        state : payload.state,
-        pin : payload.pin,
-        country : payload.country
-    }
+export const updateTenant = (updatedTenant = {
+    tenantId: '',
+    tenantName: '',
+    tenantAge: '',
+    houseNo: '',
+    street: '',
+    city: '',
+    state: '',
+    pin: '',
+    country: ''
+}) => {
     return (dispatch) => {
-        return Axios.put(apiUrl + "/tenant/update-tenant/" + tenantId, data)
-            .then(response => {
-                dispatch(updateTenantSuccess(response.data))
+        const tenant = {
+            tenantId: updatedTenant.tenantId,
+            tenantName: updatedTenant.tenantName,
+            tenantAge: updatedTenant.tenantAge,
+            tenantAddress: {
+                houseNo: updatedTenant.houseNo,
+                street: updatedTenant.street,
+                city: updatedTenant.city,
+                state: updatedTenant.state,
+                pin: updatedTenant.pin,
+                country: updatedTenant.country
+            }
+        };
+        console.log(tenant);
+        return axios.put('/update-tenant', tenant)
+            .then(() => {
+                dispatch(updateTenantSuccess(tenant));
             })
             .catch(error => {
                 throw (error);
-        });
-    };
-};
-
-export const deleteTenantSuccess = (tenant) => {
-    return {
-        type : TenantActionTypes.DELETE_TENANT,
-        payload : tenant
+            });
     }
 };
 
-export const deleteProduct = (tenantId) => {
+const deleteTenantSuccess = ({ tenantId } = {}) => ({
+    type: TenantActionTypes.DELETE_TENANT,
+    tenantId
+});
+
+export const deleteTenant = ({ tenantId } = {}) => {
     return (dispatch) => {
-        return Axios.delete(apiUrl + "/tenant/delete-tenant/"+tenantId)
-            .then(respose => {
-                dispatch(deleteTenantSuccess(respose.data))
+        return axios.delete(`/delete-tenant/${tenantId}`)
+            .then(() => {
+                dispatch(deleteTenantSuccess({ tenantId }));
             })
             .catch(error => {
                 throw (error);
-        });
+            });
     };
 };
 
 export const getTenantSuccess = (tenant) => {
     return {
-        type : TenantActionTypes.GET_TENANT,
-        payload : tenant
+        type: TenantActionTypes.GET_TENANT,
+        payload: tenant
     }
 };
 
 export const getTenant = (tenantId) => {
     return (dispatch) => {
-        return Axios.get(apiUrl + "/tenant/view-tenant/" + tenantId)
+        return axios.get(`/view-tenant/${tenantId}`)
             .then(response => {
                 dispatch(getTenantSuccess(response.data))
             })
             .catch(error => {
                 throw (error);
-        });
+            });
     };
 };
 
-export const getAllTenantsSuccess = (tenants) => {
+export const getAllTenants = (tenants) => {
     return {
-        type : TenantActionTypes.GET_ALL_TENANTS,
-        payload : tenants
+        type: TenantActionTypes.GET_ALL_TENANTS,
+        payload: tenants
     }
-};
-
-export const getAllTenants = () => {
-    return(dispatch) => {
-        return Axios.get(apiUrl + "/tenant/view-all-tenants/")
-            .then(respose => {
-                dispatch(getAllTenantsSuccess(respose.data))
-            })
-            .catch(error => {
-                throw (error);
-        });
-    };
 };

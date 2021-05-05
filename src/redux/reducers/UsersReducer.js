@@ -1,29 +1,32 @@
-import { UserActionTypes } from "../constants/UserActionTypes";
+import { UserActionTypes } from "../constants/UsersActionTypes"
 
-const initialState ={
-    users:[]
-};
+const userReducerDefaultState = [];
 
-export const getAllUsersReducer = (state = initialState,{type,payload}) => {
-    switch (type) {
-        case UserActionTypes.GET_ALL_USERS:
-            return {...state,users:payload}
-    
-        default:
-            return state;
-            
-    }
-};
+const userReducer = (state = userReducerDefaultState, action) => {
+    switch (action.type) {
+        case UserActionTypes.ADD_USER:
+            return [
+                ...state,
+                action.tenant
+            ];
 
-export const getUserReducer = (state = {} ,{type,payload}) => {
-    switch (type) {
-        case UserActionTypes.GET_USER:
-            return {...state,...payload}
-            
         case UserActionTypes.DELETE_USER:
-            return{}
-            
+            return state.filter(({ userId }) => userId !== action.userId);
+
+        case UserActionTypes.UPDATE_USER:
+            return [
+                ...state,
+                action.user
+            ];
+
+        case UserActionTypes.GET_ALL_USERS:
+            return [
+                ...state,
+                action.user
+            ]
         default:
             return state;
     }
 }
+
+export default userReducer;

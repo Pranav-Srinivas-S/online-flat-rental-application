@@ -15,22 +15,17 @@ export const addUser = (userData = {
         const user = {
             userName: userData.userName,
             password: userData.password,
-            userType: userData.userType,
+            userType: userData.userType
         };
         console.log(user);
-        return axios.post('/add-user', user)
-            .then(() => {
-                dispatch(addUserSuccess(user));
-            })
-            .catch(error => {
-                throw (error);
-            });
+        const result =  axios.post('/add-user', user);
+        dispatch(addUserSuccess(result.data));
     };
 };
 
-const updateUserSuccess = (updatedUser) => ({
+const updateUserSuccess = (user) => ({
     type: UserActionTypes.UPDATE_USER,
-    updatedUser
+    user
 });
 
 export const updateUser = (updatedUser = {
@@ -43,11 +38,11 @@ export const updateUser = (updatedUser = {
         const user = {
             userId: updatedUser.userId,
             userName: updatedUser.userName,
-            password: updatedPassword.password,
+            password: updatedUser.password,
             userType: updatedUser.userType,
         };
         console.log(user);
-        return axios.put(`/update-user`, user)
+        return axios.put('/update-user', user)
             .then(() => {
                 dispatch(updateUserSuccess(user));
             })
@@ -64,7 +59,7 @@ const deleteUserSuccess = ({ userId } = {}) => ({
 
 export const deleteUser = ({ userId } = {}) => {
     return (dispatch) => {
-        return axios.delete(`/remove-user/${userId}`)
+        return axios.delete('/remove-user/${userId}')
             .then(() => {
                 dispatch(deleteUserSuccess({ userId }));
             })
@@ -80,7 +75,7 @@ export const getUserSuccess = (user) => {
         payload: user
 
     }
-};
+}
 
 export const getUser = (userId) => {
     return (dispatch) => {
