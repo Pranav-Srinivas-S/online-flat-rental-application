@@ -21,10 +21,10 @@ const HomeRouter = () => (
                 <Route path={`/add-tenant`} component={AddTenant} />
                 <Route path={`/update-tenant/:tenantId`} component={UpdateTenant} />
                 <Route path={`/view-tenant/:tenantId`} component={Tenant} />
-                <Route  path={'/user'} component={UserDashBoard} />
-                <Route  path={'/add-user'} component={AddUser} />
-                <Route  path={'/update-user/:userId'} component={UpdateUser} />
-                <Route  path={'/view-user/:userId'} component={User} />
+                <Route path={'/user'} component={UserDashBoard} />
+                <Route path={'/add-user'} component={AddUser} />
+                <Route path={'/update-user/:userId'} component={UpdateUser} />
+                <Route path={'/view-user/:userId'} component={User} />
             </Switch>
         </div>
     </BrowserRouter>

@@ -1,28 +1,28 @@
 import { UserActionTypes } from "../constants/UsersActionTypes";
 
-const initialState ={
-    users:[]
+const initialState = {
+    users: []
 };
 
-export const getAllUsersReducer = (state = initialState,{type,payload}) => {
+export const getAllUsersReducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case UserActionTypes.GET_ALL_USERS:
-            return {...state,users:payload}
-    
+            return { ...state, users: payload }
+
         default:
             return state;
-            
+
     }
 };
 
-export const getUserReducer = (state = {} ,{type,payload}) => {
+export const getUserReducer = (state = {}, { type, payload }) => {
     switch (type) {
         case UserActionTypes.GET_USER:
-            return {...state,...payload}
-            
+            return { ...state, ...payload }
+
         case UserActionTypes.DELETE_USER:
-            return{}
-            
+            return {}
+
         default:
             return state;
     }

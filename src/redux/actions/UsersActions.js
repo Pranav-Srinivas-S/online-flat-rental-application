@@ -18,7 +18,7 @@ export const addUser = (userData = {
             userType: userData.userType
         };
         console.log(user);
-        const result =  axios.post('/add-user', user);
+        const result = axios.post('/add-user', user);
         dispatch(addUserSuccess(result.data));
     };
 };

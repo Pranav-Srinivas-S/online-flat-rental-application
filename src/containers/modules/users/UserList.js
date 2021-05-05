@@ -39,7 +39,7 @@ const UserList = () => {
 
   return (
     <div className="">
-     
+
       <Grid>
         <TableContainer component={Paper}>
           <Table border="1" bgcolor="white" class="table  table-bordered table-hover">
@@ -57,7 +57,7 @@ const UserList = () => {
             <TableBody>
               {
                 users.map((user) => {
-                  const { userId, userName, password,userType } = user;
+                  const { userId, userName, password, userType } = user;
                   return (
                     <StyledTableRow key={userId}>
                       <td>{userId}</td>
@@ -75,6 +75,7 @@ const UserList = () => {
           </Table>
         </TableContainer>
       </Grid>
+
 
     </div>
   );

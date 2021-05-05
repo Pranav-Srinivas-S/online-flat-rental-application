@@ -11,7 +11,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 
- class AddUserForm extends React.Component {
+class AddUserForm extends React.Component {
 
 
     constructor(props) {
@@ -20,7 +20,7 @@ import Radio from '@material-ui/core/Radio';
             userName: "",
             password: "",
             userType: ""
-                
+
         };
         this.validators = UserValidation;
         this.resetValidators();
@@ -87,7 +87,7 @@ import Radio from '@material-ui/core/Radio';
         this.updateValidators(inputPropName, event.target.value);
     }
 
-    
+
 
     onCancel = () => {
         this.props.history.push('/user');
@@ -100,14 +100,15 @@ import Radio from '@material-ui/core/Radio';
         event.preventDefault();
         this.props.onSubmitUser(
             {
-                userName : this.state.userName,
-                password : this.state.password,
-                userType : this.state.userType,
+                userName: this.state.userName,
+                password: this.state.password,
+                userType: this.state.userType,
             }
 
         );
- 
+
     }
+
 
     render() {
         return (
@@ -118,11 +119,11 @@ import Radio from '@material-ui/core/Radio';
                             <Box color="primary.main" p={1}> <h2>User Details :</h2></Box>
                         </div>
                         <br />
-                       <FormControl fullWidth>
+                        <FormControl fullWidth>
                             <FormLabel component="legend">User Name</FormLabel>
                             <TextField
                                 required id="standard-textarea" label="User Name" placeholder="Enter User Name"
-                                value={this.state.userName} onChange={event => this.handleUserChange(event, 'userName')} /> 
+                                value={this.state.userName} onChange={event => this.handleUserChange(event, 'userName')} />
                         </FormControl>
                         {this.displayValidationErrors('userName')}
                         <br />
@@ -131,7 +132,7 @@ import Radio from '@material-ui/core/Radio';
                             <FormLabel component="legend">Password</FormLabel>
                             <TextField
                                 required id="standard-textarea" label="Password" type="password" placeholder="Enter Password"
-                                value={this.state.passsword} onChange={event => this.handleUserChange(event, 'password')} /> 
+                                value={this.state.passsword} onChange={event => this.handleUserChange(event, 'password')} />
                         </FormControl>
                         {this.displayValidationErrors('password')}
                         <br />

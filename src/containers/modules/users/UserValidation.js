@@ -24,7 +24,7 @@ const UserValidation = {
                 message: 'Password Format Wrong',
             },
 
-            
+
         ],
         errors: [],
         valid: false,

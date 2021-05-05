@@ -6,7 +6,6 @@ import Box from '@material-ui/core/Box';
 import { Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-
 const UpdateUser = (props) => (
   <div >
     <div className={useStyles.root}>

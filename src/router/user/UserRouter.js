@@ -12,7 +12,7 @@ const UserRouter = () => (
             <Route exact path={'/user'} component={UserDashBoard} />
             <Route exact path={'/add-user'} component={AddUser} />
             <Route exact path={'/update-user/:userId'} component={UpdateUser} />
-            <Route exact path={'/view-user/:userId'} component={User}/>
+            <Route exact path={'/view-user/:userId'} component={User} />
             <Route component={UserNotFound} />
         </Switch>
     </BrowserRouter>

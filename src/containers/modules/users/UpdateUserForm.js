@@ -7,7 +7,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import UserValidation from './UserValidation';
-import { getUserSuccess, deleteUSer} from '../../../redux/actions/UsersActions';
+import { getUserSuccess, deleteUSer } from '../../../redux/actions/UsersActions';
 import { connect } from 'react-redux';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -20,80 +20,80 @@ class UpdateUserForm extends React.Component {
             userName: "",
             password: "",
             userType: ""
-        
-    };
+
+        };
         this.validators = UserValidation;
         this.resetValidators();
-}
-    
-    
-
-updateValidators = (fieldName, value) => {
-    this.validators[fieldName].errors = [];
-    this.validators[fieldName].state = value;
-    this.validators[fieldName].valid = true;
-    this.validators[fieldName].rules.forEach((rule) => {
-        if (rule.test instanceof RegExp) {
-            if (!rule.test.test(value)) {
-                this.validators[fieldName].errors.push(rule.message);
-                this.validators[fieldName].valid = false;
-            }
-        } else if (typeof rule.test === 'function') {
-            if (!rule.test(value)) {
-                this.validators[fieldName].errors.push(rule.message);
-                this.validators[fieldName].valid = false;
-            }
-        }
-    });
-}
-
-resetValidators = () => {
-    Object.keys(this.validators).forEach((fieldName) => {
-        this.validators[fieldName].errors = [];
-        this.validators[fieldName].state = '';
-        this.validators[fieldName].valid = false;
-    });
-}
-
-displayValidationErrors = (fieldName) => {
-    const validator = this.validators[fieldName];
-    const result = '';
-    if (validator && !validator.valid) {
-        const errors = validator.errors.map((info, index) => {
-            return <span style={errorStyle} key={index}>* {info}</span>;
-        }); 
-
-        return (
-            <div style={errorStyle} className="col s12 row">
-                {errors}
-            </div>
-        ); 
     }
-    return result;
-}
 
-isFormValid = () => {
-    let status = true;
-    Object.keys(this.validators).forEach((field) => {
-        if (!this.validators[field].valid) {
-            status = false;
+
+
+    updateValidators = (fieldName, value) => {
+        this.validators[fieldName].errors = [];
+        this.validators[fieldName].state = value;
+        this.validators[fieldName].valid = true;
+        this.validators[fieldName].rules.forEach((rule) => {
+            if (rule.test instanceof RegExp) {
+                if (!rule.test.test(value)) {
+                    this.validators[fieldName].errors.push(rule.message);
+                    this.validators[fieldName].valid = false;
+                }
+            } else if (typeof rule.test === 'function') {
+                if (!rule.test(value)) {
+                    this.validators[fieldName].errors.push(rule.message);
+                    this.validators[fieldName].valid = false;
+                }
+            }
+        });
+    }
+
+    resetValidators = () => {
+        Object.keys(this.validators).forEach((fieldName) => {
+            this.validators[fieldName].errors = [];
+            this.validators[fieldName].state = '';
+            this.validators[fieldName].valid = false;
+        });
+    }
+
+    displayValidationErrors = (fieldName) => {
+        const validator = this.validators[fieldName];
+        const result = '';
+        if (validator && !validator.valid) {
+            const errors = validator.errors.map((info, index) => {
+                return <span style={errorStyle} key={index}>* {info}</span>;
+            });
+
+            return (
+                <div style={errorStyle} className="col s12 row">
+                    {errors}
+                </div>
+            );
         }
-    });
-    return status;
-}
+        return result;
+    }
 
-handleUserChange(event, inputPropName) {
-    const newState = Object.assign({}, this.state);
-    newState[inputPropName] = event.target.value;
-    this.setState(newState);
-    this.updateValidators(inputPropName, event.target.value);
-}
+    isFormValid = () => {
+        let status = true;
+        Object.keys(this.validators).forEach((field) => {
+            if (!this.validators[field].valid) {
+                status = false;
+            }
+        });
+        return status;
+    }
 
-onUserIdChange = (event, inputPropName) => {
-    const newState = Object.assign({}, this.state);
-    newState[inputPropName] = event.target.value;
-    this.setState(newState);
-}
+    handleUserChange(event, inputPropName) {
+        const newState = Object.assign({}, this.state);
+        newState[inputPropName] = event.target.value;
+        this.setState(newState);
+        this.updateValidators(inputPropName, event.target.value);
+    }
+
+    onUserIdChange = (event, inputPropName) => {
+        const newState = Object.assign({}, this.state);
+        newState[inputPropName] = event.target.value;
+        this.setState(newState);
+    }
 
     onCancel = () => {
         this.props.history.push('/user');
@@ -106,14 +106,14 @@ onUserIdChange = (event, inputPropName) => {
         event.preventDefault();
         this.props.onSubmitUser(
             {
-                userId:this.state.userId,
-                userName : this.state.userName,
-                password : this.state.password,
-                userType : this.state.userType,
+                userId: this.state.userId,
+                userName: this.state.userName,
+                password: this.state.password,
+                userType: this.state.userType,
             }
 
         );
- 
+
     }
 
     render() {
@@ -138,7 +138,7 @@ onUserIdChange = (event, inputPropName) => {
                             <FormLabel component="legend">User Name</FormLabel>
                             <TextField
                                 required id="standard-textarea" label="User Name" placeholder="Enter User Name"
-                                value={this.state.userName} onChange={event => this.handleUserChange(event, 'userName')} /> 
+                                value={this.state.userName} onChange={event => this.handleUserChange(event, 'userName')} />
                         </FormControl>
                         {this.displayValidationErrors('userName')}
                         <br />
@@ -147,7 +147,7 @@ onUserIdChange = (event, inputPropName) => {
                             <FormLabel component="legend">Password</FormLabel>
                             <TextField
                                 required id="standard-textarea" label="Password" type="password" placeholder="Enter Password"
-                                value={this.state.passsword} onChange={event => this.handleUserChange(event, 'password')} /> 
+                                value={this.state.passsword} onChange={event => this.handleUserChange(event, 'password')} />
                         </FormControl>
                         {this.displayValidationErrors('password')}
                         <br />
