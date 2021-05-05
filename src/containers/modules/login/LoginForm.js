@@ -1,14 +1,15 @@
 import React from "react";
 
-
 export default class EmployeeLogin extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            userName: "",
-            password: "",
-
+            user:{
+                userName: "",
+                password: "",
+                userType: ""
+            }
         }
     }
 
