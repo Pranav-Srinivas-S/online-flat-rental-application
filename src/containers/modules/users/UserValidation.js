@@ -21,8 +21,8 @@ const UserValidation = {
         rules: [
             {
                 test: /(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*])(?=.*[A-Z]).{8,}/,
-                message: 'Password Format Wrong',
-                
+                message: 'Password should be in this format : Aeiou@2000',
+
             },
 
 

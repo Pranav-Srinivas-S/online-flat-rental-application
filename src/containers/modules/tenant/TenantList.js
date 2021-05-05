@@ -12,7 +12,6 @@ import { useHistory } from 'react-router';
 
 const TenantList = () => {
   const dispatch = useDispatch();
-  //const tenantId = useParams();
   const history = useHistory();
   const tenants = useSelector((state) => state.allTenants.tenants);
 

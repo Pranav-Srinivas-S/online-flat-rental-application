@@ -122,7 +122,7 @@ class UpdateUserForm extends React.Component {
                 <div  >
                     <form onSubmit={event => this.onSubmit(event)} >
                         <div>
-                            <Box color="primary.main" p={1}> <h2>User Details :</h2></Box>
+                            <Box color="primary.main" p={1}> <h2>Update User Details:</h2></Box>
                         </div>
                         <br />
                         <FormControl fullWidth>
@@ -200,3 +200,4 @@ const style = {
 const errorStyle = {
     color: 'red'
 };
+

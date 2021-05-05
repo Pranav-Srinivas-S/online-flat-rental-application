@@ -117,9 +117,7 @@ class AddTenantForm extends React.Component {
                 pin: this.state.tenantAddress.pin,
                 country: this.state.tenantAddress.country,
             }
-
         );
-
     }
 
     render() {
@@ -137,6 +135,7 @@ class AddTenantForm extends React.Component {
                                 required id="standard-number" label="Tenant Name" placeholder="Enter Tenant Name"
                                 value={this.state.tenantName} onChange={event => this.handleTenantChange(event, 'tenantName')} />
                         </FormControl>
+                        {this.displayValidationErrors('tenantName')}
                         <br />
                         <br />
                         <FormControl fullWidth>
@@ -202,15 +201,15 @@ class AddTenantForm extends React.Component {
                         {this.displayValidationErrors('country')}
                         <br />
                         <br />
-                        <Button style={style} type="submit" className={`btn btn-primary btn-block ${this.isFormValid() ? '' : 'disabled'}`}>Add Tenant</Button>
+                        <Button style={style} type="submit" className={`btn btn-primary ${this.isFormValid() ? '' : 'disabled'}`}>Add Tenant</Button>
                         <Button style={style} onClick={this.onCancel}>Cancel</Button>
                     </form>
                 </div>
             </Container>
         )
     }
-
 }
+
 export default withRouter(AddTenantForm);
 
 const useStyles = makeStyles((theme) => ({

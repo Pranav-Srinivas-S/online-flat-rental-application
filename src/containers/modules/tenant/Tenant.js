@@ -4,7 +4,9 @@ import { connect, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 import { getTenant, deleteTenant } from '../../../redux/actions/TenantActions';
 import { Button, Grid } from '@material-ui/core';
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import Header from "../../common/Header";
+import Footer from "../../common/Footer";
 
 const Tenant = () => {
     const { tenantId } = useParams();
@@ -41,27 +43,31 @@ const Tenant = () => {
     }
 
     return (
-        <div >
-            <h1 class="display-4  bg-primary text-white"> Tenant Detail </h1>
-            <ul class="list-group-item">
-                <li class="list-group-item list-group-item-info"> <h3>Tenant Id : {tenant.tenantId}</h3> </li>
-                <li class="list-group-item list-group-item-info"><h3>Tenant Name : {tenant.tenantName}</h3> </li>
-                <li class="list-group-item list-group-item-info"><h3>Tenant Age : {tenant.tenantAge}</h3> </li>
-                <li class="list-group-item list-group-item-info"><h3>House Number : {tenant.tenantAddress.houseNo}</h3> </li>
-                <li class="list-group-item list-group-item-info"><h3>Street : {tenant.tenantAddress.street}</h3> </li>
-                <li class="list-group-item list-group-item-info"><h3>City :  {tenant.tenantAddress.city}</h3></li>
-                <li class="list-group-item list-group-item-info"><h3>State : {tenant.tenantAddress.state}</h3> </li>
-                <li class="list-group-item list-group-item-info"><h3>Pin : {tenant.tenantAddress.pin}</h3> </li>
-                <li class="list-group-item list-group-item-info"><h3>Country : {tenant.tenantAddress.country}</h3> </li>
-            </ul>
-            <Grid container spacing={3}>
-                <Grid item xs={3}>
-                    <Button style={style} onClick={() => deleteTenantById(tenantId)}>Delete</Button>
+        <div>
+            <Header />
+            <div >
+                <h1 class="display-4  bg-primary text-white"> Tenant Detail </h1>
+                <ul class="list-group-item">
+                    <li class="list-group-item list-group-item-info"> <h3>Tenant Id : {tenant.tenantId}</h3> </li>
+                    <li class="list-group-item list-group-item-info"><h3>Tenant Name : {tenant.tenantName}</h3> </li>
+                    <li class="list-group-item list-group-item-info"><h3>Tenant Age : {tenant.tenantAge}</h3> </li>
+                    <li class="list-group-item list-group-item-info"><h3>House Number : {tenant.tenantAddress.houseNo}</h3> </li>
+                    <li class="list-group-item list-group-item-info"><h3>Street : {tenant.tenantAddress.street}</h3> </li>
+                    <li class="list-group-item list-group-item-info"><h3>City :  {tenant.tenantAddress.city}</h3></li>
+                    <li class="list-group-item list-group-item-info"><h3>State : {tenant.tenantAddress.state}</h3> </li>
+                    <li class="list-group-item list-group-item-info"><h3>Pin : {tenant.tenantAddress.pin}</h3> </li>
+                    <li class="list-group-item list-group-item-info"><h3>Country : {tenant.tenantAddress.country}</h3> </li>
+                </ul>
+                <Grid container spacing={3}>
+                    <Grid item xs={3}>
+                        <Button style={style} onClick={() => deleteTenantById(tenantId)}>Delete</Button>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <Link to={`/tenant`}><Button style={style} >Back To Home</Button ></Link>
+                    </Grid>
                 </Grid>
-                <Grid item xs={3}>
-                    <Link to={`/tenant`}><Button style={style} >Back To Home</Button ></Link>
-                </Grid>
-            </Grid>
+            </div>
+            <   Footer />
         </div>
     )
 }
