@@ -62,8 +62,8 @@ const FlatList = () => {
                       <td>{flatCost}</td>
                       <td>{flatAvailability}</td>
                       <td><Link to={`/view-flat/${flatId}`}><Button color="primary" variant="contained" className="btn btn-info">View </Button></Link></td>
-                      <td><Link to={`/update-flat/${flatId}`}><Button color="primary" variant="contained" className="btn btn-info">Update </Button></Link></td>
-                      <td><Link to={`/delete-lat/${flatId}`}><Button color="secondary" variant="contained" className="btn btn-secondary">Delete </Button></Link></td>
+                      <td><Link to={`/update-flat/${flatId}`}><Button color="primary" variant="outlined" className="btn btn-info">Update </Button></Link></td>
+                      <td><Link to={`/view-flat/${flatId}`}><Button color="secondary" variant="contained" className="btn btn-secondary">Delete </Button></Link></td>
                     </StyledTableRow>
                   )
                 })

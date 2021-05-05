@@ -9,92 +9,126 @@ import { makeStyles } from '@material-ui/core/styles';
 // import InputLabel from '@material-ui/core/InputLabel';
 // import MenuItem from '@material-ui/core/MenuItem';
 // import Select from '@material-ui/core/Select';
+import FormLabel from '@material-ui/core/FormLabel';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import { FormControl, TextField } from '@material-ui/core';
 import { connect } from 'react-redux';
-import {getFlat, deleteFlat} from '../../../redux/actions/FlatActions';
+import { getFlat, deleteFlat } from '../../../redux/actions/FlatActions';
+import FlatValidation from './FlatValidation';
 
 class UpdateFlatForm extends React.Component {
 
-    constructor(props) 
-    {
+    constructor(props) {
         super(props);
-        this.state = 
+        this.state =
         {
-        flatCost: "",
-    flatAvailabilty: "",
-    flatAddress:
-    {
-    houseNo: "",
-    street: "",
-    city: "",
-    state: "",
-    country: "",
-    pin: ""
-    }
-    };
-}
-
-    onFlatIdChange = (e) => {
-    this.setState({ flatId: e.target.value });
-    }
-
-    onFlatCostChange = (e) => {
-        this.setState({ flatCost: e.target.value });
+            flatId: "",
+            flatCost: "",
+            flatAvailability: "",
+            flatAddress:
+            {
+                houseNo: "",
+                street: "",
+                city: "",
+                state: "",
+                country: "",
+                pin: ""
+            }
+        };
+        this.validators = FlatValidation;
+        this.resetValidators();
     }
 
-    onFlatAvailabilityChange = (e) => {
-        this.setState({ flatAvailabilty: e.target.value });
+    updateValidators = (fieldName, value) => {
+        this.validators[fieldName].errors = [];
+        this.validators[fieldName].state = value;
+        this.validators[fieldName].valid = true;
+        this.validators[fieldName].rules.forEach((rule) => {
+            if (rule.test instanceof RegExp) {
+                if (!rule.test.test(value)) {
+                    this.validators[fieldName].errors.push(rule.message);
+                    this.validators[fieldName].valid = false;
+                }
+            } else if (typeof rule.test === 'function') {
+                if (!rule.test(value)) {
+                    this.validators[fieldName].errors.push(rule.message);
+                    this.validators[fieldName].valid = false;
+                }
+            }
+        });
     }
 
-   
-    onHouseNoChange = (e) => {
-        this.setState(state => ({ flatAddress: { ...state.flatAddress, houseNo: e.target.value }, }));
+    resetValidators = () => {
+        Object.keys(this.validators).forEach((fieldName) => {
+            this.validators[fieldName].errors = [];
+            this.validators[fieldName].state = '';
+            this.validators[fieldName].valid = false;
+        });
     }
 
-    
-    onStreetChange = (e) => {
-        this.setState(state => ({ flatAddress: { ...state.flatAddress, street: e.target.value }, }));
+    displayValidationErrors = (fieldName) => {
+        const validator = this.validators[fieldName];
+        const result = '';
+        if (validator && !validator.valid) {
+            const errors = validator.errors.map((info, index) => {
+                return <span style={errorStyle} key={index}>* {info}</span>;
+            });
+
+            return (
+                <div style={errorStyle} className="col s12 row">
+                    {errors}
+                </div>
+            );
+        }
+        return result;
     }
 
-    
-    onCityChange = (e) => {
-        this.setState(state => ({ flatAddress: { ...state.flatAddress, city: e.target.value }, }));
+    isFormValid = () => {
+        let status = true;
+        Object.keys(this.validators).forEach((field) => {
+            if (!this.validators[field].valid) {
+                status = false;
+            }
+        });
+        return status;
     }
 
-    
-    onStateChange = (e) => {
-        this.setState(state => ({ flatAddress: { ...state.flatAddress, state: e.target.value }, }));
+    handleFlatChange(event, inputPropName) {
+        const newState = Object.assign({}, this.state);
+        newState[inputPropName] = event.target.value;
+        this.setState(newState);
+        this.updateValidators(inputPropName, event.target.value);
+
     }
 
-    
-    onCountryChange = (e) => {
-        this.setState(state => ({ flatAddress: { ...state.flatAddress, country: e.target.value }, }));
+    handleFlatAddressChange(event, inputPropName) {
+        const newState = Object.assign({}, this.state);
+        newState.flatAddress[inputPropName] = event.target.value;
+        this.setState(newState);
+        this.updateValidators(inputPropName, event.target.value);
+
     }
 
-    
-    onPinChange = (e) => {
-        this.setState(state => ({ flatAddress: { ...state.flatAddress, pin: e.target.value }, }));
+    onFlatIdChange = (event, inputPropName) => {
+        const newState = Object.assign({}, this.state);
+        newState[inputPropName] = event.target.value;
+        this.setState(newState);
     }
-
-    
 
     onCancel = () => {
-        //this.props.handleCancel(); 
         this.props.history.push('/flat');
     }
 
-    onSubmit = (e) => 
-    {
-        e.preventDefault();
+    onSubmit = event => {
+
         console.log("Submitted");
         console.log(this.state);
-        this.props.onSubmitFlat
-        (
+        event.preventDefault();
+        this.props.onSubmitFlat(
             {
                 flatCost: this.state.flatCost,
-                flatAvailabilty: this.state.flatAvailabilty,
+                flatAvailability: this.state.flatAvailability,
                 houseNo: this.state.flatAddress.houseNo,
                 street: this.state.flatAddress.street,
                 city: this.state.flatAddress.city,
@@ -103,97 +137,177 @@ class UpdateFlatForm extends React.Component {
                 pin: this.state.flatAddress.pin,
             }
         );
-        
     }
+
+
+
+
+
+    // onFlatCostChange = (e) => {
+    //     this.setState({ flatCost: e.target.value });
+    // }
+
+    // onFlatAvailabilityChange = (e) => {
+    //     this.setState({ flatAvailabilty: e.target.value });
+    // }
+
+
+    // onHouseNoChange = (e) => {
+    //     this.setState(state => ({ flatAddress: { ...state.flatAddress, houseNo: e.target.value }, }));
+    // }
+
+
+    // onStreetChange = (e) => {
+    //     this.setState(state => ({ flatAddress: { ...state.flatAddress, street: e.target.value }, }));
+    // }
+
+
+    // onCityChange = (e) => {
+    //     this.setState(state => ({ flatAddress: { ...state.flatAddress, city: e.target.value }, }));
+    // }
+
+
+    // onStateChange = (e) => {
+    //     this.setState(state => ({ flatAddress: { ...state.flatAddress, state: e.target.value }, }));
+    // }
+
+
+    // onCountryChange = (e) => {
+    //     this.setState(state => ({ flatAddress: { ...state.flatAddress, country: e.target.value }, }));
+    // }
+
+
+    // onPinChange = (e) => {
+    //     this.setState(state => ({ flatAddress: { ...state.flatAddress, pin: e.target.value }, }));
+    // }
+
+
+
+    // onCancel = () => {
+    //     //this.props.handleCancel(); 
+    //     this.props.history.push('/flat');
+    // }
+
+    // onSubmit = (e) => {
+    //     // e.preventDefault();
+    //     console.log("Submitted");
+    //     console.log(this.state);
+    //     this.props.onSubmitFlat
+    //         (
+    //             {
+    //                 flatCost: this.state.flatCost,
+    //                 flatAvailabilty: this.state.flatAvailabilty,
+    //                 houseNo: this.state.flatAddress.houseNo,
+    //                 street: this.state.flatAddress.street,
+    //                 city: this.state.flatAddress.city,
+    //                 state: this.state.flatAddress.state,
+    //                 country: this.state.flatAddress.country,
+    //                 pin: this.state.flatAddress.pin,
+    //             }
+    //         );
+
+    // }
 
     render() {
         return (
-            <Container>
-           
-                <form onSubmit={this.onSubmit} >
+            <div>
+            <Container style={{ backgroundColor: '#cfe8fc' }}>
+                <div>
+                <form onSubmit={event=> this.onSubmit(event)} >
 
                     <div>
-                        <Box color="primary.main"> <h2>  FLAT DETAILS :</h2></Box>
+                        <Box color="primary.main" p={1}> <h2>  FLAT DETAILS :</h2></Box>
                     </div>
+                    <br/>
                     <FormControl fullWidth>
-                    <TextField
-                         required id="standard-textarea" label="Flat ID" placeholder="Enter Flat ID"
-                        value={this.state.flatId} onChange={this.onFlatIdChange} />
-                        </FormControl>
+                        <TextField
+                            required id="standard-textarea" label="Flat ID" type="number" placeholder="Enter Flat ID"
+                            value={this.state.flatId} onChange={event => this.onFlatIdChange(event, 'flatId')} />
+                    </FormControl>
                     <br />
-                    
+                    <br/>
                     <FormControl fullWidth>
-                    <TextField
-                         required id="standard-textarea" label="Flat Cost" placeholder="Enter Flat Cost" type="number"
-                        value={this.state.flatCost} onChange={this.onFlatCostChange} />
-                        </FormControl>
+                        <TextField
+                            required id="standard-textarea" label="Flat Cost" placeholder="Enter Flat Cost" type="number"
+                            value={this.state.flatCost} onChange={event => this.handleFlatChange(event,'flatCost')} />
+                    </FormControl>
+                    {this.displayValidationErrors('flatCost')}
                     <br />
-                    
+
                     <FormControl fullWidth>
-                    <TextField
-                        required id="standard-number" label="Flat Availability" 
-                        value={this.state.flatAvailabilty} onChange={this.onFlatAvailabilityChange} />  
-                        </FormControl>
-                        <br />
+                        <TextField
+                            required id="standard-textarea" label="Flat Availability" placeholder="Enter Availability"
+                            value={this.state.flatAvailability} onChange={event => this.handleFlatChange(event,'flatAvailability')} />
+                    </FormControl>
+                    {this.displayValidationErrors('flatAvailability')}
+                    <br />
 
                     <div>
                         <Box color="primary.main"> <h2> ADDRESS DETAILS :</h2></Box>
                     </div>
 
                     <FormControl fullWidth>
-                    <TextField
-                        required id="standard-number" label="House No" 
-                        value={this.state.flatAddress.houseNo} onChange={this.onHouseNoChange} />
-                        </FormControl>
-                    <br />
-                    
-                    <FormControl fullWidth>
-                    <TextField
-                         required id="standard-textarea" label="Street" placeholder="Enter street"
-                        value={this.state.flatAddress.street} onChange={this.onStreetChange} />
-                        </FormControl>
+                        <TextField
+                            required id="standard-number" label="House No"
+                            value={this.state.flatAddress.houseNo} onChange={event => this.handleFlatAddressChange(event,'houseNo')} />
+                    </FormControl>
+                    {this.displayValidationErrors('houseNo')}
                     <br />
 
                     <FormControl fullWidth>
-                    <TextField
-                         required id="standard-textarea" label="City" 
-                        value={this.state.flatAddress.city} onChange={this.onCityChange} />
-                        </FormControl>
-                    <br />
-                    
-                    <FormControl fullWidth>
-                    <TextField
-                         required id="standard-textarea" label="State" 
-                        value={this.state.flatAddress.state} onChange={this.onStateChange} />
-                        </FormControl>
+                        <TextField
+                            required id="standard-textarea" label="Street" placeholder="Enter street"
+                            value={this.state.flatAddress.street} onChange={event => this.handleFlatAddressChange(event,'street')} />
+                    </FormControl>
+                    {this.displayValidationErrors('street')}
                     <br />
 
                     <FormControl fullWidth>
-                    <TextField
-                         required id="standard-textarea" label="Country" 
-                        value={this.state.flatAddress.country} onChange={this.onCountryChange} />
-                        </FormControl>
-                    <br />
-                    
-                    <FormControl fullWidth>
-                    <TextField
-                         required id="standard-textarea" label="Pin Code "  type="number"
-                        value={this.state.flatAddress.pin} onChange={this.onPinChange} />
-                        </FormControl>
+                        <TextField
+                            required id="standard-textarea" label="City"
+                            value={this.state.flatAddress.city} onChange={event => this.handleFlatAddressChange(event,'city')} />
+                    </FormControl>
+                    {this.displayValidationErrors('city')}
                     <br />
 
-                    {this.state.error && <b className="m-1 text-danger">{this.state.error}</b>}
+                    <FormControl fullWidth>
+                        <TextField
+                            required id="standard-textarea" label="State"
+                            value={this.state.flatAddress.state} onChange={event => this.handleFlatAddressChange(event,'state')} />
+                    </FormControl>
+                    {this.displayValidationErrors('state')}
+                    <br />
+
+                    <FormControl fullWidth>
+                        <TextField
+                            required id="standard-textarea" label="Country"
+                            value={this.state.flatAddress.country} onChange={event => this.handleFlatAddressChange(event,'country')} />
+                    </FormControl>
+                    {this.displayValidationErrors('country')}
+                    <br />
+
+                    <FormControl fullWidth>
+                        <TextField
+                            required id="standard-textarea" label="Pin Code " type="number"
+                            value={this.state.flatAddress.pin} onChange={event => this.handleFlatAddressChange(event,'pin')} />
+                    </FormControl>
+                    {this.displayValidationErrors('pin')}
+                    <br />
+
+                   
 
                     <Button style={style} type="submit">Update</Button>
                     <Button style={style} onChange={this.onCancel}> Cancel</Button>
 
                 </form>
-           
+                </div>
+
             </Container>
+            </div>
         )
     }
 
-} 
+}
 export default connect()(UpdateFlatForm);
 
 const useStyles = makeStyles((theme) => ({

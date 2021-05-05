@@ -12,7 +12,7 @@ const _addFlat = (flat) => ({
 
 export const addFlat = (flatData = {
     flatCost: "",
-    flatAvailabilty: "",
+    flatAvailability: "",
     houseNo: "",
     street: "",
     city: "",
@@ -23,7 +23,7 @@ export const addFlat = (flatData = {
     return (dispatch) => {
         const flat = {
             flatCost: flatData.flatCost,
-            flatAvailabilty: flatData.flatAvailabilty,
+            flatAvailability: flatData.flatAvailability,
             flatAddress:
             {
                 houseNo: flatData.houseNo,
@@ -50,8 +50,9 @@ export const _updateFlat = (flat) => ({
     flat
 });
 export const updateFlat = (updatedFlat = {
+    flatId: '',
     flatCost: '',
-    flatAvailabilty: '',
+    flatAvailability: '',
     houseNo: '',
     street: '',
     city: '',
@@ -63,7 +64,7 @@ export const updateFlat = (updatedFlat = {
             const flat = {
                 flatId: updatedFlat.flatId,
                 flatCost: updatedFlat.flatCost,
-                flatAvailabilty: updatedFlat.flatAvailabilty,
+                flatAvailability: updatedFlat.flatAvailability,
                 flatAddress:
                 {
                     houseNo: updatedFlat.houseNo,
@@ -75,7 +76,7 @@ export const updateFlat = (updatedFlat = {
                 }
             };
             console.log(flat);
-            return axios.put('/flat/update-flat', flat).then(() => {
+            return axios.put('/update-flat', flat).then(() => {
                 dispatch(_updateFlat(flat));
             }).catch(error => {
                 throw (error);
@@ -91,7 +92,7 @@ export const _deleteFlat = ({ flatId } = {}) => ({
 
 export const deleteFlat = ({ flatId } = {}) => {
     return (dispatch) => {
-        return axios.delete('delete-flat/${flatId}').then(() => {
+        return axios.delete('/delete-flat/${flatId}').then(() => {
             dispatch(_deleteFlat({ flatId }));
         })
         .catch(error => {
