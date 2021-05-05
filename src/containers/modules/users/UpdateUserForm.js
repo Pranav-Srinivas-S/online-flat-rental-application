@@ -9,6 +9,9 @@ import Box from '@material-ui/core/Box';
 import UserValidation from './UserValidation';
 import { getUserSuccess, deleteUSer} from '../../../redux/actions/UsersActions';
 import { connect } from 'react-redux';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Radio from '@material-ui/core/Radio';
 
 class UpdateUserForm extends React.Component {
     constructor(props) {
@@ -132,31 +135,33 @@ onUserIdChange = (event, inputPropName) => {
                         <FormControl fullWidth>
                             <FormLabel component="legend">User Name</FormLabel>
                             <TextField
-                                required id="standard-number" label="User Name" placeholder="Enter User Name"
+                                required id="standard-textarea" label="User Name" placeholder="Enter User Name"
                                 value={this.state.userName} onChange={event => this.handleUserChange(event, 'userName')} /> 
                         </FormControl>
-                        {this.displayValidationErrors('tusername')}
+                        {this.displayValidationErrors('userName')}
                         <br />
                         <br />
                         <FormControl fullWidth>
-                            <FormLabel component="legend">password</FormLabel>
+                            <FormLabel component="legend">Password</FormLabel>
                             <TextField
-                                required id="standard-number" label="Password" placeholder="Enter Password"
-                                value={this.state.password} onChange={event => this.handleUserChange(event, 'pasword')} /> 
+                                required id="standard-textarea" label="Password" type="password" placeholder="Enter Password"
+                                value={this.state.passsword} onChange={event => this.handleUserChange(event, 'password')} /> 
                         </FormControl>
                         {this.displayValidationErrors('password')}
                         <br />
                         <br />
                         <FormControl fullWidth>
-                            <FormLabel component="legend">user Type</FormLabel>
-                            <TextField
-                                required id="standard-number" label="userType" placeholder="Enter userType"
-                                value={this.state.userType} onChange={event => this.handleUserChange(event, 'userTyoe')} /> 
+                            <FormLabel component="legend">User Type</FormLabel>
+                            <RadioGroup required aria-label="User Type" name="User
+                             Type" value={this.state.userType} onChange={event => this.handleUserChange(event, 'userType')}>
+                                <FormControlLabel value="Landlord" control={<Radio required={true} />} label="Landlord" />
+                                <FormControlLabel value="Debit" control={<Radio required={true} />} label="Debit" />
+                            </RadioGroup>
                         </FormControl>
                         {this.displayValidationErrors('userType')}
                         <br />
                         <br />
-                        <Button style={style} type="submit" className={`btn btn-primary btn-block ${this.isFormValid() ? '' : 'disabled'}`}>Add User</Button>
+                        <Button style={style} type="submit" className={`btn btn-primary  ${this.isFormValid() ? '' : 'disabled'}`}>Update User</Button>
                         <Button style={style} onClick={this.onCancel}>Cancel</Button>
                     </form>
                 </div>
@@ -165,7 +170,7 @@ onUserIdChange = (event, inputPropName) => {
     }
 
 }
-export default connect(UpdateUserForm);
+export default connect()(UpdateUserForm);
 
 const useStyles = makeStyles((theme) => ({
     container: {

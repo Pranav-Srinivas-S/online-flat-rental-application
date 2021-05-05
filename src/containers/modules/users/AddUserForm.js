@@ -7,6 +7,9 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import UserValidation from './UserValidation';
 import { withRouter } from "react-router-dom";
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Radio from '@material-ui/core/Radio';
 
  class AddUserForm extends React.Component {
 
@@ -115,7 +118,7 @@ import { withRouter } from "react-router-dom";
                             <Box color="primary.main" p={1}> <h2>User Details :</h2></Box>
                         </div>
                         <br />
-                        <FormControl fullWidth>
+                       <FormControl fullWidth>
                             <FormLabel component="legend">User Name</FormLabel>
                             <TextField
                                 required id="standard-textarea" label="User Name" placeholder="Enter User Name"
@@ -133,11 +136,19 @@ import { withRouter } from "react-router-dom";
                         {this.displayValidationErrors('password')}
                         <br />
                         <br />
-                        <FormControl fullWidth>
+                        {/* <FormControl fullWidth>
                             <FormLabel component="legend">user Type</FormLabel>
                             <TextField
                                 required id="standard-textarea" label="userType" placeholder="Enter userType"
                                 value={this.state.userType} onChange={event => this.handleUserChange(event, 'userType')} /> 
+                        </FormControl> */}
+                        <FormControl fullWidth>
+                            <FormLabel component="legend">User Type</FormLabel>
+                            <RadioGroup required aria-label="User Type" name="User
+                             Type" value={this.state.userType} onChange={event => this.handleUserChange(event, 'userType')}>
+                                <FormControlLabel value="Credit" control={<Radio required={true} />} label="Credit" />
+                                <FormControlLabel value="Debit" control={<Radio required={true} />} label="Debit" />
+                            </RadioGroup>
                         </FormControl>
                         {this.displayValidationErrors('userType')}
                         <br />
