@@ -1,8 +1,4 @@
 import React from "react";
-import {Link} from 'react-router-dom';
-import store from '../../redux/store/ConfigureStore';
-import { validateLogin } from "../../redux/actions/LoginActions";
-import msg from "./message";
 import axios from "axios";
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
@@ -41,19 +37,6 @@ export default class Login extends React.Component{
         else
         {
             alert("Login Failed! User Name and Password does not Match");
-            this.props.history.push('/');
-        }
-    }
-
-    checkLogin=()=>{
-        console.log("checklogin");
-        console.log(store.getState());
-        let message =  msg.message;
-        if(message === "Login Successful!")
-        this.props.history.push('/homepage');
-        else
-        {
-            alert(message);
             this.props.history.push('/');
         }
     }
