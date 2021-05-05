@@ -3,6 +3,7 @@ import store from './redux/store/ConfigureStore';
 import TenantRouter from './router/tenant/TenantRouter';
 import FlatRouter from './router/FlatRouter';
 import { Provider } from 'react-redux';
+import HomeRouter from './router/HomeRouter';
 
 function App() {
   return (
@@ -10,6 +11,8 @@ function App() {
       <Provider store={store()}>
         <TenantRouter />
         <FlatRouter />
+        {/* <TenantRouter /> */}
+        <HomeRouter />
       </Provider>
     </div>
   );

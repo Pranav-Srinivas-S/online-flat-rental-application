@@ -2,16 +2,13 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { FormControl, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import TenantValidation from './TenantValidation';
 import { withRouter } from "react-router-dom";
 
- class AddTenantForm extends React.Component {
+class AddTenantForm extends React.Component {
 
 
     constructor(props) {
@@ -65,13 +62,13 @@ import { withRouter } from "react-router-dom";
         if (validator && !validator.valid) {
             const errors = validator.errors.map((info, index) => {
                 return <span style={errorStyle} key={index}>* {info}</span>;
-            }); 
+            });
 
             return (
                 <div style={errorStyle} className="col s12 row">
                     {errors}
                 </div>
-            ); 
+            );
         }
         return result;
     }
@@ -88,7 +85,7 @@ import { withRouter } from "react-router-dom";
 
     handleTenantChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
-        newState.tenant[inputPropName] = event.target.value;
+        newState[inputPropName] = event.target.value;
         this.setState(newState);
         this.updateValidators(inputPropName, event.target.value);
     }
@@ -98,14 +95,6 @@ import { withRouter } from "react-router-dom";
         newState.tenantAddress[inputPropName] = event.target.value;
         this.setState(newState);
         this.updateValidators(inputPropName, event.target.value);
-    }
-
-    onTenantNameChange = (e) => {
-        this.setState({ type: e.target.value });
-    }
-
-    onTenantAgeChange = (e) => {
-        this.setState({ status: e.target.value });
     }
 
     onCancel = () => {
@@ -119,25 +108,24 @@ import { withRouter } from "react-router-dom";
         event.preventDefault();
         this.props.onSubmitTenant(
             {
-                tenantName : this.state.tenantName,
-                tenantAge : this.state.tenantAge,
-                houseNo : this.state.houseNo,
-                street : this.state.street,
-                city : this.state.city,
-                state : this.state.state,
-                pin : this.state.pin,
-                country : this.state.country,
+                tenantName: this.state.tenantName,
+                tenantAge: this.state.tenantAge,
+                houseNo: this.state.tenantAddress.houseNo,
+                street: this.state.tenantAddress.street,
+                city: this.state.tenantAddress.city,
+                state: this.state.tenantAddress.state,
+                pin: this.state.tenantAddress.pin,
+                country: this.state.tenantAddress.country,
             }
 
         );
- 
+
     }
 
     render() {
         return (
             <Container style={{ backgroundColor: '#cfe8fc' }} >
                 <div  >
-
                     <form onSubmit={event => this.onSubmit(event)} >
                         <div>
                             <Box color="primary.main" p={1}> <h2>Tenant Details :</h2></Box>
@@ -146,19 +134,17 @@ import { withRouter } from "react-router-dom";
                         <FormControl fullWidth>
                             <FormLabel component="legend">Tenant Name</FormLabel>
                             <TextField
-                                required id="standard-textarea" label="Tenant Name" placeholder="Enter Tenant Name"
-                                value={this.state.tenantName} onChange={event => this.handleTenantChange(event, 'tenantName')} /> 
+                                required id="standard-number" label="Tenant Name" placeholder="Enter Tenant Name"
+                                value={this.state.tenantName} onChange={event => this.handleTenantChange(event, 'tenantName')} />
                         </FormControl>
                         <br />
                         <br />
                         <FormControl fullWidth>
                             <FormLabel component="legend">Tenant Age</FormLabel>
                             <TextField
-                                required id="standard-number" label="Tenant Age" type="number" placeholder="Enter Tenant Age"
+                                required id="standard-textarea" label="Tenant Age" type="number" placeholder="Enter Tenant Age"
                                 value={this.state.tenantAge} onChange={event => this.handleTenantChange(event, 'tenantAge')}
-                                InputLabelProps={{
-                                    shrink: true
-                                }} />
+                            />
                         </FormControl>
                         {this.displayValidationErrors('tenantAge')}
                         <br />
@@ -175,7 +161,7 @@ import { withRouter } from "react-router-dom";
                         <br />
                         <br />
                         <FormControl fullWidth>
-                        <TextField
+                            <TextField
                                 required id="standard-textarea" label="Street" placeholder="Enter Street"
                                 value={this.state.tenantAddress.street} onChange={event => this.handleTenantAddressChange(event, 'street')} />
                         </FormControl>
@@ -183,7 +169,7 @@ import { withRouter } from "react-router-dom";
                         <br />
                         <br />
                         <FormControl fullWidth>
-                        <TextField
+                            <TextField
                                 required id="standard-textarea" label="City" placeholder="Enter City"
                                 value={this.state.tenantAddress.city} onChange={event => this.handleTenantAddressChange(event, 'city')} />
                         </FormControl>
@@ -191,7 +177,7 @@ import { withRouter } from "react-router-dom";
                         <br />
                         <br />
                         <FormControl fullWidth>
-                        <TextField
+                            <TextField
                                 required id="standard-textarea" label="State" placeholder="Enter State"
                                 value={this.state.tenantAddress.state} onChange={event => this.handleTenantAddressChange(event, 'state')} />
                         </FormControl>
@@ -202,23 +188,21 @@ import { withRouter } from "react-router-dom";
                             <FormLabel component="legend">Pin Code</FormLabel>
                             <TextField
                                 required id="standard-number" label="Pin Code" type="number" placeholder="Enter Pin Code"
-                                value={this.state.tenantAddress.pin} onChange={event => this.handleTenantChange(event, 'pin')}
-                                InputLabelProps={{
-                                    shrink: true
-                                }} />
+                                value={this.state.tenantAddress.pin} onChange={event => this.handleTenantAddressChange(event, 'pin')}
+                            />
                         </FormControl>
                         {this.displayValidationErrors('pin')}
                         <br />
                         <br />
                         <FormControl fullWidth>
-                        <TextField
+                            <TextField
                                 required id="standard-textarea" label="Country" placeholder="Enter Country"
                                 value={this.state.tenantAddress.country} onChange={event => this.handleTenantAddressChange(event, 'country')} />
                         </FormControl>
                         {this.displayValidationErrors('country')}
                         <br />
                         <br />
-                        <Button style={style} type="submit" >Add Tenant</Button>
+                        <Button style={style} type="submit" className={`btn btn-primary btn-block ${this.isFormValid() ? '' : 'disabled'}`}>Add Tenant</Button>
                         <Button style={style} onClick={this.onCancel}>Cancel</Button>
                     </form>
                 </div>
