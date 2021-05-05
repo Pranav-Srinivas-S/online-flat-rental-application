@@ -6,7 +6,7 @@ const initialState ={
 export const getAllFlatsReducer = (state = initialState,{type,payload}) =>{
      switch (type) {
         case FlatActionTypes.GET_ALL_FLATS:
-            return {...state,flat:payload}
+            return {...state,flats:payload}
         
         default:
             return state;

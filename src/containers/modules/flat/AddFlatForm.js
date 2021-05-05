@@ -11,8 +11,9 @@ import Select from '@material-ui/core/Select';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import { FormControl, TextField } from '@material-ui/core';
+import { withRouter } from 'react-router-dom';
 
-export default class AddFlatForm extends React.Component {
+class AddFlatForm extends React.Component {
 
     constructor(props) 
     {
@@ -30,7 +31,7 @@ export default class AddFlatForm extends React.Component {
     country: "",
     pin: ""
     }
-    }
+    };
 }
 
     onFlatCostChange = (e) => {
@@ -75,7 +76,7 @@ export default class AddFlatForm extends React.Component {
 
     onCancel = () => {
         //this.props.handleCancel(); 
-        this.props.history.push('/customer');
+        this.props.history.push('/flat');
     }
 
     onSubmit = (e) => 
@@ -182,6 +183,7 @@ export default class AddFlatForm extends React.Component {
     }
 
 }
+export default withRouter(AddFlatForm);
 
 const useStyles = makeStyles((theme) => ({
     container: {

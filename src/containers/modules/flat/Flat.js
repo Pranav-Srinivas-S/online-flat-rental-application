@@ -3,8 +3,8 @@ import axios from 'axios'
 import { connect, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 import { Button, Grid } from '@material-ui/core';
-import { getFlat, deleteFlat} from '../../../redux/actions/FlatActions';
 import {Link} from "react-router-dom";
+import {getFlat, deleteFlat} from '../../../redux/actions/FlatActions';
 
 const Flat = () => {
     const {flatId} = useParams();
@@ -30,12 +30,12 @@ const Flat = () => {
 
     const loadFlat = async () => 
     {
-        const result=await axios.get(`http://localhost:9191/api/ofr/flat/view-flat/${flatId}`).catch((err) => { console.log("Error ", err); });
+        const result=await axios.get(`http://localhost:9191/api/ofr/view-flat/${flatId}`).catch((err) => { console.log("Error ", err); });
         dispatch(getFlat(result.data));
         setFlat(result.data);
     }
     const  deleteFlatById = async (userId) => {
-        await axios.delete(`http://localhost:9191/api/ofr/flat/delete-flat/${userId}`).catch((err) => {console.log("Error" , err);});
+        await axios.delete(`http://localhost:9191/api/ofr/delete-flat/${userId}`).catch((err) => {console.log("Error" , err);});
        dispatch(deleteFlat(flatId));
        alert("Deleted Successfully");
        history.push('/flat')
@@ -58,7 +58,7 @@ const Flat = () => {
         </ul>
         <Grid container spacing={3}>
         <Grid item xs={3}>
-        <Button style={style} onClick={ () => deleteFlat(flatId)}>Delete </Button>
+        <Button style={style} onClick={ () => deleteFlatById(flatId)}>Delete </Button>
         </Grid>
         <Grid item xs={3}>
         <Link to={`/flat`}><Button style={style} >Back To Home </Button ></Link>

@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import React from 'react';
 import FlatList from './FlatList'
 import Box from '@material-ui/core/Box';
+import Header from '../../common/Header';
+import Footer from '../../common/Footer';
 
 
 
@@ -11,14 +13,16 @@ function FlatDashBoard() {
     const history = useHistory();
     return (
         <div>
+            <Header />
                 <Box color="primary.main"  component="div" display="inline"  > <h3>ADD FLAT DETAILS:
         <Button style={style} onClick={() => history.push("/addFlat")}>Add Flat</Button></h3>
                 </Box>
                 <br/>
                 <Box color="primary.main" component="div" display="inline"  > <h3>LIST OF FLAT DETAILS:</h3></Box>
-                <Grid   >
+                <Grid>
                     <FlatList />
                 </Grid>
+                <Footer />
         </div>
 
     );

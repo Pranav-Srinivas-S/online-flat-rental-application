@@ -22,13 +22,15 @@ const flatReducer =  (state = flatReducerDefaultState, action) => {
                     ...state,
                     action.flat
                 ];
-        case FlatActionTypes.GET_FLAT:
-            return [
-                    ...state,
-                    action.flat
-                ];
-        default:
-            return state;
+            default:
+                return state;
+        // case FlatActionTypes.GET_FLAT:
+        //     return [
+        //             ...state,
+        //             action.flat
+        //         ];
+        // default:
+        //     return state;
     }
 }
 

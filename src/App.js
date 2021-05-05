@@ -9,10 +9,10 @@ function App() {
   return (
     <div>
       <Provider store={store()}>
-        <TenantRouter />
-        <FlatRouter />
         {/* <TenantRouter /> */}
         <HomeRouter />
+        <FlatRouter />
+        {/* <TenantRouter /> */}
       </Provider>
     </div>
   );

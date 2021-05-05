@@ -10,13 +10,13 @@ import FlatList from '../containers/modules/flat/FlatList';
 const FlatRouter = () => (
     <BrowserRouter>
     <div>
-        <switch>
+        <Switch>
             <Route path={'/flat'} component={FlatDashBoard}/>
-            <Route path={'/addFlat'} component={AddFlat}/>
-            <Route path={'/updateFlat'} component={updateFlatComoponent}/>
-            <Route path={'/getFlat/:flatId'} component={Flat}/>
-            <Route path={'/getAllFlats'} component={FlatList} />
-        </switch>
+            <Route path={'/add-flat'} component={AddFlat}/>
+            <Route path={'/update-flat/:flatId'} component={updateFlatComoponent}/>
+            <Route path={'/view-flat/:flatId'} component={Flat}/>
+            {/* <Route path={'/getAllFlats'} component={FlatList} /> */}
+        </Switch>
     </div>
     </BrowserRouter>
 

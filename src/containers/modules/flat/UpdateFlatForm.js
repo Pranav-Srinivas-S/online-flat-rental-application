@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 // import Radio from '@material-ui/core/Radio';
@@ -11,7 +12,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import { FormControl, TextField } from '@material-ui/core';
-import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
+import {getFlat, deleteFlat} from '../../../redux/actions/FlatActions';
 
 class UpdateFlatForm extends React.Component {
 
@@ -80,14 +82,13 @@ class UpdateFlatForm extends React.Component {
 
     onCancel = () => {
         //this.props.handleCancel(); 
-        this.props.history.push('/customer');
+        this.props.history.push('/flat');
     }
 
     onSubmit = (e) => 
     {
         e.preventDefault();
         console.log("Submitted");
-        alert(this.state);
         console.log(this.state);
         this.props.onSubmitFlat
         (
@@ -112,7 +113,7 @@ class UpdateFlatForm extends React.Component {
                 <form onSubmit={this.onSubmit} >
 
                     <div>
-                        <Box color="primary.main"> <h2> ADD FLAT DETAILS :</h2></Box>
+                        <Box color="primary.main"> <h2>  FLAT DETAILS :</h2></Box>
                     </div>
                     <FormControl fullWidth>
                     <TextField
@@ -183,7 +184,7 @@ class UpdateFlatForm extends React.Component {
 
                     {this.state.error && <b className="m-1 text-danger">{this.state.error}</b>}
 
-                    <Button style={style} type="submit">Add Flat</Button>
+                    <Button style={style} type="submit">Update</Button>
                     <Button style={style} onChange={this.onCancel}> Cancel</Button>
 
                 </form>
@@ -193,7 +194,7 @@ class UpdateFlatForm extends React.Component {
     }
 
 } 
-export default withRouter(UpdateFlatForm);
+export default connect()(UpdateFlatForm);
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -216,4 +217,8 @@ const style = {
     padding: '0 30px',
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     marginLeft: "10px",
+};
+
+const errorStyle = {
+    color: 'red'
 };

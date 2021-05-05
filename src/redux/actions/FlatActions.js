@@ -35,14 +35,19 @@ export const addFlat = (flatData = {
             }
         };
         console.log(flat);
-        const result = axios.post('/flat/add-flat', flat);
-        dispatch(_addFlat(result.data));
+        return axios.post('/add-flat', flat)
+        .then(()=>{
+        dispatch(_addFlat(flat));
+    })
+    .catch(error =>{
+        throw (error);
+    });
     };
 };
 
-export const _updateFlat = (updatedFlat) => ({
+export const _updateFlat = (flat) => ({
     type:FlatActionTypes.UPDATE_FLAT,
-    updatedFlat
+    flat
 });
 export const updateFlat = (updatedFlat = {
     flatCost: '',
@@ -86,7 +91,7 @@ export const _deleteFlat = ({ flatId } = {}) => ({
 
 export const deleteFlat = ({ flatId } = {}) => {
     return (dispatch) => {
-        return axios.delete('/tenant/delete-flat/${flatId}').then(() => {
+        return axios.delete('delete-flat/${flatId}').then(() => {
             dispatch(_deleteFlat({ flatId }));
         })
         .catch(error => {
@@ -102,11 +107,11 @@ export const _getFlat = (flat) => {
         type:FlatActionTypes.GET_FLAT,
         payload:flat
     }
-}
+};
 
 export const getFlat = (flatId) => {
     return (dispatch) => {
-        return axios.get('/flat/view-flat/${flatId}')
+        return axios.get('/view-flat/${flatId}')
           .then(response => {
               dispatch(_getFlat(response.data))
           })

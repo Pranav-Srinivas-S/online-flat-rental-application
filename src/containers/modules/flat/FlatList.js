@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
-import { useHistory, useParams } from 'react-router';
+import { useHistory} from 'react-router';
 import {deleteFlat} from '../../../redux/actions/FlatActions';
 
 
@@ -18,7 +18,7 @@ const FlatList = () => {
   const flats = useSelector((state) => state.allFlats.flats);
 
   const fetchFlats = async () => {
-    const result = await axios.get('http://localhost:9191/api/ofr/flat/view-all-flats').catch((err) => { console.log("Error ", err); });
+    const result = await axios.get('http://localhost:9191/api/ofr/view-all-flats').catch((err) => { console.log("Error ", err); });
     dispatch(getAllFlats(result.data))
   };
 
@@ -30,7 +30,7 @@ const FlatList = () => {
   console.log("Flats :", flats);
 
   const  deleteFlatById = async (flatId) => {
-    await axios.delete(`http://localhost:9191/api/ofr/flat/delete-flat/${flatId}`).catch((err) => {console.log("Error" , err);});
+    await axios.delete(`http://localhost:9191/api/ofr/delete-flat/${flatId}`).catch((err) => {console.log("Error" , err);});
    dispatch(deleteFlat(flatId));
    alert("Deleted Successfully");
    fetchFlats();
@@ -61,9 +61,9 @@ const FlatList = () => {
                       <td>{flatId}</td>
                       <td>{flatCost}</td>
                       <td>{flatAvailability}</td>
-                      <td><Link to={`/getFlat/${flatId}`}><Button color="primary" variant="contained" className="btn btn-info">View </Button></Link></td>
-                      <td><Link to={`/updateFlat/${flatId}`}><Button color="primary" variant="contained" className="btn btn-info">Update </Button></Link></td>
-                      <td><Link to={`/deleteFlat/${flatId}`}><Button color="secondary" variant="contained" className="btn btn-secondary">Delete </Button></Link></td>
+                      <td><Link to={`/view-flat/${flatId}`}><Button color="primary" variant="contained" className="btn btn-info">View </Button></Link></td>
+                      <td><Link to={`/update-flat/${flatId}`}><Button color="primary" variant="contained" className="btn btn-info">Update </Button></Link></td>
+                      <td><Link to={`/delete-lat/${flatId}`}><Button color="secondary" variant="contained" className="btn btn-secondary">Delete </Button></Link></td>
                     </StyledTableRow>
                   )
                 })

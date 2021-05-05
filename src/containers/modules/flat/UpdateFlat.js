@@ -12,15 +12,16 @@ const updateFlatComoponent = (props) => (
         <Paper elevation={3} >
         
         <UpdateFlatForm 
-            flat= {props.flat}
-            onSubmitFlat = {(flat) => {
-                props.dispatch(updateFlat(flat));
+            //flat= {props.flat}
+            onSubmitFlat = {(state) => {
+                props.dispatch(updateFlat(state));
+                alert("updated Successfully");
                 props.history.push('/flat');
             }}
         /> 
         </Paper>
     </div>
-)
+);
 
 // const mapStateToProps = (state,props) => {
 //     return state.flatId === props.match.params.flatId
@@ -39,4 +40,4 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export default connect()(updateFlat);
+export default connect()(updateFlatComoponent);
