@@ -1,30 +1,30 @@
-import {
-    Button, Grid
-} from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import React from 'react';
 import TenantList from './TenantList';
 import Box from '@material-ui/core/Box';
-
-
+import Header from '../../common/Header';
+import Footer from '../../common/Footer';
 
 function TenantDashBoard() {
 
     const history = useHistory();
     return (
         <div>
-                <Box color="primary.main"  component="div" display="inline" > <h3>Add Tenanat Detail:
+            <Header />
+            <Box color="primary.main" component="div" display="inline" > <h3>Add Tenant Detail:
                 <Button style={style} onClick={() => history.push("/add-tenant")}>Add Tenant</Button></h3>
-                </Box>
-                <br/>
-                <Box color="primary.main" component="div"   > <h3>List of Tenants:</h3></Box>
-                <Grid   >
-                    <TenantList />
-                </Grid>
+            </Box>
+            <br />
+            <Box color="primary.main" component="div"   > <h3>List of Tenants:</h3></Box>
+            <Grid   >
+                <TenantList />
+            </Grid>
+            <Footer />
         </div>
-
     );
 }
+
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     borderRadius: 3,
@@ -35,7 +35,5 @@ const style = {
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     marginLeft: "10px",
 };
-
-
 
 export default TenantDashBoard;
