@@ -126,12 +126,14 @@ onUserIdChange = (event, inputPropName) => {
                         </div>
                         <br />
                         <FormControl fullWidth>
-                            <FormLabel component="legend">USER ID</FormLabel>
+                            <FormLabel component="legend">User Id</FormLabel>
                             <TextField
-                                required id="standard-number" label="USER ID" type="number" placeholder="Enter USER ID"
+                                required id="standard-number" label="User Id" type="number" placeholder="Enter USER ID"
                                 value={this.state.userId} onChange={event => this.onUserIdChange(event, 'userId')}
                             />
                         </FormControl>
+                        <br />
+                        <br />
                         <FormControl fullWidth>
                             <FormLabel component="legend">User Name</FormLabel>
                             <TextField
@@ -154,8 +156,9 @@ onUserIdChange = (event, inputPropName) => {
                             <FormLabel component="legend">User Type</FormLabel>
                             <RadioGroup required aria-label="User Type" name="User
                              Type" value={this.state.userType} onChange={event => this.handleUserChange(event, 'userType')}>
+                                <FormControlLabel value="Admin" control={<Radio required={true} />} label="Admin" />
+                                <FormControlLabel value="Tenant" control={<Radio required={true} />} label="Tenant" />
                                 <FormControlLabel value="Landlord" control={<Radio required={true} />} label="Landlord" />
-                                <FormControlLabel value="Debit" control={<Radio required={true} />} label="Debit" />
                             </RadioGroup>
                         </FormControl>
                         {this.displayValidationErrors('userType')}

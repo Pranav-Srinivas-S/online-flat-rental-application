@@ -136,18 +136,13 @@ import Radio from '@material-ui/core/Radio';
                         {this.displayValidationErrors('password')}
                         <br />
                         <br />
-                        {/* <FormControl fullWidth>
-                            <FormLabel component="legend">user Type</FormLabel>
-                            <TextField
-                                required id="standard-textarea" label="userType" placeholder="Enter userType"
-                                value={this.state.userType} onChange={event => this.handleUserChange(event, 'userType')} /> 
-                        </FormControl> */}
                         <FormControl fullWidth>
                             <FormLabel component="legend">User Type</FormLabel>
                             <RadioGroup required aria-label="User Type" name="User
                              Type" value={this.state.userType} onChange={event => this.handleUserChange(event, 'userType')}>
-                                <FormControlLabel value="Credit" control={<Radio required={true} />} label="Credit" />
-                                <FormControlLabel value="Debit" control={<Radio required={true} />} label="Debit" />
+                                <FormControlLabel value="Admin" control={<Radio required={true} />} label="Admin" />
+                                <FormControlLabel value="Tenant" control={<Radio required={true} />} label="Tenant" />
+                                <FormControlLabel value="Landlord" control={<Radio required={true} />} label="Landlord" />
                             </RadioGroup>
                         </FormControl>
                         {this.displayValidationErrors('userType')}
