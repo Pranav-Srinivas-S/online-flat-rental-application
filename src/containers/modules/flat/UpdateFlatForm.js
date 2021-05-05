@@ -2,14 +2,13 @@ import React from 'react';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-// import Radio from '@material-ui/core/Radio';
-// import RadioGroup from '@material-ui/core/RadioGroup';
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import FormLabel from '@material-ui/core/FormLabel';
-// import InputLabel from '@material-ui/core/InputLabel';
-// import MenuItem from '@material-ui/core/MenuItem';
-// import Select from '@material-ui/core/Select';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import { FormControl, TextField } from '@material-ui/core';
@@ -234,10 +233,12 @@ class UpdateFlatForm extends React.Component {
                     {this.displayValidationErrors('flatCost')}
                     <br />
 
-                    <FormControl fullWidth>
-                        <TextField
-                            required id="standard-textarea" label="Flat Availability" placeholder="Enter Availability"
-                            value={this.state.flatAvailability} onChange={event => this.handleFlatChange(event,'flatAvailability')} />
+                    <FormControl component="fieldset">
+                    <FormLabel component="legend"> Flat Availability </FormLabel>
+                    <RadioGroup aria-lable="Flat Availability" name="flatAvailability" value={this.state.flatAvailability} onChange={event => this.handleFlatChange(event,'flatAvailability')} >  
+                    <FormControlLabel value="yes" control={<Radio />} label="yes" /> 
+                    <FormControlLabel value="no" control={<Radio />} label="no" /> 
+                    </RadioGroup>
                     </FormControl>
                     {this.displayValidationErrors('flatAvailability')}
                     <br />

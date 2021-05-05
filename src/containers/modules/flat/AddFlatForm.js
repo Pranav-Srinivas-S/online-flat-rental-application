@@ -214,11 +214,13 @@ onSubmit = event => {
                         {this.displayValidationErrors('flatCost')}
                     <br />
                     
-                    <FormControl fullWidth>
-                    <TextField
-                        required id="standard-textarea" label="Flat Availability" 
-                        value={this.state.flatAvailability} onChange={event => this.handleFlatChange(event,'flatAvailability')} />  
-                        </FormControl>
+                    <FormControl component="fieldset">
+                    <FormLabel component="legend"> Flat Availability </FormLabel>
+                    <RadioGroup aria-lable="Flat Availability" name="flatAvailability" value={this.state.flatAvailability} onChange={event => this.handleFlatChange(event,'flatAvailability')} >  
+                    <FormControlLabel value="yes" control={<Radio />} label="yes" /> 
+                    <FormControlLabel value="no" control={<Radio />} label="no" /> 
+                    </RadioGroup>
+                    </FormControl>
                         {this.displayValidationErrors('flatAvailability')}
                         <br />
 
