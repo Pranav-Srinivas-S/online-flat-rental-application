@@ -28,18 +28,8 @@ export default class Login extends React.Component{
 
     handleSubmit = (event) => {
         event.preventDefault();
-        // store.dispatch(validateLogin(this.state.user));
-        // setTimeout(this.checkLogin,1000);
-        //this.checkLogin();
         console.log(this.state);
         this.validateLogin(this.state);
-        // this.props.onSubmitLogin(
-        //     {
-        //         userId : this.state.user.userId,
-        //         userName : this.state.user.userName,
-        //         password : this.state.user.password
-        //     }
-        // );
     }
 
     validateLogin = async (User) => {
