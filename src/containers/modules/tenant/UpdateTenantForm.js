@@ -222,7 +222,7 @@ class UpdateTenantForm extends React.Component {
                         {this.displayValidationErrors('country')}
                         <br />
                         <br />
-                        <Button style={style} type="submit" className={`btn btn-primary btn-block ${this.isFormValid() ? '' : 'disabled'}`}>Update Tenant</Button>
+                        <Button style={style} type="submit" className={`btn btn-primary ${this.isFormValid() ? '' : 'disabled'}`}>Update Tenant</Button>
                         <Button style={style} onClick={this.onCancel}>Cancel</Button>
                     </form>
                 </div>
@@ -232,6 +232,7 @@ class UpdateTenantForm extends React.Component {
     }
 
 }
+
 export default connect()(UpdateTenantForm);
 
 const useStyles = makeStyles((theme) => ({

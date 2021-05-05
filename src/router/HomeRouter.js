@@ -14,8 +14,8 @@ const HomeRouter = () => (
             <Switch>
                 <Route exact path="/" component={LoginPage} />
                 <Route path={`/homepage`} component={HomePage} />
-                <Route path ={`/aboutus`} component={AboutUs} />
-                <Route path ={`/contactus`} component={ContactUs} />
+                <Route path={`/aboutus`} component={AboutUs} />
+                <Route path={`/contactus`} component={ContactUs} />
                 <Route path={`/tenant`} component={TenantDashBoard} />
                 <Route path={`/add-tenant`} component={AddTenant} />
                 <Route path={`/update-tenant/:tenantId`} component={UpdateTenant} />
