@@ -31,12 +31,12 @@ export default function Footer() {
                             <InstagramIcon></InstagramIcon></a>
                         <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/company/capgemini" role="button">
                             <LinkedInIcon></LinkedInIcon></a>
-                        <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/Theepak1/ReactOnlineSportsShopee" role="button">
+                        <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/Pranav-Srinivas-S/online-flat-rental-application.git" role="button">
                             <GitHubIcon></GitHubIcon></a>
                     </section>
                     <section class="mb-1">
                         <p>
-                            These Terms and Conditions constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and [Online Flat Rental] (“we,” “us” or “our”), concerning your access to and use of the [onlinecouriermanagement.com] website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”).
+                            These Terms and Conditions constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and [Online Flat Rental Application] (“we,” “us” or “our”), concerning your access to and use of the [onlineflatrental.com] website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”).
               </p>
                     </section>
                 </div>
