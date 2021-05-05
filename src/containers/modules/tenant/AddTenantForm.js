@@ -137,6 +137,7 @@ class AddTenantForm extends React.Component {
                                 required id="standard-number" label="Tenant Name" placeholder="Enter Tenant Name"
                                 value={this.state.tenantName} onChange={event => this.handleTenantChange(event, 'tenantName')} />
                         </FormControl>
+                        {this.displayValidationErrors('tenantName')}
                         <br />
                         <br />
                         <FormControl fullWidth>
