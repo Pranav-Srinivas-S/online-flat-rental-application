@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import LoginPage from "../containers/common/LoginPage";
 import HomePage from "../containers/common/HomePage";
 import TenantDashBoard from "../containers/modules/tenant/TenantDashBoard";
 import AddTenant from "../containers/modules/tenant/AddTenant";
@@ -8,7 +7,6 @@ import Tenant from "../containers/modules/tenant/Tenant";
 import AboutUs from "../containers/common/AboutUs";
 import ContactUs from "../containers/common/ContactUs";
 import Login from "../containers/common/Login";
-import LoginComponent from "../containers/common/LoginComponent";
 
 const HomeRouter = () => (
     <BrowserRouter>
