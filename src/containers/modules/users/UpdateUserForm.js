@@ -149,7 +149,6 @@ class UpdateUserForm extends React.Component {
                                 required id="standard-textarea" label="Password" type="password" placeholder="Enter Password"
                                 value={this.state.passsword} onChange={event => this.handleUserChange(event, 'password')} />
                         </FormControl>
-                        {this.displayValidationErrors('password')}
                         <br />
                         <br />
                         <FormControl fullWidth>

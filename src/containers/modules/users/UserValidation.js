@@ -9,7 +9,7 @@ const UserValidation = {
                 test: (value) => {
                     return value.length > 3;
                 },
-                message: 'User Name must be longer than three characters',
+                message: 'User Name must be longer than three characters ',
             },
         ],
         errors: [],
@@ -22,6 +22,7 @@ const UserValidation = {
             {
                 test: /(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*])(?=.*[A-Z]).{8,}/,
                 message: 'Password Format Wrong',
+                
             },
 
 
