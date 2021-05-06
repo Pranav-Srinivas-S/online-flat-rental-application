@@ -17,6 +17,10 @@ import FlatDashBoard from '../containers/modules/flat/FlatDashboard';
 import updateFlatComoponent from '../containers/modules/flat/UpdateFlat';
 import Flat from '../containers/modules/flat/Flat';
 import AddFlat from '../containers/modules/flat/AddFlat';
+import AdminDashBoard from '../containers/modules/admin/AdminDashboard';
+import updateAdminComoponent from '../containers/modules/admin/UpdateAdmin';
+import Admin from '../containers/modules/admin/Admin';
+import AddAdmin from '../containers/modules/admin/AddAdmin';
 import LandlordDashBoard from "../containers/modules/landlord/LandlordDashBoard";
 import AddLandlord from "../containers/modules/landlord/AddLandlord";
 import UpdateLandlord from "../containers/modules/landlord/UpdateLandlord";
@@ -57,6 +61,11 @@ const HomeRouter = () => (
                 <Route path={'/add-flat'} component={AddFlat} />
                 <Route path={'/update-flat/:flatId'} component={updateFlatComoponent} />
                 <Route path={'/view-flat/:flatId'} component={Flat} />
+
+                <Route path={'/admin'} component={AdminDashBoard} />
+                <Route path={'/add-admin'} component={AddAdmin} />
+                <Route path={'/update-admin/:adminId'} component={updateAdminComoponent} />
+                <Route path={'/view-admin/:adminId'} component={Admin} />
 
                 <Route exact path={`/landlord`} component={LandlordDashBoard} />
                 <Route exact path={`/add-landlord`} component={AddLandlord} />

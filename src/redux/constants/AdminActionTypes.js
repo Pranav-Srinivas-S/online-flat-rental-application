@@ -1,0 +1,8 @@
+export const AdminActionTypes = {
+
+    ADD_ADMIN: "ADD_ADMIN",
+    UPDATE_ADMIN: "UPDATE_ADMIN",
+    DELETE_ADMIN: "DELETE_ADMIN",
+    GET_ADMIN: "GET_ADMIN",
+    GET_ALL_ADMINS: "GET_ALL_ADMINS",
+}

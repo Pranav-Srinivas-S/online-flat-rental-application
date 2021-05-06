@@ -12,7 +12,6 @@ export const getAllFlatsReducer = (state = initialState, { type, payload }) => {
             return state;
     }
 };
-
 export const getFlatReducer = (state = {}, { type, payload }) => {
     switch (type) {
         case FlatActionTypes.GET_FLAT:
@@ -24,4 +23,4 @@ export const getFlatReducer = (state = {}, { type, payload }) => {
             return state;
 
     }
-}
+};

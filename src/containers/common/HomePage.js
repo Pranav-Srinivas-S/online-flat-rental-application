@@ -25,6 +25,23 @@ function HomePage() {
     return (
         <div>
             <Header />
+            <div>
+            <br/>
+            <br/>
+                <h1><center>Login</center></h1>
+                <h1><center>Sign up</center></h1>
+                <p> <center><button variant="default" class="btn btn-warning" onClick={() => history.push("/admin")}>
+                    Admin</button></center>
+                </p>
+                {/* <h1><center>Users</center></h1> */}
+
+                <p> <center><button variant="default" class="btn btn-warning" onClick={() => history.push("/user")}>
+                    Users</button></center>
+                </p>
+
+                <p> <center><button variant="default" class="btn btn-warning" onClick={() => history.push("/tenant")}>
+                    Tenant</button></center>
+                </p>
             <div style={{ 
       backgroundImage: `url(${background})` 
     }}>
@@ -175,6 +192,7 @@ function HomePage() {
             <br />
             <br />
             <Footer />
+        </div>
         </div>
     )
 }
