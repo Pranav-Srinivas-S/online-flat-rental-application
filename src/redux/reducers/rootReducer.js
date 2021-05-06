@@ -1,25 +1,32 @@
 import { combineReducers } from "redux";
 import TenantReducer from "./TenantReducer";
 import { getAllTenantsReducer, getTenantReducer } from "./TenantReducerType";
+import flatReducer from "./flat/FlatReducer";
+import { getAllFlatsReducer, getFlatReducer} from "./flat/FlatReducerType";
 import UserReducer from "./UsersReducer";
 import { getAllUsersReducer, getUserReducer } from "./UserReducerType";
-import FlatBookingReducer from "./FlatBookingReducer";
-import { getAllFlatBookingsReducer, getFlatBookingReducer } from "./FlatBookingReducerType";
+import LandlordReducer from "./LandlordReducer";
+import { getAllLandlordsReducer, getLandlordReducer } from "./LandlordReducerType";
 
 const rootReducer = combineReducers({
     TenantReducer,
     allTenants : getAllTenantsReducer,
     tenant : getTenantReducer,
 
+    flatReducer,
+    allFlats: getAllFlatsReducer,
+    flat: getFlatReducer,
+
+
     UserReducer,
     allUsers : getAllUsersReducer,
     user : getUserReducer,
 
-    FlatBookingReducer,
-    allFlatBookings: getAllFlatBookingsReducer,
-    flatBooking: getFlatBookingReducer,
-    
+    LandlordReducer,
+    allLandlords : getAllLandlordsReducer,
+    landlord : getLandlordReducer,
 
 });
+
 
 export default rootReducer;
