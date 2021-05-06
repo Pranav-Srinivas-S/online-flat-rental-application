@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import { FormControl, TextField } from '@material-ui/core';
 import Footer from './Footer';
 import { Redirect } from "react-router";
-import background from '../../images/loginimg.jpg';
+import background from '../../images/loginimage.jpg';
 
 /************************************************************************************
    * Component: Login
