@@ -14,6 +14,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import Header from '../../common/Header';
 import Footer from '../../common/Footer';
+import { Link } from 'react-router-dom';
 
 class UpdateUserForm extends React.Component {
     constructor(props) {
@@ -97,10 +98,6 @@ class UpdateUserForm extends React.Component {
         this.setState(newState);
     }
 
-    onCancel = () => {
-        this.props.history.push('/user');
-    }
-
     onSubmit = event => {
 
         console.log("Submitted");
@@ -121,7 +118,6 @@ class UpdateUserForm extends React.Component {
     render() {
         return (
             <div>
-                <Header />
             <Container style={{ backgroundColor: '#cfe8fc' }} >
                 <div  >
                     <form onSubmit={event => this.onSubmit(event)} >
@@ -168,11 +164,10 @@ class UpdateUserForm extends React.Component {
                         <br />
                         <br />
                         <Button style={style} type="submit" className={`btn btn-primary  ${this.isFormValid() ? '' : 'disabled'}`}>Update User</Button>
-                        <Button style={style} onClick={this.onCancel}>Cancel</Button>
+                        <Link to={`/user`}><Button style={style} >Cancel</Button></Link>
                     </form>
                 </div>
             </Container>
-                <Footer />
             </div>
         )
     }
