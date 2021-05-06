@@ -11,6 +11,12 @@ import { FormControl, TextField } from '@material-ui/core';
 import { connect } from 'react-redux';
 import FlatValidation from './FlatValidation';
 
+/************************************************************************************
+     * Component: UpdateFlatForm
+     * Description: It is a Form to update Flat Details
+     * Created By: AJITHKUMAR A
+     * Created Date:  03-04-2021 
+ ************************************************************************************/
 class UpdateFlatForm extends React.Component {
 
     constructor(props) {
@@ -33,7 +39,12 @@ class UpdateFlatForm extends React.Component {
         this.validators = FlatValidation;
         this.resetValidators();
     }
-
+/************************************************************************************
+     * Function: updateValidators
+     * Description: It is used for Flat Validations 
+     * Created By:AJITHKUMAR A
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
     updateValidators = (fieldName, value) => {
         this.validators[fieldName].errors = [];
         this.validators[fieldName].state = value;
@@ -52,7 +63,12 @@ class UpdateFlatForm extends React.Component {
             }
         });
     }
-
+/************************************************************************************
+     * Function: resetValidators
+     * Description: It is used resetFlat Validations 
+     * Created By:AJITHKUMAR A
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
     resetValidators = () => {
         Object.keys(this.validators).forEach((fieldName) => {
             this.validators[fieldName].errors = [];
@@ -60,6 +76,13 @@ class UpdateFlatForm extends React.Component {
             this.validators[fieldName].valid = false;
         });
     }
+
+    /************************************************************************************
+     * Function: displayValidators
+     * Description: It is used to display Flat Validation messages 
+     * Created By:AJITHKUMAR A
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
 
     displayValidationErrors = (fieldName) => {
         const validator = this.validators[fieldName];
@@ -78,6 +101,13 @@ class UpdateFlatForm extends React.Component {
         return result;
     }
 
+    /************************************************************************************
+     * Function: isFormValid
+     * Description: It is used to validate if Form is Filled or not 
+     * Created By: AJITHKUMAR A
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
+
     isFormValid = () => {
         let status = true;
         Object.keys(this.validators).forEach((field) => {
@@ -87,7 +117,12 @@ class UpdateFlatForm extends React.Component {
         });
         return status;
     }
-
+/************************************************************************************
+     * Function: handleFlatChange
+     * Description: It is used to handle Flat Property inputs 
+     * Created By: AJITHKUMAR A
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
     handleFlatChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState[inputPropName] = event.target.value;
@@ -95,7 +130,12 @@ class UpdateFlatForm extends React.Component {
         this.updateValidators(inputPropName, event.target.value);
 
     }
-
+/************************************************************************************
+     * Function: handleFlatAddressChange
+     * Description: It is used to handleFlat Address Property inputs 
+     * Created By: AJITHKUMAR A
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
     handleFlatAddressChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState.flatAddress[inputPropName] = event.target.value;
@@ -104,16 +144,35 @@ class UpdateFlatForm extends React.Component {
 
     }
 
+    /************************************************************************************
+     * Function: handleFlattIdChange
+     * Description: It is used to handle Flat Id Property inputs 
+     * Created By: AJITHKUMAR A
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
+
     onFlatIdChange = (event, inputPropName) => {
         const newState = Object.assign({}, this.state);
         newState[inputPropName] = event.target.value;
         this.setState(newState);
     }
 
+    /************************************************************************************
+     * Function: onCancel
+     * Description: It is used to navigate back from Update Flat Form 
+     * Created By: AJITHKUMAR A
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
+
     onCancel = () => {
         this.props.history.push('/flat');
     }
-
+/************************************************************************************
+     * Function: onSubmit
+     * Description: It is used to Submit Update Flat Form 
+     * Created By: AJITHKUMAR A
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
     onSubmit = event => {
 
         console.log("Submitted");
@@ -133,6 +192,12 @@ class UpdateFlatForm extends React.Component {
             }
         );
     }
+/************************************************************************************
+     * Return: Update Flat Form
+     * Description: It is used to display input fields for updating Flat Details
+     * Created By:AJITHKUMAR A
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
 
     render() {
         return (
@@ -250,6 +315,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+/************************************************************************************
+   * property: style 
+   * Description: It is used for Update Flat Form Styling
+   * Created By: AJITHKUMARBA
+   * Created Date:  03-05-2021 
+ ************************************************************************************/
+
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     borderRadius: 3,
@@ -261,6 +333,12 @@ const style = {
     marginLeft: "10px",
 };
 
+/************************************************************************************
+   * property: errorStyle 
+   * Description: It is used for Update Flat Form Validation Message Styling
+   * Created By: AJITHKUMAR A
+   * Created Date:  03-05-2021 
+ ************************************************************************************/
 const errorStyle = {
     color: 'red'
 };

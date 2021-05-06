@@ -10,6 +10,13 @@ import Button from '@material-ui/core/Button';
 import { deleteUser } from '../../../redux/actions/UsersActions';
 import { useHistory } from 'react-router';
 
+/************************************************************************************
+   * Component: UserList
+   * Description: It is used to display all user details
+   * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+   * Created Date:  01-05-2021 
+ ************************************************************************************/
+
 const UserList = () => {
   const dispatch = useDispatch();
   //const userId = useParams();
@@ -36,6 +43,14 @@ const UserList = () => {
     fetchUsers();
     history.push('/user');
   }
+
+  
+  /************************************************************************************
+  * Return: All User Details
+  * Description: It is used to display All User Details
+  * Created By:Ravuru Sathya Naga Sivanandana Sai Bharath
+  * Created Date:  01-05-2021 
+************************************************************************************/
 
   return (
     <div className="">
@@ -81,6 +96,14 @@ const UserList = () => {
   );
 }
 
+/************************************************************************************
+   * property: style 
+   * Description: It is used for UserList Table Cell Styling
+   * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+   * Created Date:  01-05-2021 
+ ************************************************************************************/
+
+
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -90,6 +113,13 @@ const StyledTableCell = withStyles((theme) => ({
     fontSize: 14,
   },
 }))(TableCell);
+
+/************************************************************************************
+   * property: style 
+   * Description: It is used for UserList Table Row Styling
+   * Created By:Ravuru Sathya Naga Sivanandana Sai Bharath
+   * Created Date:  01-05-2021 
+ ************************************************************************************/
 
 const StyledTableRow = withStyles((theme) => ({
   root: {

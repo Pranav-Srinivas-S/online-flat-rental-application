@@ -8,6 +8,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Header from '../../common/Header';
 import Footer from '../../common/Footer';
 
+/************************************************************************************
+     * Component: UpdateFlat
+     * Description: It is used to navigate to UpdateFlatForm
+     * Created By: AJITHKUMAR A
+     * Created Date:  03-04-2021 
+ ************************************************************************************/
 const updateFlatComoponent = (props) => (
   <div>
     <Header />
@@ -35,6 +41,12 @@ const updateFlatComoponent = (props) => (
 
 // };
 
+/************************************************************************************
+   * property: style 
+   * Description: It is used for UpdateFlat Styling
+   * Created By:AJITHKUMAR A
+   * Created Date:  02-05-2021 
+ ************************************************************************************/
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',

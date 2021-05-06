@@ -6,6 +6,14 @@ import Box from '@material-ui/core/Box';
 import { Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+
+/************************************************************************************
+     * Component: AddUser
+     * Description: It is used to navigate to AddUserForm
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  02-04-2021 
+ ************************************************************************************/
+
 const AddUser = (props) => (
   <div >
     <div className={useStyles.root}>
@@ -22,6 +30,14 @@ const AddUser = (props) => (
     </div>
   </div>
 );
+
+/************************************************************************************
+   * property: style 
+   * Description: It is used for AddUserStyling
+   * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+   * Created Date:  02-05-2021 
+ ************************************************************************************/
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',

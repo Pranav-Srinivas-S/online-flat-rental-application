@@ -6,6 +6,13 @@ import Box from '@material-ui/core/Box';
 import Header from '../../common/Header';
 import Footer from '../../common/Footer';
 
+/************************************************************************************
+     * Component: UserDashBoard
+     * Description: It is used to navigate to all  UserFunctionalities
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  30-04-2021 
+ ************************************************************************************/
+
 function UserDashBoard() {
 
     const history = useHistory();
@@ -24,6 +31,13 @@ function UserDashBoard() {
         </div>
     );
 }
+
+/************************************************************************************
+     * property: style 
+     * Description: It is used for UserDashBoard Styling
+     * Created By:Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  30-04-2021 
+ ************************************************************************************/
 
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',

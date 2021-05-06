@@ -1,3 +1,10 @@
+/************************************************************************************
+   * Property: FlatActionTypes 
+   * Description: Constants for Flat Actions
+   * Created By: AJITHKUMAR A
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
+
 export const FlatActionTypes = {
 
     ADD_FLAT: "ADD_FLAT",

@@ -6,6 +6,12 @@ import Box from '@material-ui/core/Box';
 import Header from '../../common/Header';
 import Footer from '../../common/Footer';
 
+/************************************************************************************
+     * Component: FlatDashBoard
+     * Description: It is used to navigate to all Flat Functionalities
+     * Created By:AJITHKUMAR A
+     * Created Date:  30-04-2021 
+ ************************************************************************************/
 
 
 function FlatDashBoard() {
@@ -28,6 +34,14 @@ function FlatDashBoard() {
 
     );
 }
+
+/************************************************************************************
+     * property: style 
+     * Description: It is used for FlatDashBoard Styling
+     * Created By:AJITHKUMAR A
+     * Created Date:  30-04-2021 
+ ************************************************************************************/
+
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     borderRadius: 3,
