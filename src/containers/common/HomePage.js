@@ -12,6 +12,7 @@ import landlordimg from '../../images/landlordimg.jpg';
 import flatimg from '../../images/flatimg.jpg';
 import flatbookingimg from '../../images/flatbookingimg.jpg';
 import background from '../../images/homepageimg.jpg';
+import adminimg from '../../images/adminimg.png'
 
 /************************************************************************************
    * Component: HomePage
@@ -26,29 +27,38 @@ function HomePage() {
         <div>
             <Header />
             <div>
-            <br/>
-            <br/>
-                <h1><center>Login</center></h1>
-                <h1><center>Sign up</center></h1>
-                <p> <center><button variant="default" class="btn btn-warning" onClick={() => history.push("/admin")}>
-                    Admin</button></center>
-                </p>
-                {/* <h1><center>Users</center></h1> */}
-
-                <p> <center><button variant="default" class="btn btn-warning" onClick={() => history.push("/user")}>
-                    Users</button></center>
-                </p>
-
-                <p> <center><button variant="default" class="btn btn-warning" onClick={() => history.push("/tenant")}>
-                    Tenant</button></center>
-                </p>
             <div style={{ 
       backgroundImage: `url(${background})` 
     }}>
                 <br /><br />
                 <br /><br />
 
-                <h1><center>Admin</center></h1>
+                <div>
+                    <Grid container component="main" spacing={10} direction="row" justify="center" alignItems="center">
+                        <Grid item md={8} >
+                            <Paper >
+                                <Card  >
+                                    <CardActionArea>
+                                        <CardMedia
+                                            component="img"
+                                            alt="Admin MOdule"
+                                            height='300'
+                                            image={adminimg}
+                                            title="ADmin Sevice"
+                                            onClick={() => history.push("/admin")} />
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h5" component="h2" >
+                                                ADMIN
+                            </Typography>
+                                        </CardContent>
+                                    </CardActionArea>
+                                </Card>
+                            </ Paper>
+                        </Grid>
+                    </Grid>
+                </div>
+
+                <br />
 
                 <br />
                 <div>
