@@ -101,7 +101,7 @@ export default class Login extends React.Component {
                     
                     <div className="row">
                             <div className="input-field col s12 signup-btn">
-                                <center><button className="btn btn-danger" type="submit">Forgot Password</button></center>
+                                <center><button className="btn btn-danger" type="submit">Update Password</button></center>
                             </div>
                         </div>
                         <br/>
