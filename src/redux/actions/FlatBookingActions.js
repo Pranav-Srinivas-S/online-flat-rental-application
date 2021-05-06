@@ -9,31 +9,54 @@ const addFlatBookingSuccess = (flatBooking) => ({
 export const addFlatBooking = (flatBookingData = {
     bookingFromDate:'',
     bookingToDate:'',
-    houseNo: '',
-    street: '',
-    city: '',
-    state: '',
-    pin: '',
-    country: '',
     flatCost: '',
-    flatAvailabilty: ''
+    flatAvailabilty: '',
+    fhouseNo: '',
+    fstreet: '',
+    fcity: '',
+    fstate: '',
+    fpin: '',
+    fcountry: '',
+    tenantName: '',
+    tenantAge: '',
+    thouseNo: '',
+    tstreet: '',
+    tcity: '',
+    tstate: '',
+    tpin: '',
+    tcountry: '',
 }) => {
     return (dispatch) => {
         const flatBooking = {
             bookingFromDate: flatBookingData.bookingFromDate,
             bookingToDate: flatBookingData.bookingToDate,
             flatCost:flatBookingData.flatCost,
-            flatBookingDetails: {
+            flat: {
                 flatCost:flatBookingData.flatCost,
                 flatAvailability:flatBookingData.flatAvailability,
-                houseNo: flatBookingData.houseNo,
-                street: flatBookingData.street,
-                city: flatBookingData.city,
-                state: flatBookingData.state,
-                pin: flatBookingData.pin,
-                country: flatBookingData.country
+                flatAdderss:{
+                    fhouseNo: flatBookingData.fhouseNo,
+                    fstreet: flatBookingData.fstreet,
+                    fcity: flatBookingData.fcity,
+                    fstate: flatBookingData.fstate,
+                    fpin: flatBookingData.fpin,
+                    fcountry: flatBookingData.fcountry
+                }
            },
+           tenant: {
+               tenantName: flatBookingData.tenantName,
+               tenantAge: flatBookingData.tenantAge,
+               tenantAddress: {
+                thouseNo: flatBookingData.thouseNo,
+                tstreet: flatBookingData.tstreet,
+                tcity: flatBookingData.tcity,
+                tstate: flatBookingData.tstate,
+                tpin: flatBookingData.tpin,
+                tcountry: flatBookingData.tcountry
+               }
+           }
         };
+
         console.log(flatBooking);
         return axios.post('/add-flatBooking', flatBooking)
             .then(() => {
@@ -51,31 +74,56 @@ const updateFlatBookingSuccess = (flatBooking) => ({
 });
 
 export const updateFlatBooking = (updatedFlatBooking= {
+    bookingNo:'',
     bookingFromDate:'',
     bookingToDate:'',
-    houseNo: '',
-    street: '',
-    city: '',
-    state: '',
-    pin: '',
-    country: '',
     flatCost: '',
-    flatAvailabilty: ''
+    flatAvailabilty: '',
+    fhouseNo: '',
+    fstreet: '',
+    fcity: '',
+    fstate: '',
+    fpin: '',
+    fcountry: '',
+    tenantName: '',
+    tenantAge: '',
+    thouseNo: '',
+    tstreet: '',
+    tcity: '',
+    tstate: '',
+    tpin: '',
+    tcountry: '',
 }) => {
     return (dispatch) => {
         const flatBooking = {
+            bookingNo: updatedFlatBooking.bookingNo,
             bookingFromDate: updatedFlatBooking.bookingFromDate,
             bookingToDate: updatedFlatBooking.bookingToDate,
-            FlatBookingDetails: {
+            flatCost:updatedFlatBooking.flatCost,
+            flat: {
                 flatCost:updatedFlatBooking.flatCost,
                 flatAvailability:updatedFlatBooking.flatAvailability,
-                houseNo: updatedFlatBooking.houseNo,
-                street: updatedFlatBooking.street,
-                city: updatedFlatBooking.city,
-                state: updatedFlatBooking.state,
-                pin: updatedFlatBooking.pin,
-                country: updatedFlatBooking.country
-            }
+                flatAdderss:{
+                    fhouseNo: updatedFlatBooking.fhouseNo,
+                    fstreet: updatedFlatBooking.fstreet,
+                    fcity: updatedFlatBooking.fcity,
+                    fstate: updatedFlatBooking.fstate,
+                    fpin: updatedFlatBooking.fpin,
+                    fcountry: updatedFlatBooking.fcountry
+                }
+           },
+           tenant: {
+               tenantName: updatedFlatBooking.tenantName,
+               tenantAge: updatedFlatBooking.tenantAge,
+               tenantAddress: {
+                thouseNo: updatedFlatBooking.thouseNo,
+                tstreet: updatedFlatBooking.tstreet,
+                tcity: updatedFlatBooking.tcity,
+                tstate: updatedFlatBooking.tstate,
+                tpin: updatedFlatBooking.tpin,
+                tcountry: updatedFlatBooking.tcountry
+               }
+           }
         };
         console.log(flatBooking);
         return axios.post('/update-flatBooking', flatBooking)

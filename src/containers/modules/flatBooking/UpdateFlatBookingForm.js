@@ -7,6 +7,8 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import FlatBookingValidation from './FlatBookingValidation';
 import { withRouter } from "react-router-dom";
+import Header from '../../common/Header';
+import Footer from '../../common/Footer';
 
  class UpdateFlatBookingForm extends React.Component {
 
@@ -141,6 +143,8 @@ import { withRouter } from "react-router-dom";
 
     render() {
         return (
+            <div>
+                <Header />
             <Container style={{ backgroundColor: '#cfe8fc' }} >
                 <div  >
 
@@ -239,6 +243,8 @@ import { withRouter } from "react-router-dom";
                     </form>
                 </div>
             </Container>
+            <Footer />
+            </div>
         )
     }
 

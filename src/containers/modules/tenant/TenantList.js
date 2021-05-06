@@ -7,8 +7,14 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
-import { deleteTenant } from '../../../redux/actions/TenantActions';
 import { useHistory } from 'react-router';
+
+/************************************************************************************
+   * Component: TenantList
+   * Description: It is used to display all tenant details
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  01-05-2021 
+ ************************************************************************************/
 
 const TenantList = () => {
   const dispatch = useDispatch();
@@ -28,13 +34,12 @@ const TenantList = () => {
 
   console.log("Tenants :", tenants);
 
-  const deleteTenantById = async (tenantId) => {
-    await axios.delete(`http://localhost:9191/api/ofr/delete-tenant/${tenantId}`).catch((err) => { console.log("Error", err); });
-    dispatch(deleteTenant(tenantId));
-    alert("Deleted Successfully");
-    fetchTenants();
-    history.push('/tenant');
-  }
+  /************************************************************************************
+  * Return: All Tenant Details
+  * Description: It is used to display All Tenant Details
+  * Created By: PRANAV SRINIVAS S
+  * Created Date:  01-05-2021 
+************************************************************************************/
 
   return (
     <div className="">
@@ -76,6 +81,13 @@ const TenantList = () => {
   );
 }
 
+/************************************************************************************
+   * property: style 
+   * Description: It is used for TenantList Table Cell Styling
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  01-05-2021 
+ ************************************************************************************/
+
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -85,6 +97,13 @@ const StyledTableCell = withStyles((theme) => ({
     fontSize: 14,
   },
 }))(TableCell);
+
+/************************************************************************************
+   * property: style 
+   * Description: It is used for TenantList Table Row Styling
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  01-05-2021 
+ ************************************************************************************/
 
 const StyledTableRow = withStyles((theme) => ({
   root: {

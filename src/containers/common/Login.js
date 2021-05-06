@@ -8,6 +8,13 @@ import Header from './Header';
 import Footer from './Footer';
 import { Redirect } from "react-router";
 
+/************************************************************************************
+   * Component: Login
+   * Description: It is Login Page for our Application
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  05-05-2021 
+ ************************************************************************************/
+
 export default class Login extends React.Component {
 
     constructor(props) {

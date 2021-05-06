@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 
+/************************************************************************************
+   * Component: Header
+   * Description: It is Footer for our Application
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  05-05-2021 
+ ************************************************************************************/
+
 export default class Header extends Component {
 
     render() {
-
         return (
-
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand" href="/">
                     <p><h2 class="ui red inverted header">Online Flat Rental Application</h2></p>
@@ -32,13 +37,8 @@ export default class Header extends Component {
                     <div class="col-sm-1" >
                         <a href="/" class="ui left aligned header blue inverted"> Logout <span class="sr-only">(current)</span></a>
                     </div>
-
                 </div>
             </nav>
-
         );
-
-
     }
-
 }

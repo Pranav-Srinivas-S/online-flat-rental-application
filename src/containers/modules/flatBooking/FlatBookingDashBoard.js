@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom';
 import React from 'react';
 import FlatBookingList from './FlatBookingList';
 import Box from '@material-ui/core/Box';
+import Header from '../../common/Header';
+import Footer from '../../common/Footer';
 
 
 
@@ -12,6 +14,8 @@ function FlatBookingDashBoard() {
 
     const history = useHistory();
     return (
+        <div>
+            <Header />
         <div>
                 <Box color="primary.main"  component="div" display="inline" > <h3>Add FlatBooking Detail:
                 <Button style={style} onClick={() => history.push("/add-flatBooking")}>Add FlatBooking</Button></h3>
@@ -22,7 +26,8 @@ function FlatBookingDashBoard() {
                     <FlatBookingList />
                 </Grid>
         </div>
-        
+            <Footer />
+        </div>
 
     );
 }

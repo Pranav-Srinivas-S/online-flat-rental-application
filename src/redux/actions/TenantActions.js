@@ -1,10 +1,24 @@
 import { TenantActionTypes } from '../constants/TenantActionTypes'
 import axios from '../../axios/Axios';
 
+/************************************************************************************
+   * Function: addTenantSuccess 
+   * Description: Action for Tenant Module Add Service.
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
+
 const addTenantSuccess = (tenant) => ({
     type: TenantActionTypes.ADD_TENANT,
     tenant
 });
+
+/************************************************************************************
+   * Function: addTenant
+   * Description: Service for addTenantSuccess Action
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
 
 export const addTenant = (tenantData = {
     tenantName: '',
@@ -40,10 +54,24 @@ export const addTenant = (tenantData = {
     };
 };
 
+/************************************************************************************
+   * Function: updateTenantSuccess 
+   * Description: Action for Tenant Module Update Service.
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
+
 const updateTenantSuccess = (tenant) => ({
     type: TenantActionTypes.UPDATE_TENANT,
     tenant
 });
+
+/************************************************************************************
+   * Function: updateTenant
+   * Description: Service for updateTenantSuccess Action
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
 
 export const updateTenant = (updatedTenant = {
     tenantId: '',
@@ -81,10 +109,24 @@ export const updateTenant = (updatedTenant = {
     }
 };
 
+/************************************************************************************
+   * Function: deleteTenantSuccess 
+   * Description: Action for Tenant Module Delete Service.
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
+
 const deleteTenantSuccess = ({ tenantId } = {}) => ({
     type: TenantActionTypes.DELETE_TENANT,
     tenantId
 });
+
+/************************************************************************************
+   * Function: deleteTenant
+   * Description: Service for deleteTenantSuccess Action
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
 
 export const deleteTenant = ({ tenantId } = {}) => {
     return (dispatch) => {
@@ -98,12 +140,26 @@ export const deleteTenant = ({ tenantId } = {}) => {
     };
 };
 
+/************************************************************************************
+   * Function: getTenantSuccess 
+   * Description: Action for Tenant Module Get Service.
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
+
 export const getTenantSuccess = (tenant) => {
     return {
         type: TenantActionTypes.GET_TENANT,
         payload: tenant
     }
 };
+
+/************************************************************************************
+   * Function: deleteeTenant
+   * Description: Service for getTenantSuccess Action
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
 
 export const getTenant = (tenantId) => {
     return (dispatch) => {
@@ -116,6 +172,13 @@ export const getTenant = (tenantId) => {
             });
     };
 };
+
+/************************************************************************************
+   * Function: getAllTenant 
+   * Description: Action for Tenant Module Get All Service.
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
 
 export const getAllTenants = (tenants) => {
     return {
