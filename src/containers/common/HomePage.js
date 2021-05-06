@@ -198,7 +198,9 @@ function HomePage() {
             <br/>
                 <h1><center>Login</center></h1>
                 <h1><center>Sign up</center></h1>
-                <h1><center>Admin</center></h1>
+                <p> <center><button variant="default" class="btn btn-warning" onClick={() => history.push("/admin")}>
+                    Admin</button></center>
+                </p>
                 {/* <h1><center>Users</center></h1> */}
 
                 <p> <center><button variant="default" class="btn btn-warning" onClick={() => history.push("/user")}>

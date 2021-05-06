@@ -1,29 +1,27 @@
 import { Button, Grid } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import React from 'react';
-import FlatList from './FlatList'
+import AdminList from './AdminList'
 import Box from '@material-ui/core/Box';
 import Header from '../../common/Header';
 import Footer from '../../common/Footer';
 
 
 
-function FlatDashBoard() {
+function AdminDashBoard() {
 
     const history = useHistory();
     return (
         <div>
             <Header />
             <br />
-            <Box color="primary.main" component="div" display="inline"  > <h3>ADD FLAT DETAILS:
-        <Button style={style} onClick={() => history.push("/add-flat")}>Add Flat</Button></h3>
-        <Button style={style} onClick={() => history.push("/filter-by-cost-form")}> Filter By Cost</Button>
+            <Box color="primary.main" component="div" display="inline"  > <h3>ADD ADMIN DETAILS:
+        <Button style={style} onClick={() => history.push("/add-admin")}>Add Admin</Button></h3>
             </Box>
-
             <br />
-            <Box color="primary.main" component="div" display="inline"  > <h3>LIST OF FLAT DETAILS:</h3></Box>
+            <Box color="primary.main" component="div" display="inline"  > <h3>LIST OF ADMIN DETAILS:</h3></Box>
             <Grid>
-                <FlatList />
+                <AdminList />
             </Grid>
             <Footer />
         </div>
@@ -43,4 +41,4 @@ const style = {
 
 
 
-export default FlatDashBoard;
+export default AdminDashBoard;

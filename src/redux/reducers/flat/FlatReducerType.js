@@ -13,6 +13,18 @@ export const getAllFlatsReducer = (state = initialState, { type, payload }) => {
     }
 };
 
+export const getFlatsByCostReducer = (state = {}, {type, payload}) =>{
+    switch (type) {
+        case FlatActionTypes.GET_FLATS_BY_COST:
+            return {...state, ...payload}
+
+        default:
+            return state;
+
+    }
+
+};
+
 export const getFlatReducer = (state = {}, { type, payload }) => {
     switch (type) {
         case FlatActionTypes.GET_FLAT:

@@ -3,8 +3,6 @@ import store from './redux/store/ConfigureStore';
 import UserRouter from './router/user/UserRouter';
 import { Provider } from 'react-redux';
 import HomeRouter from './router/HomeRouter';
-import FlatRouter from './router/FlatRouter';
-
 
 function App() {
   return (

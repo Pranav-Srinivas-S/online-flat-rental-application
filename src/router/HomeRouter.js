@@ -15,6 +15,12 @@ import FlatDashBoard from '../containers/modules/flat/FlatDashboard';
 import updateFlatComoponent from '../containers/modules/flat/UpdateFlat';
 import Flat from '../containers/modules/flat/Flat';
 import AddFlat from '../containers/modules/flat/AddFlat';
+import FliterByCost from '../containers/modules/flat/FliterByCost';
+import FlatsByCost from '../containers/modules/flat/FlatsByCost';
+import AdminDashBoard from '../containers/modules/admin/AdminDashboard';
+import updateAdminComoponent from '../containers/modules/admin/UpdateAdmin';
+import Admin from '../containers/modules/admin/Admin';
+import AddAdmin from '../containers/modules/admin/AddAdmin';
 
 const HomeRouter = () => (
     <BrowserRouter>
@@ -40,6 +46,13 @@ const HomeRouter = () => (
                 <Route path={'/add-flat'} component={AddFlat} />
                 <Route path={'/update-flat/:flatId'} component={updateFlatComoponent} />
                 <Route path={'/view-flat/:flatId'} component={Flat} />
+                <Route path={'/view-flat-by-cost'} component={FlatsByCost} />
+                <Route path={'/filter-by-cost-form'} component={FliterByCost} />
+
+                <Route path={'/admin'} component={AdminDashBoard} />
+                <Route path={'/add-admin'} component={AddAdmin} />
+                <Route path={'/update-admin/:adminId'} component={updateAdminComoponent} />
+                <Route path={'/view-admin/:adminId'} component={Admin} />
 
             </Switch>
         </div>

@@ -129,3 +129,22 @@ export const getAllFlats = (flats) => {
         payload: flats
     }
 };
+
+export const _getFlatsByCost = (flat) => {
+    return {
+        type: FlatActionTypes.GET_FLATS_BY_COST,
+        payload: flat
+    }
+};
+
+export const getFlatsByCost = (flatCost,flatAvailability) => {
+    return (dispatch) => {
+        return axios.get(`/view-flat-by-cost/${flatCost},${flatAvailability}`)
+            .then(response => {
+                dispatch(_getFlatsByCost(response.data))
+            })
+            .catch(error => {
+                throw (error);
+            });
+    };
+};
