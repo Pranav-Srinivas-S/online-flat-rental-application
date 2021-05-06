@@ -12,7 +12,7 @@ function UserDashBoard() {
     return (
         <div>
             <Header />
-            <Box color="primary.main" component="div" display="inline" > <h3>Add User Detail:
+            <Box color="primary.main" component="div" display="inline" > <h3>Add User Details:
                 <Button style={style} onClick={() => history.push("/add-user")}>Add User</Button></h3>
             </Box>
             <br />
@@ -24,7 +24,6 @@ function UserDashBoard() {
         </div>
     );
 }
-
 
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',

@@ -4,7 +4,7 @@ import AddUser from "../../containers/modules/users/AddUser";
 import UpdateUser from "../../containers/modules/users/UpdateUser";
 import User from "../../containers/modules/users/User";
 import UserNotFound from "../../containers/modules/users/UserNotFound";
-import { getUser } from "../../redux/actions/UsersActions";
+
 
 const UserRouter = () => (
     <BrowserRouter>
