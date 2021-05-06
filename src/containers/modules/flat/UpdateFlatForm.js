@@ -123,6 +123,7 @@ class UpdateFlatForm extends React.Component {
         event.preventDefault();
         this.props.onSubmitFlat(
             {
+                flatId: this.state.flatId,
                 flatCost: this.state.flatCost,
                 flatAvailability: this.state.flatAvailability,
                 houseNo: this.state.flatAddress.houseNo,
@@ -148,14 +149,14 @@ class UpdateFlatForm extends React.Component {
                             <br />
                             <FormControl fullWidth>
                                 <TextField
-                                    required id="standard-textarea" label="Flat ID" type="number" placeholder="Enter Flat ID"
+                                    required id="standard-number" label="Flat ID" type="number" placeholder="Enter Flat ID"
                                     value={this.state.flatId} onChange={event => this.onFlatIdChange(event, 'flatId')} />
                             </FormControl>
                             <br />
                             <br />
                             <FormControl fullWidth>
                                 <TextField
-                                    required id="standard-textarea" label="Flat Cost" placeholder="Enter Flat Cost" type="number"
+                                    required id="standard-number" label="Flat Cost" placeholder="Enter Flat Cost" type="number"
                                     value={this.state.flatCost} onChange={event => this.handleFlatChange(event, 'flatCost')} />
                             </FormControl>
                             {this.displayValidationErrors('flatCost')}

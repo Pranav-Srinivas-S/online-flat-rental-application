@@ -13,7 +13,6 @@ function App() {
         {/* <UserRouter />  */}
         {/* <LandlordRouter />  */}
         <HomeRouter />
-        <FlatRouter />
         {/* <TenantRouter /> */}
       </Provider>
     </div>
