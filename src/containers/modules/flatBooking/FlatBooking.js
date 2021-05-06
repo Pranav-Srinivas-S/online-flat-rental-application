@@ -5,7 +5,8 @@ import { useHistory, useParams } from 'react-router';
 import { getFlatBooking, deleteFlatBooking } from '../../../redux/actions/FlatBookingActions';
 import { Button, Grid } from '@material-ui/core';
 import {Link} from "react-router-dom"
-
+import Header from '../../common/Header';
+import Footer from '../../common/Footer';
 const FlatBooking = () => {
     const {bookingNo} = useParams();
     const dispatch = useDispatch();
@@ -58,6 +59,7 @@ const FlatBooking = () => {
 
     return (
         <div >
+            <Header/>
         <h1 class="display-4  bg-primary text-white"> Flat Booking Details </h1> 
         <ul class="list-group-item">
             <li class="list-group-item list-group-item-info"><h1>Flat Booking Details</h1></li>
@@ -91,7 +93,7 @@ const FlatBooking = () => {
         <Link to={`/flatBooking`}><Button style={style} >Back To Home</Button ></Link>
         </Grid>
         </Grid>
-
+        <Footer/>
         </div>
     )
 }

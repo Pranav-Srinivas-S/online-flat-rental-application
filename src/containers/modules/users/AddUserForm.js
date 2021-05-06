@@ -10,8 +10,6 @@ import { withRouter } from "react-router-dom";
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
-import Footer from '../../common/Footer';
-import Header from '../../common/Header';
 
 class AddUserForm extends React.Component {
 
@@ -116,7 +114,6 @@ class AddUserForm extends React.Component {
     render() {
         return (
             <div>
-                <Header />
             <Container style={{ backgroundColor: '#cfe8fc' }} >
                 <div  >
                     <form onSubmit={event => this.onSubmit(event)} >
@@ -159,7 +156,6 @@ class AddUserForm extends React.Component {
                     </form>
                 </div>
             </Container>
-            <Footer />
             </div>
         )
     }

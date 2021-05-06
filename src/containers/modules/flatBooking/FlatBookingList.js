@@ -65,7 +65,7 @@ const FlatBookingList = () => {
                       <td>{bookingFromDate}</td>
                       <td>{bookingToDate}</td>
                       <td><Link to={`/view-flatBooking/${bookingNo}`}><Button color="primary" variant="contained" className="btn btn-info">View</Button></Link></td>
-                      <td><Link to={`/update-flatBooking/${bookingNo}`}><Button color="primary" variant="contained" className="btn btn-info">Update</Button></Link></td>
+                      <td><Link to={`/update-flatBooking/${bookingNo}`}><Button color="inverse" variant="contained" className="btn btn-info">Update</Button></Link></td>
                       <td><Link to={`/view-flatBooking/${bookingNo}`}><Button color="secondary" variant="contained" className="btn btn-secondary">Delete</Button></Link></td>
                     </StyledTableRow>
                   )

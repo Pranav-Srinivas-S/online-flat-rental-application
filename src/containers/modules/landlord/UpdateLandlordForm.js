@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
+import { Link } from 'react-router-dom';
 
 class UpdateLandlordForm extends React.Component {
     constructor(props) {
@@ -119,10 +120,6 @@ class UpdateLandlordForm extends React.Component {
         const newState = Object.assign({}, this.state);
         newState[inputPropName] = event.target.value;
         this.setState(newState);
-    }
-
-    onCancel = () => {
-        this.props.history.push('/landlord');
     }
 
     onSubmit = event => {
@@ -255,7 +252,7 @@ class UpdateLandlordForm extends React.Component {
                         <br />
                         <br />
                         <Button style={style} type="submit" className={`btn btn-primary btn-block ${this.isFormValid() ? '' : 'disabled'}`}>Update Landlord</Button>
-                        <Button style={style} onClick={this.onCancel}>Cancel</Button>
+                        <Link to={`/tenant`}><Button style={style} >Cancel</Button></Link>
                     </form>
                 </div>
             </Container>
