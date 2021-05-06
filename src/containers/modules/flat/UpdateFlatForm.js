@@ -290,7 +290,7 @@ class UpdateFlatForm extends React.Component {
 
 
                             <Button style={style} type="submit">Update</Button>
-                            <Button style={style} onChange={this.onCancel}> Cancel</Button>
+                            <Button style={style} onClick={this.onCancel}> Cancel</Button>
 
                         </form>
                     </div>

@@ -10,6 +10,8 @@ import { connect } from 'react-redux';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
+import Footer from '../../common/Footer';
+import Header from '../../common/Header';
 
 class UpdatePasswordForm extends React.Component {
     constructor(props) {
@@ -24,8 +26,6 @@ class UpdatePasswordForm extends React.Component {
         this.validators = UserValidation;
         this.resetValidators();
     }
-
-
 
     updateValidators = (fieldName, value) => {
         this.validators[fieldName].errors = [];
@@ -118,6 +118,8 @@ class UpdatePasswordForm extends React.Component {
 
     render() {
         return (
+            <div>
+                <Header />
             <Container style={{ backgroundColor: '#cfe8fc' }} >
                 <div  >
                     <form onSubmit={event => this.onSubmit(event)} >
@@ -175,23 +177,13 @@ class UpdatePasswordForm extends React.Component {
                     </form>
                 </div>
             </Container>
+                <Footer />
+            </div>
         )
     }
 
 }
 export default connect()(UpdatePasswordForm);
-
-const useStyles = makeStyles((theme) => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: 200,
-    },
-}));
 
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
