@@ -20,23 +20,23 @@ class AddLandlordForm extends React.Component {
         this.state = {
             landlordName: "",
             landlordAge: "",
-            flatList:[
+            flatList: [
                 {
                     flatCost: "",
                     flatAvailability: "",
-                    flatAddress: 
+                    flatAddress:
                     {
                         houseNo: "",
                         street: "",
                         city: "",
                         state: "",
                         country: "",
-                        pin: "" 
-                }
-                
+                        pin: ""
+                    }
                 }
             ]
         };
+
         this.validators = LandlordValidation;
         this.resetValidators();
     }
@@ -94,6 +94,7 @@ class AddLandlordForm extends React.Component {
         });
         return status;
     }
+
     handleLandlordChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState[inputPropName] = event.target.value;
@@ -103,14 +104,16 @@ class AddLandlordForm extends React.Component {
 
     handleFlatChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
-        newState.flatList.map(flatList=> flatList)[inputPropName] = event.target.value;
+        //newState.flatList.map(flatList => flatList)[inputPropName] = event.target.value;
+        newState.flatList[0][inputPropName] = event.target.value;
         this.setState(newState);
         this.updateValidators(inputPropName, event.target.value);
     }
 
     handleFlatAddressChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
-        newState.flatList.map(flatList=>flatList.flatAddress)[inputPropName] = event.target.value;
+        //newState.flatList.map(flatList => flatList.flatAddress)[inputPropName] = event.target.value;
+        newState.flatList[0].flatAddress[inputPropName] = event.target.value;
         this.setState(newState);
         this.updateValidators(inputPropName, event.target.value);
     }
@@ -128,8 +131,8 @@ class AddLandlordForm extends React.Component {
             {
                 landlordName: this.state.landlordName,
                 landlordAge: this.state.landlordAge,
-                flatCost:this.state.flatList.map(flatList => flatList.flatCost),
-                flatAvailabilty:this.state.flatList.map(flatList => flatList.flatAvailability),
+                flatCost: this.state.flatList.map(flatList => flatList.flatCost),
+                flatAvailabilty: this.state.flatList.map(flatList => flatList.flatAvailability),
                 houseNo: this.state.flatList.map(flatList => flatList.flatAddress.houseNo),
                 street: this.state.flatList.map(flatList => flatList.flatAddress.street),
                 city: this.state.flatList.map(flatList => flatList.flatAddress.city),
@@ -159,9 +162,9 @@ class AddLandlordForm extends React.Component {
                         <br />
                         <br />
                         <FormControl fullWidth>
-                        <FormLabel component="legend">Landlord Age</FormLabel>
+                            <FormLabel component="legend">Landlord Age</FormLabel>
                             <TextField
-                                required id="standard-number" label= " Landlord Age" type="number" placeholder="Enter Landlord Age"
+                                required id="standard-number" label=" Landlord Age" type="number" placeholder="Enter Landlord Age"
                                 value={this.state.landlordAge} onChange={event => this.handleLandlordChange(event, 'landlordAge')}
                             />
                         </FormControl>
@@ -174,7 +177,7 @@ class AddLandlordForm extends React.Component {
                         <br />
                         <FormControl fullWidth>
                             <TextField
-                                required id="standard-number" label= " Flat Cost" type="number" placeholder="Enter Flat Cost"
+                                required id="standard-number" label=" Flat Cost" type="number" placeholder="Enter Flat Cost"
                                 value={this.state.flatList.map(flatList => flatList.flatCost)} onChange={event => this.handleFlatChange(event, 'flatCost')}
                             />
                         </FormControl>
@@ -182,18 +185,27 @@ class AddLandlordForm extends React.Component {
                         <br />
                         <br />
                         <FormControl fullWidth>
-                        <FormControl fullWidth>
-                            <FormLabel component="legend">Flat Availability</FormLabel>
-                            <RadioGroup required aria-label="Flat Availability" name="Landlord"
-                                 value={this.state.flatList.map(flatList => flatList.flatAvailability)} onChange={event => this.handleFlatChange(event, 'flatAvailability')}>
-                                <FormControlLabel value="Y" control={<Radio required={true} />} label="Yes" />
-                                <FormControlLabel value="N" control={<Radio required={true} />} label="No" />
-                            </RadioGroup>
-                        </FormControl>
+                            <TextField
+                                required id="standard-textarea" label=" Flat Availabiliity" placeholder="Enter Flat Availability"
+                                value={this.state.flatList.map(flatList => flatList.flatAvailability)} onChange={event => this.handleFlatChange(event, 'flatAvailability')}
+                            />
                         </FormControl>
                         {this.displayValidationErrors('flatAvailability')}
                         <br />
                         <br />
+                        {/* <FormControl fullWidth>
+                            <FormControl fullWidth>
+                                <FormLabel component="legend">Flat Availability</FormLabel>
+                                <RadioGroup required aria-label="Flat Availability" name="Landlord"
+                                    value={this.state.flatList.map(flatList => flatList.flatAvailability)} onChange={event => this.handleFlatChange(event, 'flatAvailability')}>
+                                    <FormControlLabel value="Y" control={<Radio required={true} />} label="Yes" />
+                                    <FormControlLabel value="N" control={<Radio required={true} />} label="No" />
+                                </RadioGroup>
+                            </FormControl>
+                        </FormControl>
+                        {this.displayValidationErrors('flatAvailability')}
+                        <br />
+                        <br /> */}
                         <div>
                             <Box color="primary.main"> <h2>Flat Address :</h2></Box>
                         </div>

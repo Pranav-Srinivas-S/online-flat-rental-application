@@ -7,6 +7,7 @@ import Tenant from "../containers/modules/tenant/Tenant";
 import AboutUs from "../containers/common/AboutUs";
 import ContactUs from "../containers/common/ContactUs";
 import Login from "../containers/common/Login";
+import NotFound from "../containers/common/NotFound";
 import UserDashBoard from "../containers/modules/users/UserDashBoard";
 import AddUser from "../containers/modules/users/AddUser";
 import UpdateUser from "../containers/modules/users/UpdateUser";
@@ -15,6 +16,10 @@ import FlatDashBoard from '../containers/modules/flat/FlatDashboard';
 import updateFlatComoponent from '../containers/modules/flat/UpdateFlat';
 import Flat from '../containers/modules/flat/Flat';
 import AddFlat from '../containers/modules/flat/AddFlat';
+import LandlordDashBoard from "../containers/modules/landlord/LandlordDashBoard";
+import AddLandlord from "../containers/modules/landlord/AddLandlord";
+import UpdateLandlord from "../containers/modules/landlord/UpdateLandlord";
+import Landlord from "../containers/modules/landlord/Landlord";
 
 const HomeRouter = () => (
     <BrowserRouter>
@@ -40,6 +45,13 @@ const HomeRouter = () => (
                 <Route path={'/add-flat'} component={AddFlat} />
                 <Route path={'/update-flat/:flatId'} component={updateFlatComoponent} />
                 <Route path={'/view-flat/:flatId'} component={Flat} />
+
+                <Route exact path={`/landlord`} component={LandlordDashBoard} />
+                <Route exact path={`/add-landlord`} component={AddLandlord} />
+                <Route exact path={`/update-landlord/:landlordId`} component={UpdateLandlord} />
+                <Route exact path={`/view-landlord/:landlordId`} component={Landlord} />
+
+                <Route component={NotFound} />
 
             </Switch>
         </div>

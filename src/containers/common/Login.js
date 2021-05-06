@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import { FormControl, TextField } from '@material-ui/core';
 import Header from './Header';
 import Footer from './Footer';
+import { Redirect } from "react-router";
 
 export default class Login extends React.Component {
 
@@ -101,7 +102,7 @@ export default class Login extends React.Component {
                     <div className="row">
                         <div className="input-field col s12 signup-btn">
 
-                            <center><button type="button" className="btn btn-primary" onClick>SignUp</button></center>
+                            <center><button type="button" className="btn btn-primary" onClick={() => this.props.history.push('/add-user')} >SignUp</button></center>
 
                         </div>
                     </div>
