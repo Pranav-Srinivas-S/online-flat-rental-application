@@ -5,6 +5,8 @@ import flatReducer from "./flat/FlatReducer";
 import { getAllFlatsReducer, getFlatReducer} from "./flat/FlatReducerType";
 import UserReducer from "./UsersReducer";
 import { getAllUsersReducer, getUserReducer } from "./UserReducerType";
+import LandlordReducer from "./LandlordReducer";
+import { getAllLandlordsReducer, getLandlordReducer } from "./LandlordReducerType";
 
 const rootReducer = combineReducers({
     TenantReducer,
@@ -19,6 +21,10 @@ const rootReducer = combineReducers({
     UserReducer,
     allUsers : getAllUsersReducer,
     user : getUserReducer,
+
+    LandlordReducer,
+    allLandlords : getAllLandlordsReducer,
+    landlord : getLandlordReducer,
 
 });
 
