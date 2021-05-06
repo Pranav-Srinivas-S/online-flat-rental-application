@@ -1,4 +1,4 @@
-import {Button, Grid} from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import React from 'react';
 import FlatList from './FlatList'
@@ -14,15 +14,16 @@ function FlatDashBoard() {
     return (
         <div>
             <Header />
-                <Box color="primary.main"  component="div" display="inline"  > <h3>ADD FLAT DETAILS:
+            <br />
+            <Box color="primary.main" component="div" display="inline"  > <h3>ADD FLAT DETAILS:
         <Button style={style} onClick={() => history.push("/add-flat")}>Add Flat</Button></h3>
-                </Box>
-                <br/>
-                <Box color="primary.main" component="div" display="inline"  > <h3>LIST OF FLAT DETAILS:</h3></Box>
-                <Grid>
-                    <FlatList />
-                </Grid>
-                <Footer />
+            </Box>
+            <br />
+            <Box color="primary.main" component="div" display="inline"  > <h3>LIST OF FLAT DETAILS:</h3></Box>
+            <Grid>
+                <FlatList />
+            </Grid>
+            <Footer />
         </div>
 
     );

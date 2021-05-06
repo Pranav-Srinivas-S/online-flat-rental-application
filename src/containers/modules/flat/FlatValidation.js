@@ -1,30 +1,30 @@
 const FlatValidation = {
-    flatCost:{
-        rules:[
+    flatCost: {
+        rules: [
             {
-                test: (value) =>{
-                    return value>0;
+                test: (value) => {
+                    return value > 0;
                 },
-                message:'Flat Cost cannot be 0 or a negative number'
+                message: 'Flat Cost cannot be 0 or a negative number'
             },
         ],
-        errors:[],
-        valid:false,
-        state:'',
+        errors: [],
+        valid: false,
+        state: '',
     },
 
-    flatAvailability:{
-        rules:[
+    flatAvailability: {
+        rules: [
             {
-                test: (value) =>{
+                test: (value) => {
                     return value.length > 1;
                 },
-                message:'Flat Availability can only be yes/no',
+                message: 'Flat Availability can only be yes/no',
             },
         ],
-        errors:[],
-        valid:false,
-        state:'',
+        errors: [],
+        valid: false,
+        state: '',
     },
 
     houseNo: {

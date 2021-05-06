@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useDispatch, useSelector, connect } from 'react-redux';
-import {getAllFlats} from '../../../redux/actions/FlatActions';
+import { getAllFlats } from '../../../redux/actions/FlatActions';
 import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
-import { useHistory} from 'react-router';
-import {deleteFlat} from '../../../redux/actions/FlatActions';
+import { useHistory } from 'react-router';
+import { deleteFlat } from '../../../redux/actions/FlatActions';
 
 
 
@@ -29,13 +29,13 @@ const FlatList = () => {
 
   console.log("Flats :", flats);
 
-  const  deleteFlatById = async (flatId) => {
-    await axios.delete(`http://localhost:9191/api/ofr/delete-flat/${flatId}`).catch((err) => {console.log("Error" , err);});
-   dispatch(deleteFlat(flatId));
-   alert("Deleted Successfully");
-   fetchFlats();
-   history.push('/flat');
- }
+  const deleteFlatById = async (flatId) => {
+    await axios.delete(`http://localhost:9191/api/ofr/delete-flat/${flatId}`).catch((err) => { console.log("Error", err); });
+    dispatch(deleteFlat(flatId));
+    alert("Deleted Successfully");
+    fetchFlats();
+    history.push('/flat');
+  }
 
   return (
     <div className="">
