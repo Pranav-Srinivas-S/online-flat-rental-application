@@ -43,7 +43,7 @@ const rootReducer = combineReducers({
 });
     FlatBookingReducer,
     allFlatBookings : getAllFlatBookingsReducer,
-    flatBooking : getFlatBookingReducer
+    flatBooking : getFlatBookingReducer,
 
 });
 

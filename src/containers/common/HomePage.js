@@ -193,6 +193,7 @@ function HomePage() {
             <br />
             <Footer />
         </div>
+        </div>
     )
 }
 
