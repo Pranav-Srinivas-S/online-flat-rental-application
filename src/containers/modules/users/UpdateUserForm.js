@@ -122,7 +122,7 @@ class UpdateUserForm extends React.Component {
                 <div  >
                     <form onSubmit={event => this.onSubmit(event)} >
                         <div>
-                            <Box color="primary.main" p={1}> <h2>User Details :</h2></Box>
+                            <Box color="primary.main" p={1}> <h2>Update User Details:</h2></Box>
                         </div>
                         <br />
                         <FormControl fullWidth>
@@ -149,7 +149,6 @@ class UpdateUserForm extends React.Component {
                                 required id="standard-textarea" label="Password" type="password" placeholder="Enter Password"
                                 value={this.state.passsword} onChange={event => this.handleUserChange(event, 'password')} />
                         </FormControl>
-                        {this.displayValidationErrors('password')}
                         <br />
                         <br />
                         <FormControl fullWidth>
@@ -173,6 +172,7 @@ class UpdateUserForm extends React.Component {
     }
 
 }
+
 export default connect()(UpdateUserForm);
 
 const useStyles = makeStyles((theme) => ({

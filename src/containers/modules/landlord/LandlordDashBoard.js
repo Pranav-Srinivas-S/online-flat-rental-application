@@ -1,24 +1,24 @@
 import { Button, Grid } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import React from 'react';
-import UserList from './UserList';
+import LandlordList from './LandlordList';
 import Box from '@material-ui/core/Box';
 import Header from '../../common/Header';
 import Footer from '../../common/Footer';
 
-function UserDashBoard() {
+function LandlordDashBoard() {
 
     const history = useHistory();
     return (
         <div>
             <Header />
-            <Box color="primary.main" component="div" display="inline" > <h3>Add User Details:
-                <Button style={style} onClick={() => history.push("/add-user")}>Add User</Button></h3>
+            <Box color="primary.main" component="div" display="inline" > <h3>Add Landlord Detail:
+                <Button style={style} onClick={() => history.push("/add-landlord")}>Add Landlord</Button></h3>
             </Box>
             <br />
-            <Box color="primary.main" component="div"   > <h3>List of Users:</h3></Box>
+            <Box color="primary.main" component="div"   > <h3>List of Landlords:</h3></Box>
             <Grid   >
-                <UserList />
+                <LandlordList />
             </Grid>
             <Footer />
         </div>
@@ -36,4 +36,4 @@ const style = {
     marginLeft: "10px",
 };
 
-export default UserDashBoard;
+export default LandlordDashBoard;

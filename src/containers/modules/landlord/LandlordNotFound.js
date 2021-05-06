@@ -1,13 +1,12 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const UserNotFound = () => (
+const LandlordNotFound = () => (
     <div class="not-found">
         <h1 class="display-1">
-            User Page Not Found!
+            Landlord Page Not Found!
             </h1>
     </div>
 );
 
-export default UserNotFound;
-
+export default LandlordNotFound;

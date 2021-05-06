@@ -11,8 +11,8 @@ function App() {
     <div>
       <Provider store={store()}>
         {/* <UserRouter />  */}
+        {/* <LandlordRouter />  */}
         <HomeRouter />
-        <FlatRouter />
         {/* <TenantRouter /> */}
       </Provider>
     </div>
