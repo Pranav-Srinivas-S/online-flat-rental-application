@@ -172,6 +172,7 @@ class UpdateUserForm extends React.Component {
     }
 
 }
+
 export default connect()(UpdateUserForm);
 
 const useStyles = makeStyles((theme) => ({
@@ -200,4 +201,3 @@ const style = {
 const errorStyle = {
     color: 'red'
 };
-
