@@ -73,12 +73,12 @@ const LandlordValidation = {
         rules: [
             {
                 test: /^[a-zA-Z ]*$/,
-                message: ' ',
+                message: 'Flat Availability canbe yes/no',
             },
         ],
         errors: [],
         valid: false,
-        state: ''
+        state: '',
     },
     houseNo: {
         rules: [

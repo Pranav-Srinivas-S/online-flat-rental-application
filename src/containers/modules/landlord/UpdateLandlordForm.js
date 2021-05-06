@@ -20,7 +20,7 @@ class UpdateLandlordForm extends React.Component {
             landlordId: "",
             landlordName: "",
             landlordAge: "",
-            flatList:[
+            flatList:
                 {
                     flatCost: "",
                     flatAvailability: "",
@@ -35,7 +35,7 @@ class UpdateLandlordForm extends React.Component {
                 }
                 
                 }
-            ]
+            
         };
         this.validators = LandlordValidation;
         this.resetValidators();
@@ -103,14 +103,14 @@ class UpdateLandlordForm extends React.Component {
     }
     handleFlatChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
-        newState.flatList.map(flatList=> flatList)[inputPropName] = event.target.value;
+        newState.flatList[inputPropName] = event.target.value;
         this.setState(newState);
         this.updateValidators(inputPropName, event.target.value);
     }
 
     handleFlatAddressChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
-        newState.flatList.map(flatList=>flatList.flatAddress)[inputPropName] = event.target.value;
+        newState.flatList.flatAddress[inputPropName] = event.target.value;
         this.setState(newState);
         this.updateValidators(inputPropName, event.target.value);
     }
@@ -132,16 +132,17 @@ class UpdateLandlordForm extends React.Component {
         event.preventDefault();
         this.props.onSubmitLandlord(
             {
+                landlordId: this.state.landlordId,
                 landlordName: this.state.landlordName,
                 landlordAge: this.state.landlordAge,
-                flatCost:this.state.flatList.map(flatList => flatList.flatCost),
-                flatAvailabilty:this.state.flatList.map(flatList => flatList.flatAvailability),
-                houseNo: this.state.flatList.map(flatList => flatList.flatAddress.houseNo),
-                street: this.state.flatList.map(flatList => flatList.flatAddress.street),
-                city: this.state.flatList.map(flatList => flatList.flatAddress.city),
-                state: this.state.flatList.map(flatList => flatList.flatAddress.state),
-                pin: this.state.flatList.map(flatList => flatList.flatAddress.pin),
-                country: this.state.flatList.map(flatList => flatList.flatAddress.country),
+                flatCost:this.state.flatList.flatCost,
+                flatAvailability:this.state.flatList.flatAvailability,
+                houseNo: this.state.flatList.flatAddress.houseNo,
+                street: this.state.flatList.flatAddress.street,
+                city: this.state.flatList.flatAddress.city,
+                state: this.state.flatList.flatAddress.state,
+                pin: this.state.flatList.flatAddress.pin,
+                country: this.state.flatList.flatAddress.country,
             }
         );
     }
@@ -157,6 +158,15 @@ class UpdateLandlordForm extends React.Component {
                             <Box color="primary.main" p={1}> <h2>Landlord Details :</h2></Box>
                         </div>
                         <br />
+                        <FormControl fullWidth>
+                            <FormLabel component="legend">Landlord ID</FormLabel>
+                            <TextField
+                                required id="standard-number" label="Landlord ID" type="number" placeholder="Enter Landlord ID"
+                                value={this.state.landlordId} onChange={event => this.onLandlordIdChange(event, 'landlordId')}
+                            />
+                        </FormControl>
+                        <br/>
+                        <br/>
                         <FormControl fullWidth>
                             <FormLabel component="legend">Landlord Name</FormLabel>
                             <TextField
@@ -182,8 +192,8 @@ class UpdateLandlordForm extends React.Component {
                         <br />
                         <FormControl fullWidth>
                             <TextField
-                                required id="standard-number" label= " Flat Cost" type="number" placeholder="Enter Flat Cost"
-                                value={this.state.flatList.map(flatList => flatList.flatCost)} onChange={event => this.handleFlatChange(event, 'flatCost')}
+                                required id="standard-number" label= " Flat Cost"   type="number" placeholder="Enter Flat Cost"
+                                value={this.state.flatList.flatCost} onChange={event => this.handleFlatChange(event, 'flatCost')}
                             />
                         </FormControl>
                         {this.displayValidationErrors('flatCost')}
@@ -193,9 +203,9 @@ class UpdateLandlordForm extends React.Component {
                         <FormControl fullWidth>
                             <FormLabel component="legend">Flat Availability</FormLabel>
                             <RadioGroup required aria-label="Flat Availability" name="Landlord"
-                                 value={this.state.flatList.map(flatList => flatList.flatAvailability)} onChange={event => this.handleFlatChange(event, 'flatAvailability')}>
-                                <FormControlLabel value="Y" control={<Radio required={true} />} label="Yes" />
-                                <FormControlLabel value="N" control={<Radio required={true} />} label="No" />
+                                 value={this.state.flatList.flatAvailability} onChange={event => this.handleFlatChange(event, 'flatAvailability')}>
+                                <FormControlLabel value="Yes" control={<Radio required={true} />} label="Yes" />
+                                <FormControlLabel value="No" control={<Radio required={true} />} label="No" />
                             </RadioGroup>
                         </FormControl>
                         </FormControl>
@@ -208,7 +218,7 @@ class UpdateLandlordForm extends React.Component {
                         <FormControl fullWidth >
                             <TextField
                                 required id="standard-number" label="House Number" type="number" placeholder="Enter House Number"
-                                value={this.state.flatList.map(flatList => flatList.flatAddress.houseNo)} onChange={event => this.handleFlatAddressChange(event, 'houseNo')} />
+                                value={this.state.flatList.flatAddress.houseNo} onChange={event => this.handleFlatAddressChange(event, 'houseNo')} />
                         </FormControl>
                         {this.displayValidationErrors('houseNo')}
                         <br />
@@ -216,7 +226,7 @@ class UpdateLandlordForm extends React.Component {
                         <FormControl fullWidth>
                             <TextField
                                 required id="standard-textarea" label="Street" placeholder="Enter Street"
-                                value={this.state.flatList.map(flatList => flatList.flatAddress.street)} onChange={event => this.handleFlatAddressChange(event, 'street')} />
+                                value={this.state.flatList.flatAddress.street} onChange={event => this.handleFlatAddressChange(event, 'street')} />
                         </FormControl>
                         {this.displayValidationErrors('street')}
                         <br />
@@ -224,7 +234,7 @@ class UpdateLandlordForm extends React.Component {
                         <FormControl fullWidth>
                             <TextField
                                 required id="standard-textarea" label="City" placeholder="Enter City"
-                                value={this.state.flatList.map(flatList => flatList.flatAddress.city)} onChange={event => this.handleFlatAddressChange(event, 'city')} />
+                                value={this.state.flatList.flatAddress.city} onChange={event => this.handleFlatAddressChange(event, 'city')} />
                         </FormControl>
                         {this.displayValidationErrors('city')}
                         <br />
@@ -232,7 +242,7 @@ class UpdateLandlordForm extends React.Component {
                         <FormControl fullWidth>
                             <TextField
                                 required id="standard-textarea" label="State" placeholder="Enter State"
-                                value={this.state.flatList.map(flatList => flatList.flatAddress.state)} onChange={event => this.handleFlatAddressChange(event, 'state')} />
+                                value={this.state.flatList.flatAddress.state} onChange={event => this.handleFlatAddressChange(event, 'state')} />
                         </FormControl>
                         {this.displayValidationErrors('state')}
                         <br />
@@ -240,7 +250,7 @@ class UpdateLandlordForm extends React.Component {
                         <FormControl fullWidth>
                             <TextField
                                 required id="standard-number" label="Pin Code" type="number" placeholder="Enter Pin Code"
-                                value={this.state.flatList.map(flatList => flatList.flatAddress.pin)} onChange={event => this.handleFlatAddressChange(event, 'pin')}
+                                value={this.state.flatList.flatAddress.pin} onChange={event => this.handleFlatAddressChange(event, 'pin')}
                             />
                         </FormControl>
                         {this.displayValidationErrors('pin')}
@@ -249,7 +259,7 @@ class UpdateLandlordForm extends React.Component {
                         <FormControl fullWidth>
                             <TextField
                                 required id="standard-textarea" label="Country" placeholder="Enter Country"
-                                value={this.state.flatList.map(flatList => flatList.flatAddress.country)} onChange={event => this.handleFlatAddressChange(event, 'country')} />
+                                value={this.state.flatList.flatAddress.country} onChange={event => this.handleFlatAddressChange(event, 'country')} />
                         </FormControl>
                         {this.displayValidationErrors('country')}
                         <br />

@@ -3,7 +3,9 @@ import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import { connect } from 'react-redux';
+import { updateLandlord } from '../../../redux/actions/LandlordActions'; 
 import UpdateLandlordForm from './UpdateLandlordForm';
+
 
 const UpdateLandlord = (props) => (
   <div >
@@ -12,7 +14,7 @@ const UpdateLandlord = (props) => (
       <Paper elevation={3} >
         <UpdateLandlordForm
           onSubmitLandlord={(state) => {
-            props.dispatch(UpdateLandlord(state));
+            props.dispatch(updateLandlord(state));
             alert("Updated Successfully");
             props.history.push('/landlord');
           }} />

@@ -6,6 +6,15 @@ import Box from '@material-ui/core/Box';
 import { Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+
+/************************************************************************************
+     * Component: AddLandlord
+     * Description: It is used to navigate to AddLandlordForm
+     * Created By: NITHISHA K A
+     * Created Date:  02-04-2021 
+ ************************************************************************************/
+
+
 const AddLandlord = (props) => (
   <div >
     <div className={useStyles.root}>
@@ -22,6 +31,14 @@ const AddLandlord = (props) => (
     </div>
   </div>
 );
+
+
+/************************************************************************************
+   * property: style 
+   * Description: It is used for AddLandlord Styling
+   * Created By: NITHISHA K A
+   * Created Date:  02-05-2021 
+ ************************************************************************************/
 
 const useStyles = makeStyles((theme) => ({
   root: {

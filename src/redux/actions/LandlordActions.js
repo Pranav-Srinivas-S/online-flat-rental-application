@@ -87,7 +87,7 @@ export const updateLandlord = (updatedLandlord = {
            
         };
         console.log(landlord);
-        return axios.put('/update-landlord', landlord)
+        return axios.put(`/update-landlord`, landlord)
             .then(() => {
                 dispatch(updateLandlordSuccess(landlord));
             })
