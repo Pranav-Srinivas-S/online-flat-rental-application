@@ -30,34 +30,33 @@ export const addFlatBooking = (flatBookingData = {
         const flatBooking = {
             bookingFromDate: flatBookingData.bookingFromDate,
             bookingToDate: flatBookingData.bookingToDate,
-            flatCost:flatBookingData.flatCost,
             flat: {
                 flatCost:flatBookingData.flatCost,
                 flatAvailability:flatBookingData.flatAvailability,
-                flatAdderss:{
-                    fhouseNo: flatBookingData.fhouseNo,
-                    fstreet: flatBookingData.fstreet,
-                    fcity: flatBookingData.fcity,
-                    fstate: flatBookingData.fstate,
-                    fpin: flatBookingData.fpin,
-                    fcountry: flatBookingData.fcountry
-                }
+                flatAddress:{
+                    houseNo: flatBookingData.fhouseNo,
+                    street: flatBookingData.fstreet,
+                    city: flatBookingData.fcity,
+                    state: flatBookingData.fstate,
+                    pin: flatBookingData.fpin,
+                    country: flatBookingData.fcountry
+                },
            },
            tenant: {
                tenantName: flatBookingData.tenantName,
                tenantAge: flatBookingData.tenantAge,
                tenantAddress: {
-                thouseNo: flatBookingData.thouseNo,
-                tstreet: flatBookingData.tstreet,
-                tcity: flatBookingData.tcity,
-                tstate: flatBookingData.tstate,
-                tpin: flatBookingData.tpin,
-                tcountry: flatBookingData.tcountry
-               }
+                houseNo: flatBookingData.thouseNo,
+                street: flatBookingData.tstreet,
+                city: flatBookingData.tcity,
+                state: flatBookingData.tstate,
+                pin: flatBookingData.tpin,
+                country: flatBookingData.tcountry
+               },
            }
         };
 
-        console.log(flatBooking);
+        console.log("this is action",flatBooking);
         return axios.post('/add-flatBooking', flatBooking)
             .then(() => {
                 dispatch(addFlatBookingSuccess(flatBooking));
@@ -104,29 +103,29 @@ export const updateFlatBooking = (updatedFlatBooking= {
                 flatCost:updatedFlatBooking.flatCost,
                 flatAvailability:updatedFlatBooking.flatAvailability,
                 flatAdderss:{
-                    fhouseNo: updatedFlatBooking.fhouseNo,
-                    fstreet: updatedFlatBooking.fstreet,
-                    fcity: updatedFlatBooking.fcity,
-                    fstate: updatedFlatBooking.fstate,
-                    fpin: updatedFlatBooking.fpin,
-                    fcountry: updatedFlatBooking.fcountry
+                    houseNo: updatedFlatBooking.fhouseNo,
+                    street: updatedFlatBooking.fstreet,
+                    city: updatedFlatBooking.fcity,
+                    state: updatedFlatBooking.fstate,
+                    pin: updatedFlatBooking.fpin,
+                    country: updatedFlatBooking.fcountry
                 }
            },
            tenant: {
                tenantName: updatedFlatBooking.tenantName,
                tenantAge: updatedFlatBooking.tenantAge,
                tenantAddress: {
-                thouseNo: updatedFlatBooking.thouseNo,
-                tstreet: updatedFlatBooking.tstreet,
-                tcity: updatedFlatBooking.tcity,
-                tstate: updatedFlatBooking.tstate,
-                tpin: updatedFlatBooking.tpin,
-                tcountry: updatedFlatBooking.tcountry
+                houseNo: updatedFlatBooking.thouseNo,
+                street: updatedFlatBooking.tstreet,
+                city: updatedFlatBooking.tcity,
+                state: updatedFlatBooking.tstate,
+                pin: updatedFlatBooking.tpin,
+                country: updatedFlatBooking.tcountry
                }
            }
         };
         console.log(flatBooking);
-        return axios.post('/update-flatBooking', flatBooking)
+        return axios.put('/update-flatBooking', flatBooking)
             .then(() => {
                 dispatch(updateFlatBookingSuccess(flatBooking));
             })

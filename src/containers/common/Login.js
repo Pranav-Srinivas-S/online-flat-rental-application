@@ -4,7 +4,6 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { FormControl, TextField } from '@material-ui/core';
-import Header from './Header';
 import Footer from './Footer';
 import { Redirect } from "react-router";
 
@@ -53,11 +52,11 @@ export default class Login extends React.Component {
     render() {
         return (
             <div>
-                <Header />
             <div className="container">
             <br />
             <h1 className="display-4 text-info">Login</h1>
                 <br />
+                <br/>
                 <form onSubmit={(event) => this.handleSubmit(event)} >
                     <div id="error">{this.state.error}</div>
                     <div className="form-group">
@@ -101,7 +100,7 @@ export default class Login extends React.Component {
                     
                     <div className="row">
                             <div className="input-field col s12 signup-btn">
-                                <center><button className="btn btn-danger" type="submit">Update Password</button></center>
+                                <center><button className="btn btn-danger" type="button" onClick={() => this.props.history.push('/update-password')}>Update Password</button></center>
                             </div>
                         </div>
                         <br/>
@@ -117,7 +116,7 @@ export default class Login extends React.Component {
                         <div className="input-field col s12 signup-btn">
                         </div>
                         <br/><br/>
-                        
+                        <br/><br/>
                     </div>
                     
                     {/* <div>
@@ -163,7 +162,7 @@ export default class Login extends React.Component {
                         <button type="button">Sign UP</button>
                     </Link>            
                 </form> */}
-            </div>
+                </div>
                 <Footer />
             </div>
         );

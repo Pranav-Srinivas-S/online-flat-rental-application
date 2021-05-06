@@ -15,7 +15,7 @@ const UpdatePassword = (props) => (
           onSubmitUser={(state) => {
             props.dispatch(updatePassword(state));
             alert("Updated Successfully");
-            props.history.push('/user');
+            props.history.push('/');
           }} />
       </Paper>
     </div>
