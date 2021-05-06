@@ -128,8 +128,7 @@ class AddFlatForm extends React.Component {
      * Created Date:  02-05-2021 
  ************************************************************************************/
 
-     handleTenantChange(event, inputPropName) {
-    handleFlatChange(event, inputPropName) {
+     handleFlatChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState[inputPropName] = event.target.value;
         this.setState(newState);

@@ -23,7 +23,6 @@ function FlatDashBoard() {
             <br />
             <Box color="primary.main" component="div" display="inline"  > <h3>ADD FLAT DETAILS:
         <Button style={style} onClick={() => history.push("/add-flat")}>Add Flat</Button></h3>
-        <Button style={style} onClick={() => history.push("/filter-by-cost-form")}> Filter By Cost</Button>
             </Box>
 
             <br />
