@@ -11,6 +11,13 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 
+/************************************************************************************
+     * Component: AddUserForm
+     * Description: It is a Form to add User Details
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  02-04-2021 
+ ************************************************************************************/
+
 class AddUserForm extends React.Component {
 
 
@@ -25,6 +32,14 @@ class AddUserForm extends React.Component {
         this.validators = UserValidation;
         this.resetValidators();
     }
+
+    /************************************************************************************
+     * Function: updateValidators
+     * Description: It is used for User Validations 
+     * Created By:  Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
+
 
     updateValidators = (fieldName, value) => {
         this.validators[fieldName].errors = [];
@@ -45,6 +60,13 @@ class AddUserForm extends React.Component {
         });
     }
 
+     /************************************************************************************
+     * Function: resetValidators
+     * Description: It is used for reset User Validations 
+     * Created By:  Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
+
     resetValidators = () => {
         Object.keys(this.validators).forEach((fieldName) => {
             this.validators[fieldName].errors = [];
@@ -52,6 +74,14 @@ class AddUserForm extends React.Component {
             this.validators[fieldName].valid = false;
         });
     }
+
+    /************************************************************************************
+     * Function: displayValidators
+     * Description: It is used for display User Validations 
+     * Created By:  Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
+
 
     displayValidationErrors = (fieldName) => {
         const validator = this.validators[fieldName];
@@ -70,6 +100,14 @@ class AddUserForm extends React.Component {
         return result;
     }
 
+    /************************************************************************************
+     * Function: isFormValid
+     * Description: It is used for validate if Form is Filled or not 
+     * Created By:  Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
+
+
     isFormValid = () => {
         let status = true;
         Object.keys(this.validators).forEach((field) => {
@@ -80,6 +118,13 @@ class AddUserForm extends React.Component {
         return status;
     }
 
+    /************************************************************************************
+     * Function: handleUserChange
+     * Description: It is used to handle User Property inputs 
+     * Created By:  Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
+
     handleUserChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState[inputPropName] = event.target.value;
@@ -87,11 +132,23 @@ class AddUserForm extends React.Component {
         this.updateValidators(inputPropName, event.target.value);
     }
 
-
+ /************************************************************************************
+     * Function: onCancel
+     * Description: It is used to navigate back from Add User Form 
+     * Created By:Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
 
     onCancel = () => {
         this.props.history.push('/user');
     }
+
+    /************************************************************************************
+     * Function: onSubmit
+     * Description: It is used to Submit Add User Form 
+     * Created By:Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
 
     onSubmit = event => {
 
@@ -109,7 +166,12 @@ class AddUserForm extends React.Component {
 
     }
 
-
+/************************************************************************************
+     * Return: Add User Form
+     * Description: It is used to display input fields for entering User Details
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
     
     render() {
         return (
@@ -185,6 +247,13 @@ const style = {
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     marginLeft: "10px",
 };
+
+/************************************************************************************
+   * property: errorStyle 
+   * Description: It is used for Add User Form Validation Message Styling
+   * Created By:Ravuru Sathya Naga Sivanandana Sai Bharath
+   * Created Date:  02-05-2021 
+ ************************************************************************************/
 
 const errorStyle = {
     color: 'red'

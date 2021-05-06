@@ -1,3 +1,10 @@
+/************************************************************************************
+     * Component:FlatValidations
+     * Description: It is used to perform custtom validations for Flat Form
+     * Created By:AJITHKUMAR A
+     * Created Date:  03-04-2021 
+ ************************************************************************************/
+
 const FlatValidation = {
     flatCost: {
         rules: [

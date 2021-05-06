@@ -8,6 +8,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Footer from '../../common/Footer';
 import Header from '../../common/Header';
 
+/************************************************************************************
+     * Component: UpdateUser
+     * Description: It is used to navigate to UpdateUserForm
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  03-04-2021 
+ ************************************************************************************/
+
 const UpdateUser = (props) => (
   <div >
     <Header/>
@@ -26,6 +33,12 @@ const UpdateUser = (props) => (
   </div>
 );
 
+/************************************************************************************
+   * property: style 
+   * Description: It is used for UpdateUser Styling
+   * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+   * Created Date:  02-05-2021 
+ ************************************************************************************/
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',

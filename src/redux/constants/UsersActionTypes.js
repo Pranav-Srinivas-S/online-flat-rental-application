@@ -1,3 +1,9 @@
+/************************************************************************************
+   * Property: UserActionTypes 
+   * Description: Constants for User Actions
+   * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
 export const UserActionTypes = {
 
     ADD_USER: "ADD_USER",

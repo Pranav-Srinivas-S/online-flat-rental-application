@@ -155,7 +155,7 @@ export const getTenantSuccess = (tenant) => {
 };
 
 /************************************************************************************
-   * Function: deleteeTenant
+   * Function: getTenant
    * Description: Service for getTenantSuccess Action
    * Created By: PRANAV SRINIVAS S
    * Created Date:  04-05-2021 

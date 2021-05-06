@@ -8,6 +8,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import Header from '../../common/Header';
 import Footer from '../../common/Footer';
 
+/************************************************************************************
+     * Component: AddFlat
+     * Description: It is used to navigate to AddFlatForm
+     * Created By: AJITHKUMAR A
+     * Created Date:  02-04-2021 
+ ************************************************************************************/
+
+
 const AddFlat = (props) => (
   <div>
     <Header />
@@ -25,6 +33,12 @@ const AddFlat = (props) => (
   </div>
 );
 
+/************************************************************************************
+   * property: style 
+   * Description: It is used for AddFalt Styling
+   * Created By:AJITHKUMAR A
+   * Created Date:  02-05-2021 
+ ************************************************************************************/
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
