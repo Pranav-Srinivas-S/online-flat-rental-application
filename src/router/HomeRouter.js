@@ -12,6 +12,7 @@ import UserDashBoard from "../containers/modules/users/UserDashBoard";
 import AddUser from "../containers/modules/users/AddUser";
 import UpdateUser from "../containers/modules/users/UpdateUser";
 import User from "../containers/modules/users/User";
+import UpdatePassword from "../containers/modules/users/UpdatePassword";
 import FlatDashBoard from '../containers/modules/flat/FlatDashboard';
 import updateFlatComoponent from '../containers/modules/flat/UpdateFlat';
 import Flat from '../containers/modules/flat/Flat';
@@ -50,6 +51,7 @@ const HomeRouter = () => (
                 <Route path={'/add-user'} component={AddUser} />
                 <Route path={'/update-user/:userId'} component={UpdateUser} />
                 <Route path={'/view-user/:userId'} component={User} />
+                <Route path={`/update-password`} component={UpdatePassword} />
 
                 <Route path={'/flat'} component={FlatDashBoard} />
                 <Route path={'/add-flat'} component={AddFlat} />

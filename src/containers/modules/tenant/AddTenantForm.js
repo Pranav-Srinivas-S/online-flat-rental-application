@@ -285,7 +285,7 @@ export default withRouter(AddTenantForm);
    * Description: It is used for Add Tenant Form Styling
    * Created By: PRANAV SRINIVAS S
    * Created Date:  02-05-2021 
- ************************************************************************************/
+ ************************************s************************************************/
 
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',

@@ -13,7 +13,7 @@ export default class Header extends Component {
         return (
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand" href="/">
-                    <p><h2 class="ui red inverted header">Online Flat Rental Application</h2></p>
+                    <p><h2 class="ui orange inverted header">ONLINE FLAT RENTAL</h2></p>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@ export default class Header extends Component {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item ">
-                            <a class="nav-link" href="/" ><span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/homepage" ><span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="/homepage" >Home<span class="sr-only">(current)</span></a>
