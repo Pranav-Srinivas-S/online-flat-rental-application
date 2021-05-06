@@ -17,8 +17,8 @@ import { withRouter } from "react-router-dom";
             bookingFromDate: "",
             bookingToDate: "",
             flatBookingDetails: {
-                    flatCost:flatBookingData.flatCost,
-                    flatAvailability:flatBookingData.flatAvailability,
+                flatCost:"",
+                flatAvailability:"",
                 houseNo: "",
                 street: "",
                 city: "",
@@ -136,17 +136,18 @@ import { withRouter } from "react-router-dom";
                         </div>
                         <br />
                         <FormControl fullWidth>
-                            <FormLabel component="legend">Booing From Date</FormLabel>
+                            <FormLabel component="legend">Booking From Date</FormLabel>
                             <TextField
-                                required id="standard-number" label="Booking From Date" placeholder="Enter Booking From Date"
+                                required id="date"  type="date" placeholder="Enter Booking From Date"
                                 value={this.state.bookingFromDate} onChange={event => this.handleFlatBookingChange(event, 'bookingFromDate')} /> 
                         </FormControl>
-                        <br />
+                        {this.displayValidationErrors('bookingFromDate')}
+                            <br />
                         <br />
                         <FormControl fullWidth>
                             <FormLabel component="legend">Booking To Dtae</FormLabel>
                             <TextField
-                                required id="standard-textarea" label="Booking TO Date" type="number" placeholder="Enter Booking To Date"
+                                 required id="date"  type="date" placeholder="Enter Booking To Date"
                                 value={this.state.bookingToDate} onChange={event => this.handleFlatBookingChange(event, 'bookingToDate')}
                                  />
                         </FormControl>
@@ -154,8 +155,27 @@ import { withRouter } from "react-router-dom";
                         <br />
                         <br />
                         <div>
-                            <Box color="primary.main"> <h2>flat Booking Availability :</h2></Box>
+                            <Box color="primary.main"> <h2>flat Booking Details :</h2></Box>
                         </div>
+                        <FormControl fullWidth >
+                            <TextField
+                                required id="standard-textarea" label="flat Cost" placeholder="Enter flat Cost"
+                                value={this.state.flatBookingDetails.flatCost} onChange={event => this.handleFlatBookingDetailsChange(event, 'flatCost')} />
+                        </FormControl>
+                        {this.displayValidationErrors('flatCost')}
+
+                        <FormControl fullWidth >
+                            <TextField
+                                required id="standard-textarea" label="flat Availability" placeholder="Enter flat Availability"
+                                value={this.state.flatBookingDetails.flatAvailability} onChange={event => this.handleFlatBookingDetailsChange(event, 'flatAvailability')} />
+                        </FormControl>
+                        {this.displayValidationErrors('flatAvailability')}
+
+
+
+
+
+
                         <FormControl fullWidth >
                             <TextField
                                 required id="standard-textarea" label="House Number" placeholder="Enter House Number"
@@ -206,7 +226,7 @@ import { withRouter } from "react-router-dom";
                         {this.displayValidationErrors('country')}
                         <br />
                         <br />
-                        <Button style={style} type="submit" className={`btn btn-primary btn-block ${this.isFormValid() ? '' : 'disabled'}`}>Add FlatBooking</Button>
+                        <Button style={style} type="submit" className={`btn btn-primary  ${this.isFormValid() ? '' : 'disabled'}`}>Add FlatBooking</Button>
                         <Button style={style} onClick={this.onCancel}>Cancel</Button>
                     </form>
                 </div>

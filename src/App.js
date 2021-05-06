@@ -1,16 +1,20 @@
 import './App.css';
 import store from './redux/store/ConfigureStore';
-import FlatBookingRouter from './router/flatBooking/FlatBookingRouter';
+
 import { Provider } from 'react-redux';
+import HomeRouter from './router/HomeRouter';
 
 function App() {
   return (
     <div>
       <Provider store={store()}>
-        <FlatBookingRouter />
+        {/* <FlatBookingRouter /> */}
+        {/* <UserRouter />  */}
+        <HomeRouter />
       </Provider>
     </div>
   );
 }
 
 export default App;
+

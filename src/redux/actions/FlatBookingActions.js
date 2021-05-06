@@ -15,23 +15,24 @@ export const addFlatBooking = (flatBookingData = {
     state: '',
     pin: '',
     country: '',
-    flatCost: "",
-    flatAvailabilty: "",
+    flatCost: '',
+    flatAvailabilty: ''
 }) => {
     return (dispatch) => {
         const flatBooking = {
             bookingFromDate: flatBookingData.bookingFromDate,
             bookingToDate: flatBookingData.bookingToDate,
+            flatCost:flatBookingData.flatCost,
             flatBookingDetails: {
                 flatCost:flatBookingData.flatCost,
                 flatAvailability:flatBookingData.flatAvailability,
                 houseNo: flatBookingData.houseNo,
-                street: flatbookingData.street,
+                street: flatBookingData.street,
                 city: flatBookingData.city,
                 state: flatBookingData.state,
                 pin: flatBookingData.pin,
                 country: flatBookingData.country
-            },
+           },
         };
         console.log(flatBooking);
         return axios.post('/add-flatBooking', flatBooking)
@@ -44,9 +45,9 @@ export const addFlatBooking = (flatBookingData = {
     };
 };
 
-const updateFlatBookingSuccess = (updatedFlatBooking) => ({
+const updateFlatBookingSuccess = (flatBooking) => ({
     type: FlatBookingActionTypes.UPDATE_FLATBOOKING,
-    updatedFlatBooking
+    flatBooking
 });
 
 export const updateFlatBooking = (updatedFlatBooking= {
@@ -58,23 +59,23 @@ export const updateFlatBooking = (updatedFlatBooking= {
     state: '',
     pin: '',
     country: '',
-    flatCost: "",
-    flatAvailabilty: "",
+    flatCost: '',
+    flatAvailabilty: ''
 }) => {
     return (dispatch) => {
         const flatBooking = {
-            bookingFromDate: flatBookingData.bookingFromDate,
-            bookingToDate: flatBookingData.bookingToDate,
+            bookingFromDate: updatedFlatBooking.bookingFromDate,
+            bookingToDate: updatedFlatBooking.bookingToDate,
             FlatBookingDetails: {
-                flatCost:flatBookingData.flatCost,
-                flatAvailability:flatBookingData.flatAvailability,
-                houseNo: flatBookingData.houseNo,
-                street: flatbookingData.street,
-                city: flatBookingData.city,
-                state: flatBookingData.state,
-                pin: flatBookingData.pin,
-                country: flatBookingData.country
-            },
+                flatCost:updatedFlatBooking.flatCost,
+                flatAvailability:updatedFlatBooking.flatAvailability,
+                houseNo: updatedFlatBooking.houseNo,
+                street: updatedFlatBooking.street,
+                city: updatedFlatBooking.city,
+                state: updatedFlatBooking.state,
+                pin: updatedFlatBooking.pin,
+                country: updatedFlatBooking.country
+            }
         };
         console.log(flatBooking);
         return axios.post('/update-flatBooking', flatBooking)

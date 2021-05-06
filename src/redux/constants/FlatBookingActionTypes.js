@@ -6,4 +6,5 @@ export const FlatBookingActionTypes = {
     GET_FLATBOOKING  : "GET_FLATBOOKING ",
     GET_ALL_FLATBOOKINGS : "GET_ALL_FLATBOOKINGS"
     
+    
 }

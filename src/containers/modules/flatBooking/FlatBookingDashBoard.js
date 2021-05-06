@@ -22,6 +22,7 @@ function FlatBookingDashBoard() {
                     <FlatBookingList />
                 </Grid>
         </div>
+        
 
     );
 }

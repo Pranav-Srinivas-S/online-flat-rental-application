@@ -1,4 +1,4 @@
-import { FlatBookingActionTypes } from "../constants/FlatBookingActionTypes"
+import { FlatBookingActionTypes } from "../constants/FlatBookingActionTypes";
 
 // const initialState = {
 //     tenants:[],
@@ -6,6 +6,7 @@ import { FlatBookingActionTypes } from "../constants/FlatBookingActionTypes"
 //     isAdded:false,
 //     isUpdated:false
 // };
+
 
 const flatBookingReducerDefaultState = [];
 

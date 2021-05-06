@@ -11,6 +11,7 @@ const UpdateFlatBooking = (props) => (
         <Box color="white" bgcolor="palevioletred" p={1}> <h2>Update FlatBooking</h2></Box>
         <Paper elevation={3} >
         <UpdateFlatBookingForm 
+        
             //tenant = {props.tenant}
             onSubmitFlatBooking = {(flatBooking) => {
                 props.dispatch(updateFlatBooking(flatBooking));

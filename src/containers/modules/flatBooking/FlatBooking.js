@@ -10,28 +10,28 @@ const FlatBooking = () => {
     const {bookingNo} = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
-    const [flatBooking,setflatBooking] = useState({
+    const [flatBooking,setFlatBooking] = useState({
         bookingFromDate: '',
         bookingToDate: '',
-        flatBookingDetails: {
-            flatCost:'',
-            flatAvailability:'',
-            houseNo: '',
-            street: '',
-            city: '',
-            state: '',
-            pin: '',
-            country: '',
-        }
+        // flatBookingDetails: {
+        //     houseNo: '',
+        //     flatCost:'',
+        //     flatAvailability:'',
+        //     houseNo: '',
+        //     street: '',
+        //     city: '',
+        //     state: '',
+        //     pin: '',
+        //     country: '',
+        // }
     });
 
     useEffect(() => {
         loadFlatBooking();
     },[])
 
-    const loadFlatBooking = async () => 
-    {
-        const result=await axios.get(`http://localhost:9191/api/ofr/view-flatBooking/${bookingNo}`).catch((err) => { console.log("Error ", err); });
+    const loadFlatBooking = async () => {
+        const result = await axios.get(`http://localhost:9191/api/ofr/view-flatBooking/${bookingNo}`).catch((err) => { console.log("Error ", err); });
         dispatch(getFlatBooking(result.data));
         setFlatBooking(result.data);
     }
@@ -47,9 +47,10 @@ const FlatBooking = () => {
         <div >
         <h1 class="display-4  bg-primary text-white"> Flat Booking Details </h1> 
         <ul class="list-group-item">
-            <li class="list-group-item list-group-item-info"> <h3>booking No : {flatBooking.bookingNo}</h3> </li>
-            <li class="list-group-item list-group-item-info"><h3>booking From Date : {flatBooking.bookingFromDate}</h3> </li>
-            <li class="list-group-item list-group-item-info"><h3>booking To Date : {flatBooking.bookingToDate}</h3> </li>
+            <li class="list-group-item list-group-item-info"> <h3>Booking No : {flatBooking.bookingNo}</h3> </li>
+            <li class="list-group-item list-group-item-info"><h3>Booking From Date : {flatBooking.bookingFromDate}</h3> </li>
+            <li class="list-group-item list-group-item-info"><h3>Booking To Date : {flatBooking.bookingToDate}</h3> </li>
+           
             <li class="list-group-item list-group-item-info"><h3>flatCost : {flatBooking.flatBookingDetails.flatCost}</h3> </li>
             <li class="list-group-item list-group-item-info"><h3>flatAvailability:  {flatBooking.flatBookingDetails.flatAvailability}</h3></li>
             <li class="list-group-item list-group-item-info"><h3>House Number : {flatBooking.flatBookingDetails.houseNo}</h3> </li>
@@ -57,7 +58,7 @@ const FlatBooking = () => {
             <li class="list-group-item list-group-item-info"><h3>City :  {flatBooking.flatBookingDetails.city}</h3></li>
             <li class="list-group-item list-group-item-info"><h3>State : {flatBooking.flatBookingDetails.state}</h3> </li>
             <li class="list-group-item list-group-item-info"><h3>Pin : {flatBooking.flatBookingDetails.pin}</h3> </li>
-            <li class="list-group-item list-group-item-info"><h3>Country : {flatBooking.flatBookingDetails.country}</h3> </li>
+            <li class="list-group-item list-group-item-info"><h3>Country : {flatBooking.flatBookingDetails.country}</h3> </li> 
         </ul>
         <Grid container spacing={3}>
         <Grid item xs={3}>
