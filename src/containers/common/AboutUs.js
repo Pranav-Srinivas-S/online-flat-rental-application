@@ -12,6 +12,12 @@ import { CardContent } from '@material-ui/core';
 import Header from './Header';
 import Footer from './Footer';
 
+/************************************************************************************
+   * Component: AboutUs
+   * Description: It displays discription about the Application
+   * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+   * Created Date:  05-05-2021 
+ ************************************************************************************/
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -67,9 +73,6 @@ export default function AboutUs() {
                         </li>
 
                     </ul>
-
-
-
 
                     <p className="lead">
                         And tenants, happy hunting and get in touch with us to let us know how else we can help!

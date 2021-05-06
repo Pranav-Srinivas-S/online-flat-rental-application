@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import { FormControl, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,28 +6,26 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import UserValidation from './UserValidation';
-import { getUserSuccess, deleteUSer } from '../../../redux/actions/UsersActions';
 import { connect } from 'react-redux';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
-import Header from '../../common/Header';
 import Footer from '../../common/Footer';
+import Header from '../../common/Header';
 
-class UpdateUserForm extends React.Component {
+class UpdatePasswordForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             userName: "",
             password: "",
-            userType: ""
+            userType: "",
+            newpass:""
 
         };
         this.validators = UserValidation;
         this.resetValidators();
     }
-
-
 
     updateValidators = (fieldName, value) => {
         this.validators[fieldName].errors = [];
@@ -112,6 +109,7 @@ class UpdateUserForm extends React.Component {
                 userName: this.state.userName,
                 password: this.state.password,
                 userType: this.state.userType,
+                newpass:this.state.newpass,
             }
 
         );
@@ -167,6 +165,13 @@ class UpdateUserForm extends React.Component {
                         {this.displayValidationErrors('userType')}
                         <br />
                         <br />
+                        <FormControl fullWidth>
+                            <FormLabel component="legend">New Password</FormLabel>
+                            <TextField
+                                required id="standard-textarea" label="Password" type="password" placeholder="Enter Password"
+                                value={this.state.newpass} onChange={event => this.handleUserChange(event, 'newpass')} />
+                                {this.displayValidationErrors('newpass')}
+                        </FormControl>
                         <Button style={style} type="submit" className={`btn btn-primary  ${this.isFormValid() ? '' : 'disabled'}`}>Update User</Button>
                         <Button style={style} onClick={this.onCancel}>Cancel</Button>
                     </form>
@@ -178,20 +183,7 @@ class UpdateUserForm extends React.Component {
     }
 
 }
-
-export default connect()(UpdateUserForm);
-
-const useStyles = makeStyles((theme) => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: 200,
-    },
-}));
+export default connect()(UpdatePasswordForm);
 
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -207,3 +199,4 @@ const style = {
 const errorStyle = {
     color: 'red'
 };
+

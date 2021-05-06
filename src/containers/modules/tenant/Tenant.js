@@ -8,6 +8,13 @@ import { Link } from "react-router-dom";
 import Header from "../../common/Header";
 import Footer from "../../common/Footer";
 
+/************************************************************************************
+     * Component: Tenant
+     * Description: It is used to display specific Tenant Detail By Id
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
+
 const Tenant = () => {
     const { tenantId } = useParams();
     const dispatch = useDispatch();
@@ -29,11 +36,25 @@ const Tenant = () => {
         loadTenant();
     }, [])
 
+    /************************************************************************************
+     * Function: loadTenant
+     * Description: It is used to fetch specific Tenant Detail using ID
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
+
     const loadTenant = async () => {
         const result = await axios.get(`http://localhost:9191/api/ofr/view-tenant/${tenantId}`).catch((err) => { console.log("Error ", err); });
         dispatch(getTenant(result.data));
         setTenant(result.data);
     }
+
+    /************************************************************************************
+     * Function: deleteTenantById
+     * Description: It is used to delete Tenant Detail using ID
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
 
     const deleteTenantById = async (tenantId) => {
         await axios.delete(`http://localhost:9191/api/ofr/delete-tenant/${tenantId}`).catch((err) => { console.log("Error", err); });
@@ -41,6 +62,13 @@ const Tenant = () => {
         alert("Deleted Successfully");
         history.push('/tenant')
     }
+
+    /************************************************************************************
+     * Return: Specific Tenant Details
+     * Description: It is used to display Tenant Detail using ID
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
 
     return (
         <div>
@@ -71,6 +99,13 @@ const Tenant = () => {
         </div>
     )
 }
+
+/************************************************************************************
+     * property: style 
+     * Description: It is used for Tenant Detail Styling
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
 
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',

@@ -4,8 +4,15 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { FormControl, TextField } from '@material-ui/core';
-import Header from './Header';
 import Footer from './Footer';
+import { Redirect } from "react-router";
+
+/************************************************************************************
+   * Component: Login
+   * Description: It is Login Page for our Application
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  05-05-2021 
+ ************************************************************************************/
 
 export default class Login extends React.Component {
 
@@ -45,11 +52,11 @@ export default class Login extends React.Component {
     render() {
         return (
             <div>
-                <Header />
             <div className="container">
             <br />
             <h1 className="display-4 text-info">Login</h1>
                 <br />
+                <br/>
                 <form onSubmit={(event) => this.handleSubmit(event)} >
                     <div id="error">{this.state.error}</div>
                     <div className="form-group">
@@ -93,7 +100,7 @@ export default class Login extends React.Component {
                     
                     <div className="row">
                             <div className="input-field col s12 signup-btn">
-                                <center><button className="btn btn-danger" type="submit">Forgot Password</button></center>
+                                <center><button className="btn btn-danger" type="button" onClick={() => this.props.history.push('/update-password')}>Update Password</button></center>
                             </div>
                         </div>
                         <br/>
@@ -101,7 +108,7 @@ export default class Login extends React.Component {
                     <div className="row">
                         <div className="input-field col s12 signup-btn">
 
-                            <center><button type="button" className="btn btn-primary" onClick>SignUp</button></center>
+                            <center><button type="button" className="btn btn-primary" onClick={() => this.props.history.push('/add-user')} >SignUp</button></center>
 
                         </div>
                     </div>
@@ -109,7 +116,7 @@ export default class Login extends React.Component {
                         <div className="input-field col s12 signup-btn">
                         </div>
                         <br/><br/>
-                        
+                        <br/><br/>
                     </div>
                     
                     {/* <div>
@@ -155,7 +162,7 @@ export default class Login extends React.Component {
                         <button type="button">Sign UP</button>
                     </Link>            
                 </form> */}
-            </div>
+                </div>
                 <Footer />
             </div>
         );

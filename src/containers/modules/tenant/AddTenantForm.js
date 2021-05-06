@@ -8,9 +8,14 @@ import Box from '@material-ui/core/Box';
 import TenantValidation from './TenantValidation';
 import { withRouter } from "react-router-dom";
 
+/************************************************************************************
+     * Component: AddTenantForm
+     * Description: It is a Form to add Tenant Details
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  02-04-2021 
+ ************************************************************************************/
+
 class AddTenantForm extends React.Component {
-
-
     constructor(props) {
         super(props);
         this.state = {
@@ -28,6 +33,13 @@ class AddTenantForm extends React.Component {
         this.validators = TenantValidation;
         this.resetValidators();
     }
+
+    /************************************************************************************
+     * Function: updateValidators
+     * Description: It is used for Tenant Validations 
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
 
     updateValidators = (fieldName, value) => {
         this.validators[fieldName].errors = [];
@@ -48,6 +60,13 @@ class AddTenantForm extends React.Component {
         });
     }
 
+    /************************************************************************************
+     * Function: resetValidators
+     * Description: It is used reset Tenant Validations 
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
+
     resetValidators = () => {
         Object.keys(this.validators).forEach((fieldName) => {
             this.validators[fieldName].errors = [];
@@ -55,6 +74,13 @@ class AddTenantForm extends React.Component {
             this.validators[fieldName].valid = false;
         });
     }
+
+    /************************************************************************************
+     * Function: displayValidators
+     * Description: It is used to display Tenant Validation messages 
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
 
     displayValidationErrors = (fieldName) => {
         const validator = this.validators[fieldName];
@@ -73,6 +99,13 @@ class AddTenantForm extends React.Component {
         return result;
     }
 
+    /************************************************************************************
+     * Function: isFormValid
+     * Description: It is used to validate if Form is Filled or not 
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
+
     isFormValid = () => {
         let status = true;
         Object.keys(this.validators).forEach((field) => {
@@ -83,12 +116,26 @@ class AddTenantForm extends React.Component {
         return status;
     }
 
+    /************************************************************************************
+     * Function: handleTenantChange
+     * Description: It is used to handle Tenant Property inputs 
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
+
     handleTenantChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState[inputPropName] = event.target.value;
         this.setState(newState);
         this.updateValidators(inputPropName, event.target.value);
     }
+
+    /************************************************************************************
+     * Function: handleTenantAddressChange
+     * Description: It is used to handle Tenant Address Property inputs 
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
 
     handleTenantAddressChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
@@ -97,9 +144,23 @@ class AddTenantForm extends React.Component {
         this.updateValidators(inputPropName, event.target.value);
     }
 
+    /************************************************************************************
+     * Function: onCancel
+     * Description: It is used to navigate back from Add Tenant Form 
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
+
     onCancel = () => {
         this.props.history.push('/tenant');
     }
+
+    /************************************************************************************
+     * Function: onSubmit
+     * Description: It is used to Submit Add Tenant Form 
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
 
     onSubmit = event => {
 
@@ -119,6 +180,13 @@ class AddTenantForm extends React.Component {
             }
         );
     }
+
+    /************************************************************************************
+     * Return: Add Tenant Form
+     * Description: It is used to display input fields for entering Tenant Details
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
 
     render() {
         return (
@@ -212,17 +280,12 @@ class AddTenantForm extends React.Component {
 
 export default withRouter(AddTenantForm);
 
-const useStyles = makeStyles((theme) => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: 200,
-    },
-}));
+/************************************************************************************
+   * property: style 
+   * Description: It is used for Add Tenant Form Styling
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  02-05-2021 
+ ************************************s************************************************/
 
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -234,6 +297,13 @@ const style = {
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     marginLeft: "10px",
 };
+
+/************************************************************************************
+   * property: errorStyle 
+   * Description: It is used for Add Tenant Form Validation Message Styling
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  02-05-2021 
+ ************************************************************************************/
 
 const errorStyle = {
     color: 'red'

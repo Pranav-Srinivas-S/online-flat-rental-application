@@ -1,3 +1,10 @@
+/************************************************************************************
+     * Component: TenantValidations
+     * Description: It is used to perform custtom validations for Tenant Form
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  03-04-2021 
+ ************************************************************************************/
+
 const TenantValidation = {
     tenantName: {
         rules: [

@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import { FormControl, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,8 +6,14 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import TenantValidation from './TenantValidation';
-import { getTenant, deleteTenant } from '../../../redux/actions/TenantActions';
 import { connect } from 'react-redux';
+
+/************************************************************************************
+     * Component: UpdateTenantForm
+     * Description: It is a Form to update Tenant Details
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  03-04-2021 
+ ************************************************************************************/
 
 class UpdateTenantForm extends React.Component {
     constructor(props) {
@@ -30,6 +35,13 @@ class UpdateTenantForm extends React.Component {
         this.resetValidators();
     }
 
+/************************************************************************************
+     * Function: updateValidators
+     * Description: It is used for Tenant Validations 
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
+
     updateValidators = (fieldName, value) => {
         this.validators[fieldName].errors = [];
         this.validators[fieldName].state = value;
@@ -49,6 +61,13 @@ class UpdateTenantForm extends React.Component {
         });
     }
 
+    /************************************************************************************
+     * Function: resetValidators
+     * Description: It is used reset Tenant Validations 
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
+
     resetValidators = () => {
         Object.keys(this.validators).forEach((fieldName) => {
             this.validators[fieldName].errors = [];
@@ -56,6 +75,13 @@ class UpdateTenantForm extends React.Component {
             this.validators[fieldName].valid = false;
         });
     }
+
+    /************************************************************************************
+     * Function: displayValidators
+     * Description: It is used to display Tenant Validation messages 
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
 
     displayValidationErrors = (fieldName) => {
         const validator = this.validators[fieldName];
@@ -74,6 +100,13 @@ class UpdateTenantForm extends React.Component {
         return result;
     }
 
+    /************************************************************************************
+     * Function: isFormValid
+     * Description: It is used to validate if Form is Filled or not 
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
+
     isFormValid = () => {
         let status = true;
         Object.keys(this.validators).forEach((field) => {
@@ -84,12 +117,26 @@ class UpdateTenantForm extends React.Component {
         return status;
     }
 
+    /************************************************************************************
+     * Function: handleTenantChange
+     * Description: It is used to handle Tenant Property inputs 
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
+
     handleTenantChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState[inputPropName] = event.target.value;
         this.setState(newState);
         this.updateValidators(inputPropName, event.target.value);
     }
+
+    /************************************************************************************
+     * Function: handleTenantAddressChange
+     * Description: It is used to handle Tenant Address Property inputs 
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
 
     handleTenantAddressChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
@@ -98,15 +145,36 @@ class UpdateTenantForm extends React.Component {
         this.updateValidators(inputPropName, event.target.value);
     }
 
+    /************************************************************************************
+     * Function: handleTenantIdChange
+     * Description: It is used to handle Tenant Id Property inputs 
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  03-05-2021 
+ ************************************************************************************/    
+
     onTenantIdChange = (event, inputPropName) => {
         const newState = Object.assign({}, this.state);
         newState[inputPropName] = event.target.value;
         this.setState(newState);
     }
 
+    /************************************************************************************
+     * Function: onCancel
+     * Description: It is used to navigate back from Update Tenant Form 
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
+
     onCancel = () => {
         this.props.history.push('/tenant');
     }
+
+    /************************************************************************************
+     * Function: onSubmit
+     * Description: It is used to Submit Update Tenant Form 
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
 
     onSubmit = event => {
 
@@ -127,6 +195,13 @@ class UpdateTenantForm extends React.Component {
             }
         );
     }
+
+    /************************************************************************************
+     * Return: Update Tenant Form
+     * Description: It is used to display input fields for updating Tenant Details
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
 
     render() {
         return (
@@ -235,17 +310,12 @@ class UpdateTenantForm extends React.Component {
 
 export default connect()(UpdateTenantForm);
 
-const useStyles = makeStyles((theme) => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: 200,
-    },
-}));
+/************************************************************************************
+   * property: style 
+   * Description: It is used for Update Tenant Form Styling
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  03-05-2021 
+ ************************************************************************************/
 
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -257,6 +327,13 @@ const style = {
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     marginLeft: "10px",
 };
+
+/************************************************************************************
+   * property: errorStyle 
+   * Description: It is used for Update Tenant Form Validation Message Styling
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  03-05-2021 
+ ************************************************************************************/
 
 const errorStyle = {
     color: 'red'

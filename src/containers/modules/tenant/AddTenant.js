@@ -8,6 +8,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Header from "../../common/Header";
 import Footer from "../../common/Footer";
 
+/************************************************************************************
+     * Component: AddTenant
+     * Description: It is used to navigate to AddTenantForm
+     * Created By: PRANAV SRINIVAS S
+     * Created Date:  02-04-2021 
+ ************************************************************************************/
+
 const AddTenant = (props) => (
   <div >
     <Header />
@@ -25,6 +32,13 @@ const AddTenant = (props) => (
     <Footer />
   </div>
 );
+
+/************************************************************************************
+   * property: style 
+   * Description: It is used for AddTenant Styling
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  02-05-2021 
+ ************************************************************************************/
 
 const useStyles = makeStyles((theme) => ({
   root: {

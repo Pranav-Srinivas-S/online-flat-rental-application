@@ -1,5 +1,12 @@
 import { TenantActionTypes } from "../constants/TenantActionTypes"
 
+/************************************************************************************
+   * Function: TenantReducer
+   * Description: Reducer for Tenant Module Services.
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
+
 const tenantReducerDefaultState = [];
 
 const tenantReducer = (state = tenantReducerDefaultState, action) => {
@@ -24,6 +31,7 @@ const tenantReducer = (state = tenantReducerDefaultState, action) => {
                 ...state,
                 action.tenant
             ]
+            
         default:
             return state;
     }

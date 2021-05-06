@@ -19,6 +19,12 @@ const userReducer = (state = userReducerDefaultState, action) => {
                 action.user
             ];
 
+            case UserActionTypes.UPDATE_PASSWORD:
+                return [
+                    ...state,
+                    action.user
+                ];
+
         case UserActionTypes.GET_ALL_USERS:
             return [
                 ...state,
@@ -28,6 +34,7 @@ const userReducer = (state = userReducerDefaultState, action) => {
             return state;
     }
 }
+
 
 export default userReducer;
 

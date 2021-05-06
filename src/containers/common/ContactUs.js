@@ -3,6 +3,13 @@ import Footer from './Footer';
 import Header from './Header';
 import { useHistory } from 'react-router-dom';
 
+/************************************************************************************
+   * Component: Contact Us
+   * Description: It displays Contact Us Details.
+   * Created By: Shaik Abdul Basheer
+   * Created Date:  05-05-2021 
+ ************************************************************************************/
+
 const ContactUs = (props) => {
     const history = useHistory();
     return (

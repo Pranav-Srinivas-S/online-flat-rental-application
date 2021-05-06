@@ -1,3 +1,10 @@
+/************************************************************************************
+   * Property: TenantActionTypes 
+   * Description: Constants for Tenant Actions
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
+
 export const TenantActionTypes = {
    
     ADD_TENANT : "ADD_TENANT",

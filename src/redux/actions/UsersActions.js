@@ -96,3 +96,34 @@ export const getAllUsers = (users) => {
     }
 };
 
+const updatePasswordSuccess = (user) => ({
+    type: UserActionTypes.UPDATE_PASSWORD,
+    user
+});
+
+export const updatePassword = (updatedPassword = {
+    userId: '',
+    userName: '',
+    password: '',
+    userType: '',
+    newpass: '',
+}) => {
+    return (dispatch) => {
+        const user = {
+            userId: updatedPassword.userId,
+            userName: updatedPassword.userName,
+            password: updatedPassword.password,
+            userType: updatedPassword.userType,
+            newpass: updatedPassword.newpass,
+        };
+        let np = user.newpass;
+        console.log(np);
+        return axios.put(`/update-password/${np}`, user)
+            .then(() => {
+                dispatch( updatePasswordSuccess (user));
+            })
+            .catch(error => {
+                throw (error);
+            });
+    }
+};
