@@ -10,12 +10,32 @@ const addLandlordSuccess = (landlord) => ({
 export const addLandlord = (landlordData = {
     landlordName: '',
     landlordAge: '',
-    
+    flatCost:'',
+    houseNo: '',
+    street: '',
+    city: '',
+    state: '',
+    pin: '',
+    country: '',
+    flatAvailability:''
 }) => {
     return (dispatch) => {
         const landlord = {
             landlordName: landlordData.landlordName,
             landlordAge: landlordData.landlordAge,
+            flatList:{
+                flatCost: landlordData.flatCost,
+                flatAddress: {
+                    houseNo: landlordData.houseNo,
+                    street: landlordData.street,
+                    city: landlordData.city,
+                    state: landlordData.state,
+                    pin: landlordData.pin,
+                    country: landlordData.country
+                },
+                flatAvailability: landlordData.flatAvailability,
+            }
+            
         };
         console.log(landlord);
         return axios.post('/add-landlord', landlord)
@@ -33,17 +53,38 @@ const updateLandlordSuccess = (landlord) => ({
     landlord
 });
 
-export const updateLandlord = (updateLandlord = {
+export const updateLandlord = (updatedLandlord = {
     landlordId: '',
     landlordName: '',
     landlordAge: '',
+    flatCost:'',
+    houseNo: '',
+    street: '',
+    city: '',
+    state: '',
+    pin: '',
+    country: '',
+    flatAvailability:'',
+
 }) => {
     return (dispatch) => {
         const landlord = {
-            landlordId: updateLandlord.landlordId,
-            landlordName: updateLandlord.landlordName,
-            landlordAge: updateLandlord.landlordAge,
-            
+            landlordId: updatedLandlord.landlordId,
+            landlordName: updatedLandlord.landlordName,
+            landlordAge: updatedLandlord.landlordAge,
+            flatList:{
+                flatCost:updatedLandlord.flatCost,
+                flatAddress: {
+                    houseNo: updatedLandlord.houseNo,
+                    street: updatedLandlord.street,
+                    city: updatedLandlord.city,
+                    state: updatedLandlord.state,
+                    pin: updatedLandlord.pin,
+                    country: updatedLandlord.country
+                },
+                flatAvailability:updatedLandlord.flatAvailability,
+            }            
+           
         };
         console.log(landlord);
         return axios.put('/update-landlord', landlord)

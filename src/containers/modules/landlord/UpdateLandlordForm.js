@@ -9,6 +9,9 @@ import Box from '@material-ui/core/Box';
 import LandlordValidation from './LandlordValidation';
 import { getLandlord, deleteLandlord } from '../../../redux/actions/LandlordActions';
 import { connect } from 'react-redux';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Radio from '@material-ui/core/Radio';
 
 class UpdateLandlordForm extends React.Component {
     constructor(props) {
@@ -17,7 +20,22 @@ class UpdateLandlordForm extends React.Component {
             landlordId: "",
             landlordName: "",
             landlordAge: "",
-           
+            flatList:[
+                {
+                    flatCost: "",
+                    flatAvailability: "",
+                    flatAddress: 
+                    {
+                        houseNo: "",
+                        street: "",
+                        city: "",
+                        state: "",
+                        country: "",
+                        pin: "" 
+                }
+                
+                }
+            ]
         };
         this.validators = LandlordValidation;
         this.resetValidators();
@@ -83,8 +101,19 @@ class UpdateLandlordForm extends React.Component {
         this.setState(newState);
         this.updateValidators(inputPropName, event.target.value);
     }
+    handleFlatChange(event, inputPropName) {
+        const newState = Object.assign({}, this.state);
+        newState.flatList.map(flatList=> flatList)[inputPropName] = event.target.value;
+        this.setState(newState);
+        this.updateValidators(inputPropName, event.target.value);
+    }
 
-    
+    handleFlatAddressChange(event, inputPropName) {
+        const newState = Object.assign({}, this.state);
+        newState.flatList.map(flatList=>flatList.flatAddress)[inputPropName] = event.target.value;
+        this.setState(newState);
+        this.updateValidators(inputPropName, event.target.value);
+    }
 
     onLandlordIdChange = (event, inputPropName) => {
         const newState = Object.assign({}, this.state);
@@ -103,9 +132,16 @@ class UpdateLandlordForm extends React.Component {
         event.preventDefault();
         this.props.onSubmitLandlord(
             {
-                landlordId: this.state.landlordId,
                 landlordName: this.state.landlordName,
                 landlordAge: this.state.landlordAge,
+                flatCost:this.state.flatList.map(flatList => flatList.flatCost),
+                flatAvailabilty:this.state.flatList.map(flatList => flatList.flatAvailability),
+                houseNo: this.state.flatList.map(flatList => flatList.flatAddress.houseNo),
+                street: this.state.flatList.map(flatList => flatList.flatAddress.street),
+                city: this.state.flatList.map(flatList => flatList.flatAddress.city),
+                state: this.state.flatList.map(flatList => flatList.flatAddress.state),
+                pin: this.state.flatList.map(flatList => flatList.flatAddress.pin),
+                country: this.state.flatList.map(flatList => flatList.flatAddress.country),
             }
         );
     }
@@ -122,35 +158,103 @@ class UpdateLandlordForm extends React.Component {
                         </div>
                         <br />
                         <FormControl fullWidth>
-                            <FormLabel component="legend">Landlord ID</FormLabel>
-                            <TextField
-                                required id="standard-number" label="Landlord ID" type="number" placeholder="Enter Landlord ID"
-                                value={this.state.landlordId} onChange={event => this.onLandlordIdChange(event, 'landlordId')}
-                            />
-                        </FormControl>
-                        {this.displayValidationErrors('landlordAge')}
-                        <br />
-                        <br />
-                        <FormControl fullWidth>
                             <FormLabel component="legend">Landlord Name</FormLabel>
                             <TextField
                                 required id="standard-textarea" label="Landlord Name" placeholder="Enter Landlord Name"
                                 value={this.state.landlordName} onChange={event => this.handleLandlordChange(event, 'landlordName')} />
                         </FormControl>
+                        {this.displayValidationErrors('landlordName')}
                         <br />
                         <br />
                         <FormControl fullWidth>
-                            <FormLabel component="legend">Landlord Age</FormLabel>
+                        <FormLabel component="legend">Landlord Age</FormLabel>
                             <TextField
-                                required id="standard-number" label="Landlord Age" type="number" placeholder="Enter Landlord Age"
+                                required id="standard-number" label= " Landlord Age" type="number" placeholder="Enter Landlord Age"
                                 value={this.state.landlordAge} onChange={event => this.handleLandlordChange(event, 'landlordAge')}
-                                />
+                            />
                         </FormControl>
                         {this.displayValidationErrors('landlordAge')}
                         <br />
                         <br />
-                        
-                        <Button style={style} type="submit" className={`btn btn-primary btn-block ${this.isFormValid() ? '' : 'disabled'}`}>Update Tenant</Button>
+                        <div>
+                            <Box color="primary.main"> <h2>Flat Details :</h2></Box>
+                        </div>
+                        <br />
+                        <FormControl fullWidth>
+                            <TextField
+                                required id="standard-number" label= " Flat Cost" type="number" placeholder="Enter Flat Cost"
+                                value={this.state.flatList.map(flatList => flatList.flatCost)} onChange={event => this.handleFlatChange(event, 'flatCost')}
+                            />
+                        </FormControl>
+                        {this.displayValidationErrors('flatCost')}
+                        <br />
+                        <br />
+                        <FormControl fullWidth>
+                        <FormControl fullWidth>
+                            <FormLabel component="legend">Flat Availability</FormLabel>
+                            <RadioGroup required aria-label="Flat Availability" name="Landlord"
+                                 value={this.state.flatList.map(flatList => flatList.flatAvailability)} onChange={event => this.handleFlatChange(event, 'flatAvailability')}>
+                                <FormControlLabel value="Y" control={<Radio required={true} />} label="Yes" />
+                                <FormControlLabel value="N" control={<Radio required={true} />} label="No" />
+                            </RadioGroup>
+                        </FormControl>
+                        </FormControl>
+                        {this.displayValidationErrors('flatAvailability')}
+                        <br />
+                        <br />
+                        <div>
+                            <Box color="primary.main"> <h2>Flat Address :</h2></Box>
+                        </div>
+                        <FormControl fullWidth >
+                            <TextField
+                                required id="standard-number" label="House Number" type="number" placeholder="Enter House Number"
+                                value={this.state.flatList.map(flatList => flatList.flatAddress.houseNo)} onChange={event => this.handleFlatAddressChange(event, 'houseNo')} />
+                        </FormControl>
+                        {this.displayValidationErrors('houseNo')}
+                        <br />
+                        <br />
+                        <FormControl fullWidth>
+                            <TextField
+                                required id="standard-textarea" label="Street" placeholder="Enter Street"
+                                value={this.state.flatList.map(flatList => flatList.flatAddress.street)} onChange={event => this.handleFlatAddressChange(event, 'street')} />
+                        </FormControl>
+                        {this.displayValidationErrors('street')}
+                        <br />
+                        <br />
+                        <FormControl fullWidth>
+                            <TextField
+                                required id="standard-textarea" label="City" placeholder="Enter City"
+                                value={this.state.flatList.map(flatList => flatList.flatAddress.city)} onChange={event => this.handleFlatAddressChange(event, 'city')} />
+                        </FormControl>
+                        {this.displayValidationErrors('city')}
+                        <br />
+                        <br />
+                        <FormControl fullWidth>
+                            <TextField
+                                required id="standard-textarea" label="State" placeholder="Enter State"
+                                value={this.state.flatList.map(flatList => flatList.flatAddress.state)} onChange={event => this.handleFlatAddressChange(event, 'state')} />
+                        </FormControl>
+                        {this.displayValidationErrors('state')}
+                        <br />
+                        <br />
+                        <FormControl fullWidth>
+                            <TextField
+                                required id="standard-number" label="Pin Code" type="number" placeholder="Enter Pin Code"
+                                value={this.state.flatList.map(flatList => flatList.flatAddress.pin)} onChange={event => this.handleFlatAddressChange(event, 'pin')}
+                            />
+                        </FormControl>
+                        {this.displayValidationErrors('pin')}
+                        <br />
+                        <br />
+                        <FormControl fullWidth>
+                            <TextField
+                                required id="standard-textarea" label="Country" placeholder="Enter Country"
+                                value={this.state.flatList.map(flatList => flatList.flatAddress.country)} onChange={event => this.handleFlatAddressChange(event, 'country')} />
+                        </FormControl>
+                        {this.displayValidationErrors('country')}
+                        <br />
+                        <br />
+                        <Button style={style} type="submit" className={`btn btn-primary btn-block ${this.isFormValid() ? '' : 'disabled'}`}>Update Landlord</Button>
                         <Button style={style} onClick={this.onCancel}>Cancel</Button>
                     </form>
                 </div>

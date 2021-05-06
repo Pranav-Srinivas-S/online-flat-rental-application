@@ -3,16 +3,33 @@ import axios from 'axios';
 import { connect, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 import { getLandlord, deleteLandlord } from '../../../redux/actions/LandlordActions';
-import { Button, Grid } from '@material-ui/core';
+import { Button, Grid, List } from '@material-ui/core';
 import { Link } from "react-router-dom"
 
 const Landlord = () => {
     const { landlordId } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
+    
     const [landlord, setLandlord] = useState({
         landlordName: '',
         landlordAge: '',    
+        flatList:[
+            {
+                flatCost: "",
+                flatAvailability: "",
+                flatAddress: 
+                {
+                    houseNo: "",
+                    street: "",
+                    city: "",
+                    state: "",
+                    country: "",
+                    pin: "" 
+            }
+            
+            }
+        ]
     });
 
     useEffect(() => {
@@ -40,6 +57,15 @@ const Landlord = () => {
                 <li class="list-group-item list-group-item-info"> <h3>Landlord Id : {landlord.landlordId}</h3> </li>
                 <li class="list-group-item list-group-item-info"><h3>Landlord Name : {landlord.landlordName}</h3> </li>
                 <li class="list-group-item list-group-item-info"><h3>Landlord Age : {landlord.landlordAge}</h3> </li>
+                <li class="list-group-item list-group-item-info"><h3>Flat Cost: {landlord.flatList.map( flatList=> flatList.flatCost)}</h3> </li>
+                <li class="list-group-item list-group-item-info"><h3>Flat Availability: {landlord.flatList.map( flatList=> flatList.flatAvailability)}</h3> </li>
+                <li class="list-group-item list-group-item-info"><h3>House Number : {landlord.flatList.map( flatList=>flatList.flatAddress.houseNo)}</h3> </li>
+                <li class="list-group-item list-group-item-info"><h3>Street : {landlord.flatList.map( flatList=>flatList.flatAddress.street)}</h3> </li>
+                <li class="list-group-item list-group-item-info"><h3>City :  {landlord.flatList.map( flatList=> flatList.flatAddress.city)}</h3></li>
+                <li class="list-group-item list-group-item-info"><h3>State : {landlord.flatList.map( flatList=>flatList.flatAddress.state)}</h3> </li>
+                <li class="list-group-item list-group-item-info"><h3>Pin : {landlord.flatList.map( flatList=> flatList.flatAddress.pin)}</h3> </li>
+                <li class="list-group-item list-group-item-info"><h3>Country : {landlord.flatList.map( flatList=> flatList.flatAddress.country)}</h3> </li>
+                
             </ul>
             <Grid container spacing={3}>
                 <Grid item xs={3}>
