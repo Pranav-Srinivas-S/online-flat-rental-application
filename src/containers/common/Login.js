@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import { FormControl, TextField } from '@material-ui/core';
 import Footer from './Footer';
 import { Redirect } from "react-router";
+import background from '../../images/loginimage.jpg';
 
 /************************************************************************************
    * Component: Login
@@ -52,66 +53,112 @@ export default class Login extends React.Component {
     render() {
         return (
             <div>
-            <div className="container">
+
+<div style={{ 
+      backgroundImage: `url(${background})` 
+    }}>
+                <br /><br />
+                <br /><br />
+                
+
+            <div  
+            
+           
+            className="container "
+            >
             <br />
-            <h1 className="display-4 text-info">Login</h1>
+            <center>
+            <h2 class="p-2 mb-3 bg-info text-light" >LOGIN PAGE</h2>
+            
+            </center>
                 <br />
                 <br/>
                 <form onSubmit={(event) => this.handleSubmit(event)} >
-                    <div id="error">{this.state.error}</div>
+                    <div id="error">{this.state.error}
+                    
+                    </div>
+                    
+                    
                     <div className="form-group">
+                    <center>
+                        
                         <input
-                            className="form-control form-control-lg"
+                            class="text-warning" className="row input-field row w-25 p-2 "
                             placeholder="Enter User ID"
                             name="userId"
                             type="number"
                             onChange={event => this.handleChange(event)} />
+                            </center>
                     </div>
                     <br/>
+                    
                     <div className="form-group">
+                        <center>
                         <input
-                            className="form-control form-control-lg"
+                             className="row input-field row w-25 p-2"
                             placeholder="Enter User Name"
                             name="userName"
                             type="text"
                             onChange={event => this.handleChange(event)} />
+                            </center>
                     </div>
                     <br/>
                     <div className="form-group">
+                        <center>
                         <input
-                            className="form-control form-control-lg"
+                            className="row input-field row w-25 p-2"
                             placeholder="Enter Password"
                             name="password"
                             type="password"
                             onChange={event => this.handleChange(event)} />
+                            </center>
                     </div>
                     <br/>
                     <br/>
                 
                     <div>
-                        <div className="row">
-                            <div className="input-field col s12 signup-btn">
-                                <center><button className="btn btn-success" type="submit">Login</button></center>
-                            </div>
-                        </div>
+
+
                         
-                    </div>
-                    <br/>
+
+                        <div className="row  ">
+
+                        
+                            {/* <div class="col-sm-12 text-center" className="input-field col s12 signup-btn">
+                                <center><button className="btn btn-warning" type="submit">Login</button></center>
+                            </div> */}
+                        
+                        
+                        <div class="col">
+        <button class="btn btn-danger form-control  btn-block" type="button" onClick={() => this.props.history.push('/update-password')}>Update Password</button></div>
+
                     
-                    <div className="row">
+                    <br/>
+
+                    
+                    <div class="col">
+        <button class="btn btn-warning form-control  btn-block" routerLink='/login'>LOGIN</button></div>
+                    
+                    {/* <div className="row">
                             <div className="input-field col s12 signup-btn">
                                 <center><button className="btn btn-danger" type="button" onClick={() => this.props.history.push('/update-password')}>Update Password</button></center>
                             </div>
-                        </div>
+                        </div> */}
                         <br/>
+                        <div class="col">
+        <button class="btn btn-success form-control  btn-block" type="button" onClick={() => this.props.history.push('/add-user')} >SignUp</button></div>
+        </div>
+        </div>
+     
                         
-                    <div className="row">
+                        
+                    {/* <div className="row">
                         <div className="input-field col s12 signup-btn">
 
-                            <center><button type="button" className="btn btn-primary" onClick={() => this.props.history.push('/add-user')} >SignUp</button></center>
+                            <center><button type="button" className="btn btn-success" onClick={() => this.props.history.push('/add-user')} >SignUp</button></center>
 
                         </div>
-                    </div>
+                    </div> */}
                     <div className="row">
                         <div className="input-field col s12 signup-btn">
                         </div>
@@ -165,6 +212,9 @@ export default class Login extends React.Component {
                 </div>
                 <Footer />
             </div>
+            </div>
+            
         );
     };
+    
 }
