@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
@@ -10,7 +9,6 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import { FormControl, TextField } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { getFlat, deleteFlat } from '../../../redux/actions/FlatActions';
 import FlatValidation from './FlatValidation';
 
 class UpdateFlatForm extends React.Component {
