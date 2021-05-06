@@ -212,7 +212,11 @@ function HomePage() {
                 <p> <center><button variant="default" class="btn btn-warning" onClick={() => history.push("/landlord")}>
                     Landlord</button></center>
                 </p>
-                <h1><center>Flat</center></h1>
+
+                <p> <center><button variant="default" class="btn btn-warning" onClick={() => history.push("/flat")}>
+                    Flat</button></center>
+                </p>
+
                 <h1><center>Flat Booking</center></h1>
             </div>
             <br/>

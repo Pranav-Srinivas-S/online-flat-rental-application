@@ -16,7 +16,7 @@ const updateFlatComoponent = (props) => (
       <Paper elevation={3} >
 
         <UpdateFlatForm
-          //flat= {props.flat}
+          flat= {props.flat}
           onSubmitFlat={(state) => {
             props.dispatch(updateFlat(state));
             alert("updated Successfully");
