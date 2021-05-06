@@ -7,6 +7,14 @@ import UserReducer from "./UsersReducer";
 import { getAllUsersReducer, getUserReducer } from "./UserReducerType";
 import LandlordReducer from "./LandlordReducer";
 import { getAllLandlordsReducer, getLandlordReducer } from "./LandlordReducerType";
+import FlatBookingReducer from './FlatBookingReducer';
+import { getAllFlatBookingsReducer, getFlatBookingReducer  } from './FlatBookingReducerType';
+
+/************************************************************************************
+   * Component: RootReducer
+   * Description: It is used to combine all modules Reducers.
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
 
 const rootReducer = combineReducers({
     TenantReducer,
@@ -17,7 +25,6 @@ const rootReducer = combineReducers({
     allFlats: getAllFlatsReducer,
     flat: getFlatReducer,
 
-
     UserReducer,
     allUsers : getAllUsersReducer,
     user : getUserReducer,
@@ -26,7 +33,10 @@ const rootReducer = combineReducers({
     allLandlords : getAllLandlordsReducer,
     landlord : getLandlordReducer,
 
-});
+    FlatBookingReducer,
+    allFlatBookings : getAllFlatBookingsReducer,
+    flatBooking : getFlatBookingReducer
 
+});
 
 export default rootReducer;

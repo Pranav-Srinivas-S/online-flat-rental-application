@@ -13,6 +13,12 @@ import paymentimg from '../../images/paymentcard.jpeg';
 import productimg from '../../images/productcard.jpg';
 import bgimg from '../../images/bgimg.jpg'
 
+/************************************************************************************
+   * Component: HomePage
+   * Description: It is the Home Page for our Application
+   * Created By: PRANAV SRINIVAS S
+   * Created Date:  05-05-2021 
+ ************************************************************************************/
 
 function HomePage() {
     const history = useHistory();
@@ -194,30 +200,43 @@ function HomePage() {
             <Footer/> */}
             <Header />
             <div>
-            <br/>
-            <br/>
-                <h1><center>Login</center></h1>
-                <h1><center>Sign up</center></h1>
+            <br/><br/>
+            <br/><br/>
+
                 <h1><center>Admin</center></h1>
-                {/* <h1><center>Users</center></h1> */}
+
+                <br/>
 
                 <p> <center><button variant="default" class="btn btn-warning" onClick={() => history.push("/user")}>
                     Users</button></center>
                 </p>
 
+                <br/>
+
                 <p> <center><button variant="default" class="btn btn-warning" onClick={() => history.push("/tenant")}>
                     Tenant</button></center>
                 </p>
+
+                <br/>
 
                 <p> <center><button variant="default" class="btn btn-warning" onClick={() => history.push("/landlord")}>
                     Landlord</button></center>
                 </p>
 
+                <br/>
+
                 <p> <center><button variant="default" class="btn btn-warning" onClick={() => history.push("/flat")}>
                     Flat</button></center>
                 </p>
 
-                <h1><center>Flat Booking</center></h1>
+                <br/>
+
+                <p> <center><button variant="default" class="btn btn-warning" onClick={() => history.push("/flatBooking")}>
+                    Flat Booking</button></center>
+                </p>
+
+                <br/>
+                
             </div>
             <br/>
             <br/>

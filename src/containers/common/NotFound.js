@@ -1,7 +1,14 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const TenantNotFound = () => (
+/************************************************************************************
+   * Component: NotFound
+   * Description: It is Not Found Page for our Application
+   * Created By: Nithisha K A
+   * Created Date:  05-05-2021 
+ ************************************************************************************/
+
+const NotFound = () => (
     <div class="not-found">
         <h1 class="display-1">
             "404"  Page Not Found!
@@ -9,4 +16,4 @@ const TenantNotFound = () => (
     </div>
 );
 
-export default TenantNotFound;
+export default NotFound;

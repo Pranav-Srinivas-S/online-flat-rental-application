@@ -1,13 +1,5 @@
 import { FlatBookingActionTypes } from "../constants/FlatBookingActionTypes";
 
-// const initialState = {
-//     tenants:[],
-//     tenant:[],
-//     isAdded:false,
-//     isUpdated:false
-// };
-
-
 const flatBookingReducerDefaultState = [];
 
 const flatBookingReducer = (state = flatBookingReducerDefaultState, action) => {

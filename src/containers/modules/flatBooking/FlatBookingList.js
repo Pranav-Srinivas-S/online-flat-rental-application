@@ -13,9 +13,10 @@ import { useHistory } from 'react-router';
 
 const FlatBookingList = () => {
   const dispatch = useDispatch();
-  //const tenantId = useParams();
+  //const bookingNo = useParams();
   const history = useHistory();
   const flatBookings = useSelector((state) => state.allFlatBookings.flatBookings);
+
   const fetchFlatBookings = async () => {
     const result = await axios.get('http://localhost:9191/api/ofr/view-all-flatBookings').catch((err) => {
       console.log("Error ", err);

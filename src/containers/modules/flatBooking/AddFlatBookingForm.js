@@ -7,8 +7,10 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import FlatBookingValidation from './FlatBookingValidation';
 import { withRouter } from "react-router-dom";
+import Header from '../../common/Header';
+import Footer from '../../common/Footer';
 
- class AddFlatBookingForm extends React.Component {
+class AddFlatBookingForm extends React.Component {
 
 
     constructor(props) {
@@ -16,17 +18,31 @@ import { withRouter } from "react-router-dom";
         this.state = {
             bookingFromDate: "",
             bookingToDate: "",
-            flatBookingDetails: {
-                flatCost:"",
-                flatAvailability:"",
-                houseNo: "",
-                street: "",
-                city: "",
-                state: "",
-                pin: "",
-                country: "",
+            flat: {
+                flatCost: "",
+                flatAvailability: "",
+                flatAddress: {
+                    fhouseNo: "",
+                    fstreet: "",
+                    fcity: "",
+                    fstate: "",
+                    fpin: "",
+                    fcountry: "",
+            },
+            tenant: {
+                tenantName: "",
+                tenantAge: "",
+                tenantAddress: {
+                    thouseNo: "",
+                    tstreet: "",
+                    tcity: "",
+                    tstate: "",
+                    tpin: "",
+                    tcountry: "",
+                },
             }
-        };
+        }
+    };
         this.validators = FlatBookingValidation;
         this.resetValidators();
     }
@@ -64,13 +80,13 @@ import { withRouter } from "react-router-dom";
         if (validator && !validator.valid) {
             const errors = validator.errors.map((info, index) => {
                 return <span style={errorStyle} key={index}>* {info}</span>;
-            }); 
+            });
 
             return (
                 <div style={errorStyle} className="col s12 row">
                     {errors}
                 </div>
-            ); 
+            );
         }
         return result;
     }
@@ -92,9 +108,30 @@ import { withRouter } from "react-router-dom";
         this.updateValidators(inputPropName, event.target.value);
     }
 
-    handleflatBookingDetailsChange(event, inputPropName) {
+    handleFlatChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
-        newState.flatBookingDetails[inputPropName] = event.target.value;
+        newState.flat[inputPropName] = event.target.value;
+        this.setState(newState);
+        this.updateValidators(inputPropName, event.target.value);
+    }
+
+    handleFlatAddressChange(event, inputPropName) {
+        const newState = Object.assign({}, this.state);
+        newState.flat.flatAddress[inputPropName] = event.target.value;
+        this.setState(newState);
+        this.updateValidators(inputPropName, event.target.value);
+    }
+
+    handleTenantChange(event, inputPropName) {
+        const newState = Object.assign({}, this.state);
+        newState.tenant[inputPropName] = event.target.value;
+        this.setState(newState);
+        this.updateValidators(inputPropName, event.target.value);
+    }
+
+    handleTenantAddressChange(event, inputPropName) {
+        const newState = Object.assign({}, this.state);
+        newState.tenant.tenantAddress[inputPropName] = event.target.value;
         this.setState(newState);
         this.updateValidators(inputPropName, event.target.value);
     }
@@ -110,127 +147,198 @@ import { withRouter } from "react-router-dom";
         event.preventDefault();
         this.props.onSubmitFlatBooking(
             {
-                bookingFromDate : this.state.bookingFromDate,
-                bookingToDate : this.state.bookingToDate,
-                flatCost :this.state.flatCost,
-                flatAvailability :this.state.flatAvailability,
-                houseNo : this.state.flatBookingDetails.houseNo,
-                street : this.state.flatBookingDetails.street,
-                city : this.state.flatBookingDetails.city,
-                state : this.state.flatBookingDetails.state,
-                pin : this.state.flatBookingDetails.pin,
-                country : this.state.flatBookingDetails.country,
+                bookingFromDate: this.state.bookingFromDate,
+                bookingToDate: this.state.bookingToDate,
+                flatCost: this.state.flat.flatCost,
+                flatAvailability: this.state.flat.flatAvailability,
+                fhouseNo: this.state.flat.flatAddress.fhouseNo,
+                fstreet: this.state.flat.flatAddress.fstreet,
+                fcity: this.state.flat.flatAddress.fcity,
+                fstate: this.state.flat.flatAddress.fstate,
+                fpin: this.state.flat.flatAddress.fpin,
+                fcountry: this.state.flat.flatAddress.fcountry,
+                tenantName: this.state.tenant.tenantName,
+                tenantAge: this.state.tenant.tenantAge,
+                thouseNo: this.state.tenant.tenantAddress.thouseNo,
+                tstreet: this.state.tenant.tenantAddress.tstreet,
+                tcity: this.state.tenant.tenantAddress.tcity,
+                tstate: this.state.tenant.tenantAddress.tstate,
+                tpin: this.state.tenant.tenantAddress.tpin,
+                tcountry: this.state.tenant.tenantAddress.tcountry,
             }
 
         );
- 
+
     }
 
     render() {
         return (
-            <Container style={{ backgroundColor: '#cfe8fc' }} >
-                <div  >
-                    <form onSubmit={event => this.onSubmit(event)} >
-                        <div>
-                            <Box color="primary.main" p={1}> <h2>FlatBooking Details :</h2></Box>
-                        </div>
-                        <br />
-                        <FormControl fullWidth>
-                            <FormLabel component="legend">Booking From Date</FormLabel>
-                            <TextField
-                                required id="date"  type="date" placeholder="Enter Booking From Date"
-                                value={this.state.bookingFromDate} onChange={event => this.handleFlatBookingChange(event, 'bookingFromDate')} /> 
-                        </FormControl>
-                        {this.displayValidationErrors('bookingFromDate')}
+            <div>
+                <Header />
+                <Container style={{ backgroundColor: '#cfe8fc' }} >
+                    <div  >
+                        <form onSubmit={event => this.onSubmit(event)} >
+                            <div>
+                                <Box color="primary.main" p={1}> <h2>FlatBooking Details :</h2></Box>
+                            </div>
                             <br />
-                        <br />
-                        <FormControl fullWidth>
-                            <FormLabel component="legend">Booking To Dtae</FormLabel>
-                            <TextField
-                                 required id="date"  type="date" placeholder="Enter Booking To Date"
-                                value={this.state.bookingToDate} onChange={event => this.handleFlatBookingChange(event, 'bookingToDate')}
-                                 />
-                        </FormControl>
-                        {this.displayValidationErrors('bookingToDate')}
-                        <br />
-                        <br />
-                        <div>
-                            <Box color="primary.main"> <h2>flat Booking Details :</h2></Box>
-                        </div>
-                        <FormControl fullWidth >
-                            <TextField
-                                required id="standard-textarea" label="flat Cost" placeholder="Enter flat Cost"
-                                value={this.state.flatBookingDetails.flatCost} onChange={event => this.handleFlatBookingDetailsChange(event, 'flatCost')} />
-                        </FormControl>
-                        {this.displayValidationErrors('flatCost')}
+                            <FormControl fullWidth>
+                                <FormLabel component="legend">Booking From Date</FormLabel>
+                                <TextField
+                                    required id="date" type="date" placeholder="Enter Booking From Date"
+                                    value={this.state.bookingFromDate} onChange={event => this.handleFlatBookingChange(event, 'bookingFromDate')} />
+                            </FormControl>
+                            {this.displayValidationErrors('bookingFromDate')}
+                            <br />
+                            <br />
+                            <FormControl fullWidth>
+                                <FormLabel component="legend">Booking To Date</FormLabel>
+                                <TextField
+                                    required id="date" type="date" placeholder="Enter Booking To Date"
+                                    value={this.state.bookingToDate} onChange={event => this.handleFlatBookingChange(event, 'bookingToDate')}
+                                />
+                            </FormControl>
+                            {this.displayValidationErrors('bookingToDate')}
+                            <br />
+                            <br />
+                            <div>
+                                <Box color="primary.main"> <h2>Flat Details :</h2></Box>
+                            </div>
+                            <FormControl fullWidth >
+                                <TextField
+                                    required id="standard-textarea" label="flat Cost" placeholder="Enter flat Cost"
+                                    value={this.state.flat.flatCost} onChange={event => this.handleFlatChange(event, 'flatCost')} />
+                            </FormControl>
+                            {this.displayValidationErrors('flatCost')}
+                            <FormControl fullWidth >
+                                <TextField
+                                    required id="standard-textarea" label="flat Availability" placeholder="Enter flat Availability"
+                                    value={this.state.flat.flatAvailability} onChange={event => this.handleFlatChange(event, 'flatAvailability')} />
+                            </FormControl>
+                            {this.displayValidationErrors('flatAvailability')}
+                            <FormControl fullWidth >
+                                <TextField
+                                    required id="standard-textarea" label="House Number" placeholder="Enter House Number"
+                                    value={this.state.flat.flatAddress.fhouseNo} onChange={event => this.handleFlatAddressChange(event, 'fhouseNo')} />
+                            </FormControl>
+                            {this.displayValidationErrors('fhouseNo')}
+                            <br />
+                            <br />
+                            <FormControl fullWidth>
+                                <TextField
+                                    required id="standard-textarea" label="Street" placeholder="Enter Street"
+                                    value={this.state.flat.flatAddress.fstreet} onChange={event => this.handleFlatAddressChange(event, 'fstreet')} />
+                            </FormControl>
+                            {this.displayValidationErrors('fstreet')}
+                            <br />
+                            <br />
+                            <FormControl fullWidth>
+                                <TextField
+                                    required id="standard-textarea" label="City" placeholder="Enter City"
+                                    value={this.state.flat.flatAddress.fcity} onChange={event => this.handleFlatAddressChange(event, 'fcity')} />
+                            </FormControl>
+                            {this.displayValidationErrors('fcity')}
+                            <br />
+                            <br />
+                            <FormControl fullWidth>
+                                <TextField
+                                    required id="standard-textarea" label="State" placeholder="Enter State"
+                                    value={this.state.flat.flatAddress.fstate} onChange={event => this.handleFlatAddressChange(event, 'fstate')} />
+                            </FormControl>
+                            {this.displayValidationErrors('fstate')}
+                            <br />
+                            <br />
+                            <FormControl fullWidth>
+                                <FormLabel component="legend">Pin Code</FormLabel>
+                                <TextField
+                                    required id="standard-number" label="Pin Code" type="number" placeholder="Enter Pin Code"
+                                    value={this.state.flat.flatAddress.fpin} onChange={event => this.handleFlatAddressChange(event, 'fpin')}
+                                />
+                            </FormControl>
+                            {this.displayValidationErrors('fpin')}
+                            <br />
+                            <br />
+                            <FormControl fullWidth>
+                                <TextField
+                                    required id="standard-textarea" label="Country" placeholder="Enter Country"
+                                    value={this.state.flat.flatAddress.fcountry} onChange={event => this.handleFlatAddressChange(event, 'fcountry')} />
+                            </FormControl>
+                            {this.displayValidationErrors('fcountry')}
+                            <br />
+                            <br />
+                            <div>
+                                <Box color="primary.main"> <h2>Tenant Details :</h2></Box>
+                            </div>
+                            <FormControl fullWidth >
+                                <TextField
+                                    required id="standard-textarea" label="Tenant Name" placeholder="Enter Tenant Name"
+                                    value={this.state.tenant.tenantName} onChange={event => this.handleTenantChange(event, 'tenantName')} />
+                            </FormControl>
+                            {this.displayValidationErrors('tenantName')}
+                            <FormControl fullWidth >
+                                <TextField
+                                    required id="standard-number" label="Tenant Age" placeholder="Enter Tenant Age" type="number"
+                                    value={this.state.tenant.tenantAge} onChange={event => this.handleTenantChange(event, 'tenantAge')} />
+                            </FormControl>
+                            {this.displayValidationErrors('tenantAge')}
+                            <FormControl fullWidth >
+                                <TextField
+                                    required id="standard-textarea" label="House Number" placeholder="Enter House Number"
+                                    value={this.state.tenant.tenantAddress.thouseNo} onChange={event => this.handleTenantAddressChange(event, 'thouseNo')} />
+                            </FormControl>
+                            {this.displayValidationErrors('thouseNo')}
+                            <br />
+                            <br />
+                            <FormControl fullWidth>
+                                <TextField
+                                    required id="standard-textarea" label="Street" placeholder="Enter Street"
+                                    value={this.state.tenant.tenantAddress.tstreet} onChange={event => this.handleTenantAddressChange(event, 'tstreet')} />
+                            </FormControl>
+                            {this.displayValidationErrors('tstreet')}
+                            <br />
+                            <br />
+                            <FormControl fullWidth>
+                                <TextField
+                                    required id="standard-textarea" label="City" placeholder="Enter City"
+                                    value={this.state.tenant.tenantAddress.tcity} onChange={event => this.handleTenantAddressChange(event, 'tcity')} />
+                            </FormControl>
+                            {this.displayValidationErrors('tcity')}
+                            <br />
+                            <br />
+                            <FormControl fullWidth>
+                                <TextField
+                                    required id="standard-textarea" label="State" placeholder="Enter State"
+                                    value={this.state.tenant.tenantAddress.tstate} onChange={event => this.handleTenantAddressChange(event, 'tstate')} />
+                            </FormControl>
+                            {this.displayValidationErrors('tstate')}
+                            <br />
+                            <br />
+                            <FormControl fullWidth>
+                                <FormLabel component="legend">Pin Code</FormLabel>
+                                <TextField
+                                    required id="standard-number" label="Pin Code" type="number" placeholder="Enter Pin Code"
+                                    value={this.state.tenant.tenantAddress.tpin} onChange={event => this.handleTenantAddressChange(event, 'tpin')}
+                                />
+                            </FormControl>
+                            {this.displayValidationErrors('tpin')}
+                            <br />
+                            <br />
+                            <FormControl fullWidth>
+                                <TextField
+                                    required id="standard-textarea" label="Country" placeholder="Enter Country"
+                                    value={this.state.tenant.tenantAddress.tcountry} onChange={event => this.handleTenantAddressChange(event, 'tcountry')} />
+                            </FormControl>
+                            {this.displayValidationErrors('tcountry')}
+                            <br />
+                            <br />
 
-                        <FormControl fullWidth >
-                            <TextField
-                                required id="standard-textarea" label="flat Availability" placeholder="Enter flat Availability"
-                                value={this.state.flatBookingDetails.flatAvailability} onChange={event => this.handleFlatBookingDetailsChange(event, 'flatAvailability')} />
-                        </FormControl>
-                        {this.displayValidationErrors('flatAvailability')}
-
-
-
-
-
-
-                        <FormControl fullWidth >
-                            <TextField
-                                required id="standard-textarea" label="House Number" placeholder="Enter House Number"
-                                value={this.state.flatBookingDetails.houseNo} onChange={event => this.handleFlatBookingDetailsChange(event, 'houseNo')} />
-                        </FormControl>
-                        {this.displayValidationErrors('houseNo')}
-                        <br />
-                        <br />
-                        <FormControl fullWidth>
-                        <TextField
-                                required id="standard-textarea" label="Street" placeholder="Enter Street"
-                                value={this.state.flatBookingDetails.street} onChange={event => this.handleFlatBookingDetailsChange(event, 'street')} />
-                        </FormControl>
-                        {this.displayValidationErrors('street')}
-                        <br />
-                        <br />
-                        <FormControl fullWidth>
-                        <TextField
-                                required id="standard-textarea" label="City" placeholder="Enter City"
-                                value={this.state.flatBookingDetails.city} onChange={event => this.handleFlatBookingDetailsChange(event, 'city')} />
-                        </FormControl>
-                        {this.displayValidationErrors('city')}
-                        <br />
-                        <br />
-                        <FormControl fullWidth>
-                        <TextField
-                                required id="standard-textarea" label="State" placeholder="Enter State"
-                                value={this.state.flatBookingDetails.state} onChange={event => this.handleFlatBookingDetailsChange(event, 'state')} />
-                        </FormControl>
-                        {this.displayValidationErrors('state')}
-                        <br />
-                        <br />
-                        <FormControl fullWidth>
-                            <FormLabel component="legend">Pin Code</FormLabel>
-                            <TextField
-                                required id="standard-number" label="Pin Code" type="number" placeholder="Enter Pin Code"
-                                value={this.state.flatBookingDetails.pin} onChange={event => this.handleFlatBookingDetailsChange(event, 'pin')}
-                                 />
-                        </FormControl>
-                        {this.displayValidationErrors('pin')}
-                        <br />
-                        <br />
-                        <FormControl fullWidth>
-                        <TextField
-                                required id="standard-textarea" label="Country" placeholder="Enter Country"
-                                value={this.state.flatBookingDetails.country} onChange={event => this.handleFlatBookingDetailsChange(event, 'country')} />
-                        </FormControl>
-                        {this.displayValidationErrors('country')}
-                        <br />
-                        <br />
-                        <Button style={style} type="submit" className={`btn btn-primary  ${this.isFormValid() ? '' : 'disabled'}`}>Add FlatBooking</Button>
-                        <Button style={style} onClick={this.onCancel}>Cancel</Button>
-                    </form>
-                </div>
-            </Container>
+                            <Button style={style} type="submit" className={`btn btn-primary  ${this.isFormValid() ? '' : 'disabled'}`}>Add FlatBooking</Button>
+                            <Button style={style} onClick={this.onCancel}>Cancel</Button>
+                        </form>
+                    </div>
+                </Container>
+                <Footer />
+            </div>
         )
     }
 
