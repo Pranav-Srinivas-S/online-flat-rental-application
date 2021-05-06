@@ -4,9 +4,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import { connect } from 'react-redux';
 import UpdateLandlordForm from './UpdateLandlordForm';
+import Footer from '../../common/Footer';
+import Header from '../../common/Header';
 
 const UpdateLandlord = (props) => (
   <div >
+    <Header />
     <div className={useStyles.root}>
       <Box color="white" bgcolor="palevioletred" p={1}> <h2>Update Landlord</h2></Box>
       <Paper elevation={3} >
@@ -18,6 +21,7 @@ const UpdateLandlord = (props) => (
           }} />
       </Paper>
     </div>
+    <Footer />
   </div>
 );
 

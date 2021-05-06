@@ -179,8 +179,9 @@ export const updatePassword = (updatedPassword = {
             userType: updatedPassword.userType,
             newpass: updatedPassword.newpass,
         };
-        console.log(user);
-        return axios.put('/update-password/${newpass}', user)
+        let np = user.newpass;
+        console.log(np);
+        return axios.put(`/update-password/${np}`, user)
             .then(() => {
                 dispatch( updatePasswordSuccess (user));
             })

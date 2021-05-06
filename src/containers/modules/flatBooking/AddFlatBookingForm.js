@@ -7,42 +7,37 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import FlatBookingValidation from './FlatBookingValidation';
 import { withRouter } from "react-router-dom";
-import Header from '../../common/Header';
-import Footer from '../../common/Footer';
 
 class AddFlatBookingForm extends React.Component {
-
 
     constructor(props) {
         super(props);
         this.state = {
             bookingFromDate: "",
             bookingToDate: "",
-            flat: {
+            
                 flatCost: "",
                 flatAvailability: "",
-                flatAddress: {
+                
                     fhouseNo: "",
                     fstreet: "",
                     fcity: "",
                     fstate: "",
                     fpin: "",
                     fcountry: "",
-            },
-            tenant: {
+            
                 tenantName: "",
                 tenantAge: "",
-                tenantAddress: {
+        
                     thouseNo: "",
                     tstreet: "",
                     tcity: "",
-                    tstate: "",
+                    tstate: " ",
                     tpin: "",
                     tcountry: "",
-                },
-            }
-        }
-    };
+
+             }
+
         this.validators = FlatBookingValidation;
         this.resetValidators();
     }
@@ -105,35 +100,35 @@ class AddFlatBookingForm extends React.Component {
         const newState = Object.assign({}, this.state);
         newState[inputPropName] = event.target.value;
         this.setState(newState);
-        this.updateValidators(inputPropName, event.target.value);
+        //this.updateValidators(inputPropName, event.target.value);
     }
 
     handleFlatChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState.flat[inputPropName] = event.target.value;
         this.setState(newState);
-        this.updateValidators(inputPropName, event.target.value);
+        //this.updateValidators(inputPropName, event.target.value);
     }
 
     handleFlatAddressChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState.flat.flatAddress[inputPropName] = event.target.value;
         this.setState(newState);
-        this.updateValidators(inputPropName, event.target.value);
+        //this.updateValidators(inputPropName, event.target.value);
     }
 
     handleTenantChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState.tenant[inputPropName] = event.target.value;
         this.setState(newState);
-        this.updateValidators(inputPropName, event.target.value);
+        //this.updateValidators(inputPropName, event.target.value);
     }
 
     handleTenantAddressChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState.tenant.tenantAddress[inputPropName] = event.target.value;
         this.setState(newState);
-        this.updateValidators(inputPropName, event.target.value);
+        //this.updateValidators(inputPropName, event.target.value);
     }
 
     onCancel = () => {
@@ -149,22 +144,22 @@ class AddFlatBookingForm extends React.Component {
             {
                 bookingFromDate: this.state.bookingFromDate,
                 bookingToDate: this.state.bookingToDate,
-                flatCost: this.state.flat.flatCost,
-                flatAvailability: this.state.flat.flatAvailability,
-                fhouseNo: this.state.flat.flatAddress.fhouseNo,
-                fstreet: this.state.flat.flatAddress.fstreet,
-                fcity: this.state.flat.flatAddress.fcity,
-                fstate: this.state.flat.flatAddress.fstate,
-                fpin: this.state.flat.flatAddress.fpin,
-                fcountry: this.state.flat.flatAddress.fcountry,
-                tenantName: this.state.tenant.tenantName,
-                tenantAge: this.state.tenant.tenantAge,
-                thouseNo: this.state.tenant.tenantAddress.thouseNo,
-                tstreet: this.state.tenant.tenantAddress.tstreet,
-                tcity: this.state.tenant.tenantAddress.tcity,
-                tstate: this.state.tenant.tenantAddress.tstate,
-                tpin: this.state.tenant.tenantAddress.tpin,
-                tcountry: this.state.tenant.tenantAddress.tcountry,
+                flatCost: this.state.flatCost,
+                flatAvailability: this.state.flatAvailability,
+                fhouseNo: this.state.fhouseNo,
+                fstreet: this.state.fstreet,
+                fcity: this.state.fcity,
+                fstate: this.state.fstate,
+                fpin: this.state.fpin,
+                fcountry: this.state.fcountry,
+                tenantName: this.state.tenantName,
+                tenantAge: this.state.tenantAge,
+                thouseNo: this.state.thouseNo,
+                tstreet: this.state.tstreet,
+                tcity: this.state.tcity,
+                tstate: this.state.tstate,
+                tpin: this.state.tpin,
+                tcountry: this.state.tcountry,
             }
 
         );
@@ -174,7 +169,6 @@ class AddFlatBookingForm extends React.Component {
     render() {
         return (
             <div>
-                <Header />
                 <Container style={{ backgroundColor: '#cfe8fc' }} >
                     <div  >
                         <form onSubmit={event => this.onSubmit(event)} >
@@ -207,19 +201,19 @@ class AddFlatBookingForm extends React.Component {
                             <FormControl fullWidth >
                                 <TextField
                                     required id="standard-textarea" label="flat Cost" placeholder="Enter flat Cost"
-                                    value={this.state.flat.flatCost} onChange={event => this.handleFlatChange(event, 'flatCost')} />
+                                    value={this.state.flatCost} onChange={event => this.handleFlatBookingChange(event, 'flatCost')} />
                             </FormControl>
                             {this.displayValidationErrors('flatCost')}
                             <FormControl fullWidth >
                                 <TextField
                                     required id="standard-textarea" label="flat Availability" placeholder="Enter flat Availability"
-                                    value={this.state.flat.flatAvailability} onChange={event => this.handleFlatChange(event, 'flatAvailability')} />
+                                    value={this.state.flatAvailability} onChange={event => this.handleFlatBookingChange(event, 'flatAvailability')} />
                             </FormControl>
                             {this.displayValidationErrors('flatAvailability')}
                             <FormControl fullWidth >
                                 <TextField
                                     required id="standard-textarea" label="House Number" placeholder="Enter House Number"
-                                    value={this.state.flat.flatAddress.fhouseNo} onChange={event => this.handleFlatAddressChange(event, 'fhouseNo')} />
+                                    value={this.state.fhouseNo} onChange={event => this.handleFlatBookingChange(event, 'fhouseNo')} />
                             </FormControl>
                             {this.displayValidationErrors('fhouseNo')}
                             <br />
@@ -227,7 +221,7 @@ class AddFlatBookingForm extends React.Component {
                             <FormControl fullWidth>
                                 <TextField
                                     required id="standard-textarea" label="Street" placeholder="Enter Street"
-                                    value={this.state.flat.flatAddress.fstreet} onChange={event => this.handleFlatAddressChange(event, 'fstreet')} />
+                                    value={this.state.fstreet} onChange={event => this.handleFlatBookingChange(event, 'fstreet')} />
                             </FormControl>
                             {this.displayValidationErrors('fstreet')}
                             <br />
@@ -235,7 +229,7 @@ class AddFlatBookingForm extends React.Component {
                             <FormControl fullWidth>
                                 <TextField
                                     required id="standard-textarea" label="City" placeholder="Enter City"
-                                    value={this.state.flat.flatAddress.fcity} onChange={event => this.handleFlatAddressChange(event, 'fcity')} />
+                                    value={this.state.fcity} onChange={event => this.handleFlatBookingChange(event, 'fcity')} />
                             </FormControl>
                             {this.displayValidationErrors('fcity')}
                             <br />
@@ -243,7 +237,7 @@ class AddFlatBookingForm extends React.Component {
                             <FormControl fullWidth>
                                 <TextField
                                     required id="standard-textarea" label="State" placeholder="Enter State"
-                                    value={this.state.flat.flatAddress.fstate} onChange={event => this.handleFlatAddressChange(event, 'fstate')} />
+                                    value={this.state.fstate} onChange={event => this.handleFlatBookingChange(event, 'fstate')} />
                             </FormControl>
                             {this.displayValidationErrors('fstate')}
                             <br />
@@ -252,7 +246,7 @@ class AddFlatBookingForm extends React.Component {
                                 <FormLabel component="legend">Pin Code</FormLabel>
                                 <TextField
                                     required id="standard-number" label="Pin Code" type="number" placeholder="Enter Pin Code"
-                                    value={this.state.flat.flatAddress.fpin} onChange={event => this.handleFlatAddressChange(event, 'fpin')}
+                                    value={this.state.fpin} onChange={event => this.handleFlatBookingChange(event, 'fpin')}
                                 />
                             </FormControl>
                             {this.displayValidationErrors('fpin')}
@@ -261,7 +255,7 @@ class AddFlatBookingForm extends React.Component {
                             <FormControl fullWidth>
                                 <TextField
                                     required id="standard-textarea" label="Country" placeholder="Enter Country"
-                                    value={this.state.flat.flatAddress.fcountry} onChange={event => this.handleFlatAddressChange(event, 'fcountry')} />
+                                    value={this.state.fcountry} onChange={event => this.handleFlatBookingChange(event, 'fcountry')} />
                             </FormControl>
                             {this.displayValidationErrors('fcountry')}
                             <br />
@@ -272,19 +266,19 @@ class AddFlatBookingForm extends React.Component {
                             <FormControl fullWidth >
                                 <TextField
                                     required id="standard-textarea" label="Tenant Name" placeholder="Enter Tenant Name"
-                                    value={this.state.tenant.tenantName} onChange={event => this.handleTenantChange(event, 'tenantName')} />
+                                    value={this.state.tenantName} onChange={event => this.handleFlatBookingChange(event, 'tenantName')} />
                             </FormControl>
                             {this.displayValidationErrors('tenantName')}
                             <FormControl fullWidth >
                                 <TextField
                                     required id="standard-number" label="Tenant Age" placeholder="Enter Tenant Age" type="number"
-                                    value={this.state.tenant.tenantAge} onChange={event => this.handleTenantChange(event, 'tenantAge')} />
+                                    value={this.state.tenantAge} onChange={event => this.handleFlatBookingChange(event, 'tenantAge')} />
                             </FormControl>
                             {this.displayValidationErrors('tenantAge')}
                             <FormControl fullWidth >
                                 <TextField
                                     required id="standard-textarea" label="House Number" placeholder="Enter House Number"
-                                    value={this.state.tenant.tenantAddress.thouseNo} onChange={event => this.handleTenantAddressChange(event, 'thouseNo')} />
+                                    value={this.state.thouseNo} onChange={event => this.handleFlatBookingChange(event, 'thouseNo')} />
                             </FormControl>
                             {this.displayValidationErrors('thouseNo')}
                             <br />
@@ -292,7 +286,7 @@ class AddFlatBookingForm extends React.Component {
                             <FormControl fullWidth>
                                 <TextField
                                     required id="standard-textarea" label="Street" placeholder="Enter Street"
-                                    value={this.state.tenant.tenantAddress.tstreet} onChange={event => this.handleTenantAddressChange(event, 'tstreet')} />
+                                    value={this.state.tstreet} onChange={event => this.handleFlatBookingChange(event, 'tstreet')} />
                             </FormControl>
                             {this.displayValidationErrors('tstreet')}
                             <br />
@@ -300,7 +294,7 @@ class AddFlatBookingForm extends React.Component {
                             <FormControl fullWidth>
                                 <TextField
                                     required id="standard-textarea" label="City" placeholder="Enter City"
-                                    value={this.state.tenant.tenantAddress.tcity} onChange={event => this.handleTenantAddressChange(event, 'tcity')} />
+                                    value={this.state.tcity} onChange={event => this.handleFlatBookingChange(event, 'tcity')} />
                             </FormControl>
                             {this.displayValidationErrors('tcity')}
                             <br />
@@ -308,7 +302,7 @@ class AddFlatBookingForm extends React.Component {
                             <FormControl fullWidth>
                                 <TextField
                                     required id="standard-textarea" label="State" placeholder="Enter State"
-                                    value={this.state.tenant.tenantAddress.tstate} onChange={event => this.handleTenantAddressChange(event, 'tstate')} />
+                                    value={this.state.tstate} onChange={event => this.handleFlatBookingChange(event, 'tstate')} />
                             </FormControl>
                             {this.displayValidationErrors('tstate')}
                             <br />
@@ -317,7 +311,7 @@ class AddFlatBookingForm extends React.Component {
                                 <FormLabel component="legend">Pin Code</FormLabel>
                                 <TextField
                                     required id="standard-number" label="Pin Code" type="number" placeholder="Enter Pin Code"
-                                    value={this.state.tenant.tenantAddress.tpin} onChange={event => this.handleTenantAddressChange(event, 'tpin')}
+                                    value={this.state.tpin} onChange={event => this.handleFlatBookingChange(event, 'tpin')}
                                 />
                             </FormControl>
                             {this.displayValidationErrors('tpin')}
@@ -326,7 +320,7 @@ class AddFlatBookingForm extends React.Component {
                             <FormControl fullWidth>
                                 <TextField
                                     required id="standard-textarea" label="Country" placeholder="Enter Country"
-                                    value={this.state.tenant.tenantAddress.tcountry} onChange={event => this.handleTenantAddressChange(event, 'tcountry')} />
+                                    value={this.state.tcountry} onChange={event => this.handleFlatBookingChange(event, 'tcountry')} />
                             </FormControl>
                             {this.displayValidationErrors('tcountry')}
                             <br />
@@ -337,25 +331,12 @@ class AddFlatBookingForm extends React.Component {
                         </form>
                     </div>
                 </Container>
-                <Footer />
             </div>
         )
     }
 
 }
 export default withRouter(AddFlatBookingForm);
-
-const useStyles = makeStyles((theme) => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: 200,
-    },
-}));
 
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',

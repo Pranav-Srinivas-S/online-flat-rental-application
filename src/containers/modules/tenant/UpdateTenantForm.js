@@ -7,6 +7,8 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import TenantValidation from './TenantValidation';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 
 /************************************************************************************
      * Component: UpdateTenantForm
@@ -159,17 +161,6 @@ class UpdateTenantForm extends React.Component {
     }
 
     /************************************************************************************
-     * Function: onCancel
-     * Description: It is used to navigate back from Update Tenant Form 
-     * Created By: PRANAV SRINIVAS S
-     * Created Date:  03-05-2021 
- ************************************************************************************/
-
-    onCancel = () => {
-        this.props.history.push('/tenant');
-    }
-
-    /************************************************************************************
      * Function: onSubmit
      * Description: It is used to Submit Update Tenant Form 
      * Created By: PRANAV SRINIVAS S
@@ -298,7 +289,7 @@ class UpdateTenantForm extends React.Component {
                         <br />
                         <br />
                         <Button style={style} type="submit" className={`btn btn-primary ${this.isFormValid() ? '' : 'disabled'}`}>Update Tenant</Button>
-                        <Button style={style} onClick={this.onCancel}>Cancel</Button>
+                        <Link to={`/tenant`}><Button style={style} >Cancel</Button></Link>
                     </form>
                 </div>
             </Container>

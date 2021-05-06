@@ -175,6 +175,7 @@ class AddUserForm extends React.Component {
     
     render() {
         return (
+            <div>
             <Container style={{ backgroundColor: '#cfe8fc' }} >
                 <div  >
                     <form onSubmit={event => this.onSubmit(event)} >
@@ -217,6 +218,7 @@ class AddUserForm extends React.Component {
                     </form>
                 </div>
             </Container>
+            </div>
         )
     }
 
