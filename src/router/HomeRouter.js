@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import LoginPage from "../containers/common/LoginPage";
 import HomePage from "../containers/common/HomePage";
 import TenantDashBoard from "../containers/modules/tenant/TenantDashBoard";
 import AddTenant from "../containers/modules/tenant/AddTenant";
@@ -8,27 +7,40 @@ import Tenant from "../containers/modules/tenant/Tenant";
 import AboutUs from "../containers/common/AboutUs";
 import ContactUs from "../containers/common/ContactUs";
 import Login from "../containers/common/Login";
-import FlatBookingDashBoard from "../containers/modules/flatBooking/FlatBookingDashBoard";
-import AddFlatBooking from "../containers/modules/flatBooking/AddFlatBooking";
-import UpdateFlatBooking from "../containers/modules/flatBooking/UpdateFlatBooking";
-import FlatBooking from "../containers/modules/flatBooking/FlatBooking";
+import UserDashBoard from "../containers/modules/users/UserDashBoard";
+import AddUser from "../containers/modules/users/AddUser";
+import UpdateUser from "../containers/modules/users/UpdateUser";
+import User from "../containers/modules/users/User";
+import FlatDashBoard from '../containers/modules/flat/FlatDashboard';
+import updateFlatComoponent from '../containers/modules/flat/UpdateFlat';
+import Flat from '../containers/modules/flat/Flat';
+import AddFlat from '../containers/modules/flat/AddFlat';
 
 const HomeRouter = () => (
     <BrowserRouter>
         <div>
             <Switch>
                 <Route exact path="/" component={Login} />
+                
                 <Route path={`/homepage`} component={HomePage} />
                 <Route path={`/aboutus`} component={AboutUs} />
                 <Route path={`/contactus`} component={ContactUs} />
+
                 <Route path={`/tenant`} component={TenantDashBoard} />
                 <Route path={`/add-tenant`} component={AddTenant} />
                 <Route path={`/update-tenant/:tenantId`} component={UpdateTenant} />
                 <Route path={`/view-tenant/:tenantId`} component={Tenant} />
-                <Route path={`/flatBooking`} component={FlatBookingDashBoard} />
-                <Route path={`/add-flatBooking`} component={AddFlatBooking} />
-                <Route path={`/update-flatBooking/:bookingNo`} component={UpdateFlatBooking} />
-                <Route path={`/view-flatBooking/:bookingNo`} component={FlatBooking} />
+
+                <Route path={'/user'} component={UserDashBoard} />
+                <Route path={'/add-user'} component={AddUser} />
+                <Route path={'/update-user/:userId'} component={UpdateUser} />
+                <Route path={'/view-user/:userId'} component={User} />
+
+                <Route path={'/flat'} component={FlatDashBoard} />
+                <Route path={'/add-flat'} component={AddFlat} />
+                <Route path={'/update-flat/:flatId'} component={updateFlatComoponent} />
+                <Route path={'/view-flat/:flatId'} component={Flat} />
+
             </Switch>
         </div>
     </BrowserRouter>
