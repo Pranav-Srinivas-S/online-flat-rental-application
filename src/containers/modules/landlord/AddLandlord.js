@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
      * Description: It is used to navigate to AddLandlordForm
      * Created By: NITHISHA K A
      * Created Date:  02-04-2021 
- ************************************************************************************/
+ *************************************************************************************/
 
 
 const AddLandlord = (props) => (

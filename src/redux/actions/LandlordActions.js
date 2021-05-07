@@ -198,7 +198,7 @@ export const getLandlord = (landlordId) => {
    * Description: Action for Landlord Module Get All Service.
    * Created By:NITHISHA KA 
    * Created Date:  04-05-2021 
- ************************************************************************************/
+ *************************************************************************************/
 
 
 export const getAllLandlords = (landlords) => {

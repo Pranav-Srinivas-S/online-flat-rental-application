@@ -11,7 +11,7 @@ import Footer from '../../common/Footer';
      * Description: It is used to navigate to all Landlord Functionalities
      * Created By: NITHISHA K A
      * Created Date:  30-04-2021 
- ************************************************************************************/
+ *************************************************************************************/
 
 
 function LandlordDashBoard() {

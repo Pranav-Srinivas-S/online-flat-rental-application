@@ -394,7 +394,7 @@ const style = {
    * Description: It is used for UpdateLandlord Form Validation Message Styling
    * Created By:  NITHISHA KA 
    * Created Date:  03-05-2021 
- ************************************************************************************/
+ *************************************************************************************/
 
 
 const errorStyle = {

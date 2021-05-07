@@ -34,7 +34,7 @@ const UpdateLandlord = (props) => (
    * Description: It is used for UpdateLandlord Styling
    * Created By: NITHISHA KA 
    * Created Date:  02-05-2021 
- ************************************************************************************/
+ *************************************************************************************/
 
 const useStyles = makeStyles((theme) => ({
   root: {

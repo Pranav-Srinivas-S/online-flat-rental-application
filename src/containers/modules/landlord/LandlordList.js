@@ -15,7 +15,7 @@ import { useHistory } from 'react-router';
    * Description: It is used to display all landlord details
    * Created By: NITHISHA KA 
    * Created Date:  01-05-2021 
- ************************************************************************************/
+ *************************************************************************************/
 
 const LandlordList = () => {
   const dispatch = useDispatch();
