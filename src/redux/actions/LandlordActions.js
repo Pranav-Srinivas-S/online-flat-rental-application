@@ -193,7 +193,7 @@ export const getLandlord = (landlordId) => {
             });
     };
 };
-/************************************************************************************
+/*************************************************************************************
    * Function: getAllLandlord
    * Description: Action for Landlord Module Get All Service.
    * Created By:NITHISHA KA 

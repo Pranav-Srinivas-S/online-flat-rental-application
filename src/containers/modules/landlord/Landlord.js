@@ -107,7 +107,7 @@ const Landlord = () => {
         </div>
     )
 }
-/************************************************************************************
+/*************************************************************************************
      * property: style 
      * Description: It is used for Landlord Detail Styling
      * Created By: NITHISHA K A

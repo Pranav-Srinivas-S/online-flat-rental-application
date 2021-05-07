@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import {  deleteLandlord } from '../../../redux/actions/LandlordActions';
 import { useHistory } from 'react-router';
 
-/************************************************************************************
+/*************************************************************************************
    * Component: LandlordList
    * Description: It is used to display all landlord details
    * Created By: NITHISHA KA 

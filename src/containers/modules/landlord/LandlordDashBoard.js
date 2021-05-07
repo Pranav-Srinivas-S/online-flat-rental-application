@@ -6,7 +6,7 @@ import Box from '@material-ui/core/Box';
 import Header from '../../common/Header';
 import Footer from '../../common/Footer';
 
-/************************************************************************************
+/*************************************************************************************
      * Component: LandlordDashBoard
      * Description: It is used to navigate to all Landlord Functionalities
      * Created By: NITHISHA K A

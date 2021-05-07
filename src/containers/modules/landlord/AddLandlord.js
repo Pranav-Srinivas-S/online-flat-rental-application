@@ -7,7 +7,7 @@ import { Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 
-/************************************************************************************
+/*************************************************************************************
      * Component: AddLandlord
      * Description: It is used to navigate to AddLandlordForm
      * Created By: NITHISHA K A
