@@ -7,7 +7,6 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import LandlordValidation from './LandlordValidation';
-import { getLandlord, deleteLandlord } from '../../../redux/actions/LandlordActions';
 import { connect } from 'react-redux';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
