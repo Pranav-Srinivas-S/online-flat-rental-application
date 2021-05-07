@@ -112,6 +112,7 @@ export default class Login extends React.Component {
                             </div>
                             <br />
                             <br />
+                            <br />
                             <div>
                                 <div className="row  ">
 
@@ -120,14 +121,14 @@ export default class Login extends React.Component {
 
                                     <br />
                                     <div class="col">
-                                        <button class="btn btn-warning form-control  btn-block" routerLink='/login'>LOGIN</button></div>
+                                        <button class="btn btn-success form-control  btn-block" routerLink='/login'>LOGIN</button></div>
 
                                     <br />
                                     <div class="col">
-                                        <button class="btn btn-success form-control  btn-block" type="button" onClick={() => this.props.history.push('/add-user')} >SignUp</button></div>
+                                        <button class="btn btn-warning form-control  btn-block" type="button" onClick={() => this.props.history.push('/add-user')} >SignUp</button></div>
                                 </div>
                             </div>
-
+                            <br/> <br/> <br/> <br/>
                             <div className="row">
                                 <div className="input-field col s12 signup-btn">
                                 </div>
