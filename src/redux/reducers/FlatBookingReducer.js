@@ -1,5 +1,13 @@
 import { FlatBookingActionTypes } from "../constants/FlatBookingActionTypes";
 
+/************************************************************************************
+   * Function:FlatBookingReducer
+   * Description: Reducer for FlatBooking Module Services.
+   * Created By: ABDUL BASHEER SHAIK
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
+
+
 const flatBookingReducerDefaultState = [];
 
 const flatBookingReducer = (state = flatBookingReducerDefaultState, action) => {

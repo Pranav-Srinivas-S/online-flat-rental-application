@@ -8,6 +8,13 @@ import Box from '@material-ui/core/Box';
 import FlatBookingValidation from './FlatBookingValidation';
 import { withRouter } from "react-router-dom";
 
+/************************************************************************************
+     * Component: AddFlatBookingForm
+     * Description: It is a Form to add FlatBooking Details
+     * Created By: ABDUL BASHEER SHAIK
+     * Created Date:  02-04-2021 
+ ************************************************************************************/
+
 class AddFlatBookingForm extends React.Component {
 
     constructor(props) {
@@ -41,6 +48,12 @@ class AddFlatBookingForm extends React.Component {
         this.validators = FlatBookingValidation;
         this.resetValidators();
     }
+/************************************************************************************
+     * Function: updateValidators
+     * Description: It is used for FlatBooking Validations 
+     * Created By: ABDUL BASHEER SHAIK
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
 
     updateValidators = (fieldName, value) => {
         this.validators[fieldName].errors = [];
@@ -60,7 +73,12 @@ class AddFlatBookingForm extends React.Component {
             }
         });
     }
-
+/************************************************************************************
+     * Function: resetValidators
+     * Description: It is used reset flatBooking Validations 
+     * Created By: ABDUL BASHEER SHAIK
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
     resetValidators = () => {
         Object.keys(this.validators).forEach((fieldName) => {
             this.validators[fieldName].errors = [];
@@ -68,7 +86,12 @@ class AddFlatBookingForm extends React.Component {
             this.validators[fieldName].valid = false;
         });
     }
-
+/************************************************************************************
+     * Function: displayValidators
+     * Description: It is used to display FlatBooking Validation messages 
+     * Created By: ABDUL BASHEER SHAIK
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
     displayValidationErrors = (fieldName) => {
         const validator = this.validators[fieldName];
         const result = '';
@@ -85,7 +108,12 @@ class AddFlatBookingForm extends React.Component {
         }
         return result;
     }
-
+/************************************************************************************
+     * Function: isFormValid
+     * Description: It is used to validate if Form is Filled or not 
+     * Created By: ABDUL BASHEER SHAIK
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
     isFormValid = () => {
         let status = true;
         Object.keys(this.validators).forEach((field) => {
@@ -95,34 +123,60 @@ class AddFlatBookingForm extends React.Component {
         });
         return status;
     }
-
+/************************************************************************************
+     * Function: handleFlatBookingChange
+     * Description: It is used to handle FlatBooking Property inputs 
+     * Created By: ABDUL BASHEER SHAIK
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
     handleFlatBookingChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState[inputPropName] = event.target.value;
         this.setState(newState);
         //this.updateValidators(inputPropName, event.target.value);
     }
-
+/************************************************************************************
+     * Function: handleFlatChange
+     * Description: It is used to handle Flat Property inputs 
+     * Created By: ABDUL BASHEER SHAIK
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
     handleFlatChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState.flat[inputPropName] = event.target.value;
         this.setState(newState);
         //this.updateValidators(inputPropName, event.target.value);
     }
-
+/************************************************************************************
+     * Function: handleFlatAddressChange
+     * Description: It is used to handle TFlat Address Property inputs 
+     * Created By: ABDUL BASHEER SHAIK
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
     handleFlatAddressChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState.flat.flatAddress[inputPropName] = event.target.value;
         this.setState(newState);
         //this.updateValidators(inputPropName, event.target.value);
     }
-
+    /************************************************************************************
+    * Function: handleTenantChange
+    * Description: It is used to handle Tenant  Property inputs 
+    * Created By: ABDUL BASHEER SHAIK
+    * Created Date:  02-05-2021 
+************************************************************************************/
     handleTenantChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState.tenant[inputPropName] = event.target.value;
         this.setState(newState);
         //this.updateValidators(inputPropName, event.target.value);
     }
+/************************************************************************************
+     * Function: handleTenantAddressChange
+     * Description: It is used to handle Tenant Address Property inputs 
+     * Created By: ABDUL BASHEER SHAIK
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
 
     handleTenantAddressChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
@@ -130,10 +184,22 @@ class AddFlatBookingForm extends React.Component {
         this.setState(newState);
         //this.updateValidators(inputPropName, event.target.value);
     }
+/************************************************************************************
+     * Function: onCancel
+     * Description: It is used to navigate back from Add FlatBooking Form 
+     * Created By: ABDUL BASHEER SHAIK
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
 
     onCancel = () => {
         this.props.history.push('/flatBooking');
     }
+/************************************************************************************
+     * Function: onSubmit
+     * Description: It is used to Submit AddFlatBooking Form 
+     * Created By:ABDUL BASHEER SHAIK
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
 
     onSubmit = event => {
 
@@ -165,6 +231,13 @@ class AddFlatBookingForm extends React.Component {
         );
 
     }
+
+    /************************************************************************************
+     * Return: Add FlatBooking Form
+     * Description: It is used to display input fields for entering FlatBooking Details
+     * Created By:ABDUL BASHEER SHAIK
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
 
     render() {
         return (
@@ -337,7 +410,12 @@ class AddFlatBookingForm extends React.Component {
 
 }
 export default withRouter(AddFlatBookingForm);
-
+/************************************************************************************
+   * property: style 
+   * Description: It is used for Add FlatBooking Form Styling
+   * Created By: ABDUL BASHEER SHAIK
+   * Created Date:  02-05-2021 
+ ************************************s************************************************/
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     borderRadius: 3,
@@ -348,7 +426,12 @@ const style = {
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     marginLeft: "10px",
 };
-
+/************************************************************************************
+   * property: errorStyle 
+   * Description: It is used for Add FlatBooking Form Validation Message Styling
+   * Created By: ABDUL BASHEER SHAIK
+   * Created Date:  02-05-2021 
+ ************************************************************************************/
 const errorStyle = {
     color: 'red'
 };

@@ -8,6 +8,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import Header from '../../common/Header';
 import Footer from '../../common/Footer';
 
+/************************************************************************************
+     * Component: AddFlatBooking
+     * Description: It is used to navigate to AddFlatBookingForm
+     * Created By:  ABDUL BASHEER  SHAIK
+     * Created Date:  02-04-2021 
+ ************************************************************************************/
+
+
 const AddFlatBooking = (props) => (
   <div >
     <Header />
@@ -25,6 +33,14 @@ const AddFlatBooking = (props) => (
     <Footer />
   </div>
 );
+
+/************************************************************************************
+   * property: style 
+   * Description: It is used for AddFlatBooking Styling
+   * Created By: ABDUL BASHEER SHAIK
+   * Created Date:  02-05-2021 
+ ************************************************************************************/
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',

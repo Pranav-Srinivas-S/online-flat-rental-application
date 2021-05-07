@@ -1,3 +1,9 @@
+/************************************************************************************
+   * Property: FlatBookingActionTypes 
+   * Description: Constants for FlatBooking Actions
+   * Created By:ABDUL BASHEER SHAIK
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
 export const FlatBookingActionTypes = {
    
     ADD_FLATBOOKING : "ADD_FLATBOOKING ",
