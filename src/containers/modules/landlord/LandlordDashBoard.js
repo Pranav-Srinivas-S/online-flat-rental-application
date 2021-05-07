@@ -6,6 +6,14 @@ import Box from '@material-ui/core/Box';
 import Header from '../../common/Header';
 import Footer from '../../common/Footer';
 
+/*****************************
+     * Component: LandlordDashBoard
+     * Description: It is used to navigate to all Landlord Functionalities
+     * Created By: NITHISHA K A
+     * Created Date:  30-04-2021 
+ *****************************/
+
+
 function LandlordDashBoard() {
 
     const history = useHistory();
@@ -24,6 +32,15 @@ function LandlordDashBoard() {
         </div>
     );
 }
+
+/****************************
+     * property: style 
+     * Description: It is used for LandlordDashBoard Styling
+     * Created By: NITHISHA K A
+     * Created Date:  30-04-2021 
+ ****************************/
+
+ 
 
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
