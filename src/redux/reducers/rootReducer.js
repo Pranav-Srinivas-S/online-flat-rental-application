@@ -40,7 +40,7 @@ const rootReducer = combineReducers({
     allAdmins : getAllAdminsReducer,
     admin : getAdminReducer,
 
-});
+
     FlatBookingReducer,
     allFlatBookings : getAllFlatBookingsReducer,
     flatBooking : getFlatBookingReducer,
