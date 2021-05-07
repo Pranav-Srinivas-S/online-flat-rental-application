@@ -17,7 +17,7 @@ const ContactUs = (props) => {
             <Header />
             <div className="container">
                 <div className="py-4">
-                    <h1 className="display-4 text-info">Contact on {props.mno}</h1>
+                    <h1 className="display-4 text-info">Contact Us {props.mno}</h1>
                     <br />
                     <br />
                     <form class="col-md-4" onSubmit={() => history.push("/homepage")}>

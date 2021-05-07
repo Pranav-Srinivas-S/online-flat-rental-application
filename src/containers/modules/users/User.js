@@ -6,6 +6,14 @@ import { getUser, deleteUser } from '../../../redux/actions/UsersActions';
 import { Button, Grid } from '@material-ui/core';
 import { Link } from "react-router-dom"
 
+/************************************************************************************
+     * Component: User
+     * Description: It is used to display specific User Detail By Id
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
+
+
 const User = () => {
     const { userId } = useParams();
     const dispatch = useDispatch();
@@ -20,6 +28,12 @@ const User = () => {
         loadUser();
     }, [])
 
+    /************************************************************************************
+     * Function: loadUser
+     * Description: It is used to fetch specific UserDetail using ID
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
 
     const loadUser = async () => {
         const result = await axios.get(`http://localhost:9191/api/ofr/view-user/${userId}`).catch((err) => { console.log("Error ", err); });
@@ -27,12 +41,25 @@ const User = () => {
         setUser(result.data);
     }
 
+    /************************************************************************************
+     * Function: deleteUserById
+     * Description: It is used to delete User Detail using ID
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
     const deleteUserById = async (userId) => {
         await axios.delete(`http://localhost:9191/api/ofr/remove-user/${userId}`).catch((err) => { console.log("Error", err); });
         dispatch(deleteUser(userId));
         alert("Deleted Successfully");
         history.push('/user')
     }
+
+    /************************************************************************************
+     * Return: Specific User Details
+     * Description: It is used to display User Detail using ID
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
 
     return (
         <div >
@@ -55,6 +82,14 @@ const User = () => {
         </div>
     )
 }
+
+/************************************************************************************
+     * property: style 
+     * Description: It is used for User Detail Styling
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
+
 
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',

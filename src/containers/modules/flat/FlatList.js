@@ -10,7 +10,12 @@ import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router';
 import { deleteFlat } from '../../../redux/actions/FlatActions';
 
-
+/************************************************************************************
+   * Component: FlatList
+   * Description: It is used to display all flat details
+   * Created By: AJITHKUMAR A
+   * Created Date:  01-05-2021 
+ ************************************************************************************/
 
 const FlatList = () => {
   const dispatch = useDispatch();
@@ -36,6 +41,12 @@ const FlatList = () => {
     fetchFlats();
     history.push('/flat');
   }
+ /************************************************************************************
+  * Return: All Flat Details
+  * Description: It is used to display All Flat Details
+  * Created By: AJITHKUMAR A
+  * Created Date:  01-05-2021 
+************************************************************************************/
 
   return (
     <div className="">
@@ -76,6 +87,12 @@ const FlatList = () => {
     </div>
   );
 }
+/************************************************************************************
+   * property: style 
+   * Description: It is used for FlatList Table Cell Styling
+   * Created By:AJITHKUMAR A
+   * Created Date:  01-05-2021 
+ ************************************************************************************/
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -87,6 +104,12 @@ const StyledTableCell = withStyles((theme) => ({
   },
 }))(TableCell);
 
+/************************************************************************************
+   * property: style 
+   * Description: It is used forFlatList Table Row Styling
+   * Created By: AJITHKUMAR A
+   * Created Date:  01-05-2021 
+ ************************************************************************************/
 const StyledTableRow = withStyles((theme) => ({
   root: {
     '&:nth-of-type(odd)': {

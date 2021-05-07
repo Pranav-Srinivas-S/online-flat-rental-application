@@ -1,10 +1,25 @@
 import { UserActionTypes } from '../constants/UsersActionTypes'
 import axios from '../../axios/Axios';
 
+/************************************************************************************
+   * Function: addUserSuccess 
+   * Description: Action for User Module Add Service.
+   * Created By:Ravuru Sathya Naga Sivanandana Sai Bharath
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
+
+
 const addUserSuccess = (user) => ({
     type: UserActionTypes.ADD_USER,
     user
 });
+
+/************************************************************************************
+   * Function: addUser
+   * Description: Service for addUserSuccess Action
+   * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
 
 export const addUser = (userData = {
     userName: '',
@@ -23,10 +38,24 @@ export const addUser = (userData = {
     };
 };
 
+/************************************************************************************
+   * Function: updateUserSuccess 
+   * Description: Action for User Module Update Service.
+   * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath 
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
+
 const updateUserSuccess = (user) => ({
     type: UserActionTypes.UPDATE_USER,
     user
 });
+
+/************************************************************************************
+   * Function: updateUser
+   * Description: Service for updateUserSuccess Action
+   * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
 
 export const updateUser = (updatedUser = {
     userId: '',
@@ -52,10 +81,25 @@ export const updateUser = (updatedUser = {
     }
 };
 
+/************************************************************************************
+   * Function: deleteUserSuccess 
+   * Description: Action for User Module Delete Service.
+   * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
+
+
 const deleteUserSuccess = ({ userId } = {}) => ({
     type: UserActionTypes.DELETE_USER,
     userId
 });
+
+/************************************************************************************
+   * Function: deleteUser
+   * Description: Service for deleteUserSuccess Action
+   * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
 
 export const deleteUser = ({ userId } = {}) => {
     return (dispatch) => {
@@ -69,6 +113,13 @@ export const deleteUser = ({ userId } = {}) => {
     };
 };
 
+/************************************************************************************
+   * Function: getUserSuccess 
+   * Description: Action for User Module Get Service.
+   * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
+
 export const getUserSuccess = (user) => {
     return {
         type: UserActionTypes.GET_USER,
@@ -76,6 +127,12 @@ export const getUserSuccess = (user) => {
 
     }
 }
+/************************************************************************************
+   * Function: getUser
+   * Description: Service for getUserSuccess Action
+   * Created By:  Ravuru Sathya Naga Sivanandana Sai Bharath
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
 
 export const getUser = (userId) => {
     return (dispatch) => {
@@ -88,6 +145,12 @@ export const getUser = (userId) => {
             });
     };
 };
+/************************************************************************************
+   * Function: getAllUsers
+   * Description: Action for User Module Get All Service.
+   * Created By:  Ravuru Sathya Naga Sivanandana Sai Bharath
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
 
 export const getAllUsers = (users) => {
     return {

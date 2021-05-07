@@ -1,4 +1,12 @@
 import { FlatActionTypes } from '../../constants/FlatActionTypes';
+
+/************************************************************************************
+   * Function: FlatReducer
+   * Description: Reducer for Flat Module Services.
+   * Created By:AJITHKUMAR A
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
+
 const initialState = {
     flats: []
 };

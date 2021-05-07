@@ -113,7 +113,7 @@ class AddAdminForm extends React.Component {
 
                         <FormControl fullWidth>
                             <TextField
-                                required id="standard-textarea" label="Password" placeholder="Enter Flat Cost" type="password"
+                                required id="standard-textarea" label="Password" placeholder="Enter Password" type="password"
                                 value={this.state.adminPassword} onChange={event => this.handleAdminChange(event, 'adminPassword')} />
                         </FormControl>
                         {this.displayValidationErrors('adminPassword')}

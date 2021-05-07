@@ -1,3 +1,10 @@
+/************************************************************************************
+     * Component: UserValidations
+     * Description: It is used to perform custom validations for User Form
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  03-04-2021 
+ ************************************************************************************/
+
 const UserValidation = {
     userName: {
         rules: [

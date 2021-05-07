@@ -8,6 +8,13 @@ import { getFlat, deleteFlat } from '../../../redux/actions/FlatActions';
 import Header from '../../common/Header';
 import Footer from '../../common/Footer';
 
+/************************************************************************************
+     * Component: Flat
+     * Description: It is used to display specific Flat Detail By Id
+     * Created By: AJITHKUMAR A
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
+
 const Flat = () => {
     const { flatId } = useParams();
     const dispatch = useDispatch();
@@ -30,17 +37,38 @@ const Flat = () => {
         loadFlat();
     }, [])
 
+    /************************************************************************************
+     * Function: loadFlat
+     * Description: It is used to fetch specific Flat Detail using ID
+     * Created By: AJITHKUMAR A
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
+
     const loadFlat = async () => {
         const result = await axios.get(`http://localhost:9191/api/ofr/view-flat/${flatId}`).catch((err) => { console.log("Error ", err); });
         dispatch(getFlat(result.data));
         setFlat(result.data);
     }
+
+    /************************************************************************************
+     * Function: deleteFlatById
+     * Description: It is used to delete Flat Detail using ID
+     * Created By: AJITHKUMAR A
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
+
     const deleteFlatById = async (userId) => {
         await axios.delete(`http://localhost:9191/api/ofr/delete-flat/${userId}`).catch((err) => { console.log("Error", err); });
         dispatch(deleteFlat(flatId));
         alert("Deleted Successfully");
         history.push('/flat')
     }
+/************************************************************************************
+     * Return: Specific Flat Details
+     * Description: It is used to display Flat Detail using ID
+     * Created By:AJITHKUMAR A
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
 
     return (
         <div >
@@ -72,6 +100,12 @@ const Flat = () => {
         </div>
     )
 }
+/************************************************************************************
+     * property: style 
+     * Description: It is used for Flat Detail Styling
+     * Created By:AJITHKUMAR A
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
 
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',

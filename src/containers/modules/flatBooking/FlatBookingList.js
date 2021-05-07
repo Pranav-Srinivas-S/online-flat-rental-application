@@ -10,6 +10,12 @@ import Button from '@material-ui/core/Button';
 import { deleteFlatBooking } from '../../../redux/actions/FlatBookingActions';
 import { useHistory } from 'react-router';
 
+/************************************************************************************
+   * Component: FlatBookingList
+   * Description: It is used to display all flatBooking details
+   * Created By: ABDUL BASHEER SHAIK
+   * Created Date:  01-05-2021 
+ ************************************************************************************/
 
 const FlatBookingList = () => {
   const dispatch = useDispatch();
@@ -37,7 +43,12 @@ const FlatBookingList = () => {
     fetchFlatBookings();
     history.push('/flatBooking');
   }
-
+/************************************************************************************
+  * Return: All FlatBooking Details
+  * Description: It is used to display All FlatBooking  Details
+  * Created By: ABDUL BASHEER SHAIK
+  * Created Date:  01-05-2021 
+************************************************************************************/
   return (
     <div className="">
       <Grid>
@@ -65,7 +76,7 @@ const FlatBookingList = () => {
                       <td>{bookingFromDate}</td>
                       <td>{bookingToDate}</td>
                       <td><Link to={`/view-flatBooking/${bookingNo}`}><Button color="primary" variant="contained" className="btn btn-info">View</Button></Link></td>
-                      <td><Link to={`/update-flatBooking/${bookingNo}`}><Button color="primary" variant="contained" className="btn btn-info">Update</Button></Link></td>
+                      <td><Link to={`/update-flatBooking/${bookingNo}`}><Button color="inverse" variant="contained" className="btn btn-info">Update</Button></Link></td>
                       <td><Link to={`/view-flatBooking/${bookingNo}`}><Button color="secondary" variant="contained" className="btn btn-secondary">Delete</Button></Link></td>
                     </StyledTableRow>
                   )
@@ -79,7 +90,12 @@ const FlatBookingList = () => {
     </div>
   );
 }
-
+/************************************************************************************
+   * property: style 
+   * Description: It is used for FlatBookingList Table Cell Styling
+   * Created By:ABDUL BASHEER SHAIK
+   * Created Date:  01-05-2021 
+ ************************************************************************************/
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -89,6 +105,13 @@ const StyledTableCell = withStyles((theme) => ({
     fontSize: 14,
   },
 }))(TableCell);
+
+/************************************************************************************
+   * property: style 
+   * Description: It is used for FlatBooking List Table Row Styling
+   * Created By: ABDUL BASHEER SHAIK
+   * Created Date:  01-05-2021 
+ ************************************************************************************/
 
 const StyledTableRow = withStyles((theme) => ({
   root: {

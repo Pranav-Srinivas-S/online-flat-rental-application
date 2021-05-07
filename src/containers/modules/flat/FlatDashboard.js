@@ -6,6 +6,12 @@ import Box from '@material-ui/core/Box';
 import Header from '../../common/Header';
 import Footer from '../../common/Footer';
 
+/************************************************************************************
+     * Component: FlatDashBoard
+     * Description: It is used to navigate to all Flat Functionalities
+     * Created By:AJITHKUMAR A
+     * Created Date:  30-04-2021 
+ ************************************************************************************/
 
 
 function FlatDashBoard() {
@@ -17,7 +23,6 @@ function FlatDashBoard() {
             <br />
             <Box color="primary.main" component="div" display="inline"  > <h3>ADD FLAT DETAILS:
         <Button style={style} onClick={() => history.push("/add-flat")}>Add Flat</Button></h3>
-        <Button style={style} onClick={() => history.push("/filter-by-cost-form")}> Filter By Cost</Button>
             </Box>
 
             <br />
@@ -30,6 +35,14 @@ function FlatDashBoard() {
 
     );
 }
+
+/************************************************************************************
+     * property: style 
+     * Description: It is used for FlatDashBoard Styling
+     * Created By:AJITHKUMAR A
+     * Created Date:  30-04-2021 
+ ************************************************************************************/
+
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     borderRadius: 3,

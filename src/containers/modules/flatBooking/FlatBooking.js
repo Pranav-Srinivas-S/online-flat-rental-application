@@ -5,6 +5,15 @@ import { useHistory, useParams } from 'react-router';
 import { getFlatBooking, deleteFlatBooking } from '../../../redux/actions/FlatBookingActions';
 import { Button, Grid } from '@material-ui/core';
 import {Link} from "react-router-dom"
+import Header from '../../common/Header';
+import Footer from '../../common/Footer';
+
+/************************************************************************************
+     * Component: FlatBooking
+     * Description: It is used to display specific FlatBooking Detail By Id
+     * Created By: ABDUL BASHEER SHAIK
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
 
 const FlatBooking = () => {
     const {bookingNo} = useParams();
@@ -42,22 +51,41 @@ const FlatBooking = () => {
     useEffect(() => {
         loadFlatBooking();
     },[])
-
+/************************************************************************************
+     * Function: loadFlatBooking
+     * Description: It is used to fetch specific TFlatBooking Detail using ID
+     * Created By: ABDUL BASHEER SHAIK
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
     const loadFlatBooking = async () => {
         const result = await axios.get(`http://localhost:9191/api/ofr/view-flatBooking/${bookingNo}`).catch((err) => { console.log("Error ", err); });
         dispatch(getFlatBooking(result.data));
         setFlatBooking(result.data);
     }
     
+    /************************************************************************************
+     * Function: deleteFlatBookingById
+     * Description: It is used to delete FlatBooking Detail using ID
+     * Created By: ABDUL BASHEER SHAIK
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
+
     const  deleteFlatBookingById = async (bookingNo) => {
         await axios.delete(`http://localhost:9191/api/ofr/delete-flatBooking/${bookingNo}`).catch((err) => {console.log("Error" , err);});
        dispatch(deleteFlatBooking(bookingNo));
        alert("Deleted Successfully");
        history.push('/flatBooking')
      }
+/************************************************************************************
+     * Return: Specific FlatBooking Details
+     * Description: It is used to display FlatBooking Detail using ID
+     * Created By: ABDUL BASHEER 
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
 
     return (
         <div >
+            <Header/>
         <h1 class="display-4  bg-primary text-white"> Flat Booking Details </h1> 
         <ul class="list-group-item">
             <li class="list-group-item list-group-item-info"><h1>Flat Booking Details</h1></li>
@@ -91,10 +119,16 @@ const FlatBooking = () => {
         <Link to={`/flatBooking`}><Button style={style} >Back To Home</Button ></Link>
         </Grid>
         </Grid>
-
+        <Footer/>
         </div>
     )
 }
+/************************************************************************************
+     * property: style 
+     * Description: It is used for FlatBooking Detail Styling
+     * Created By: ABDUL BASHEER SHAIK
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
 
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
