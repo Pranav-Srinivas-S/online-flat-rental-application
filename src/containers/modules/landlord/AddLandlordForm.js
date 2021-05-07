@@ -8,9 +8,6 @@ import Box from '@material-ui/core/Box';
 import LandlordValidation from './LandlordValidation';
 import { withRouter } from "react-router-dom";
 
-class AddLandlordForm extends React.Component {
-
-    constructor(props) {
         super(props);
         this.state = {
             landlordName: "",
