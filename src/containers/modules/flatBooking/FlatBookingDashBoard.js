@@ -8,7 +8,12 @@ import Box from '@material-ui/core/Box';
 import Header from '../../common/Header';
 import Footer from '../../common/Footer';
 
-
+/************************************************************************************
+     * Component: FlatBookingDashBoard
+     * Description: It is used to navigate to all FlatBooking Functionalities
+     * Created By: ABDUL BASHEER SHAIK
+     * Created Date:  30-04-2021 
+ ************************************************************************************/
 
 function FlatBookingDashBoard() {
 
@@ -31,6 +36,13 @@ function FlatBookingDashBoard() {
 
     );
 }
+
+/************************************************************************************
+     * property: style 
+     * Description: It is used for FlatBookingDashBoard Styling
+     * Created By: ABDUL BASHEER SHAIK
+     * Created Date:  30-04-2021 
+ ************************************************************************************/
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     borderRadius: 3,
