@@ -1,3 +1,11 @@
+/************************************************************************************
+     * Component: LandlordValidations
+     * Description: It is used to perform custtom validations for Landlord Form
+     * Created By: NITHISHA KA 
+     * Created Date:  03-04-2021 
+ ************************************************************************************/
+
+
 const LandlordValidation = {
     landlordName: {
         rules: [

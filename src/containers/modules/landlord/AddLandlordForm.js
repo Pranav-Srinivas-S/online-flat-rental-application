@@ -139,6 +139,12 @@ class AddLandlordForm extends React.Component {
         this.setState(newState);
         this.updateValidators(inputPropName, event.target.value);
     }
+    /************************************************************************************
+     * Function: handleFlatChange
+     * Description: It is used to handle Flat Property inputs 
+     * Created By: NITHISHA K A
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
 
     handleFlatChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
@@ -147,16 +153,34 @@ class AddLandlordForm extends React.Component {
         this.updateValidators(inputPropName, event.target.value);
     }
     
+    /************************************************************************************
+     * Function: handleLandlordAddressChange
+     * Description: It is used to handle Landlord Address Property inputs 
+     * Created By: NITHISHA K A
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
     handleFlatAddressChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState.flatList.flatAddress[inputPropName] = event.target.value;
         this.setState(newState);
         this.updateValidators(inputPropName, event.target.value);
     }
+    /************************************************************************************
+     * Function: onCancel
+     * Description: It is used to navigate back from Add Landlord Form 
+     * Created By: NITHISHA K A
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
 
     onCancel = () => {
         this.props.history.push('/landlord');
     }
+    /************************************************************************************
+     * Function: onSubmit
+     * Description: It is used to Submit Add Landlord Form 
+     * Created By: NITHISHA K A
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
 
     onSubmit = event => {
 
@@ -178,6 +202,12 @@ class AddLandlordForm extends React.Component {
             }
         );
     }
+    /************************************************************************************
+     * Return: Add Landlord Form
+     * Description: It is used to display input fields for entering Landlord Details
+     * Created By: NITHISHA K A
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
 
     render() {
         return (
@@ -296,6 +326,12 @@ class AddLandlordForm extends React.Component {
 
 }
 export default withRouter(AddLandlordForm);
+/************************************************************************************
+   * property: style 
+   * Description: It is used for Add Landlord Form Styling
+   * Created By: NITHISHA K A
+   * Created Date:  02-05-2021 
+ ************************************s************************************************/
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -308,6 +344,12 @@ const useStyles = makeStyles((theme) => ({
         width: 200,
     },
 }));
+/************************************************************************************
+   * property: errorStyle 
+   * Description: It is used for Add Landlord Form Validation Message Styling
+   * Created By: NITHISHA K A
+   * Created Date:  02-05-2021 
+ ************************************************************************************/
 
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',

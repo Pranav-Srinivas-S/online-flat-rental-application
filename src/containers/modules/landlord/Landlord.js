@@ -6,6 +6,14 @@ import { getLandlord, deleteLandlord } from '../../../redux/actions/LandlordActi
 import { Button, Grid, List } from '@material-ui/core';
 import { Link } from "react-router-dom"
 
+/************************************************************************************
+     * Component: Landlord
+     * Description: It is used to display specific Landlord Detail By Id
+     * Created By: NITHISHA K A
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
+
+
 const Landlord = () => {
     const { landlordId } = useParams();
     const dispatch = useDispatch();
@@ -36,19 +44,40 @@ const Landlord = () => {
         loadLandlord();
     }, [])
 
+    /************************************************************************************
+     * Function: loadLandlord
+     * Description: It is used to fetch specific Landlord Detail using ID
+     * Created By: NITHISHA K A
+     * Created Date:  01-05-2021 
+     ************************************************************************************/
+
+
     const loadLandlord= async () => {
         
         const result = await axios.get(`http://localhost:9191/api/ofr/view-landlord/${landlordId}`).catch((err) => { console.log("Error ", err); });
         dispatch(getLandlord(result.data));
         setLandlord(result.data);
     }
+    /************************************************************************************
+     * Function: deleteLandlordById
+     * Description: It is used to delete Landlord Detail using ID
+     * Created By: NITHISHA K A
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
 
     const deleteLandlordById = async (landlordId) => {
         await axios.delete(`http://localhost:9191/api/ofr/delete-landlord/${landlordId}`).catch((err) => { console.log("Error", err); });
         dispatch(deleteLandlord(landlordId));
         alert("Deleted Successfully");
         history.push('/landlord')
+
     }
+    /************************************************************************************
+     * Return: Specific Landlord Details
+     * Description: It is used to display Landlord Detail using ID
+     * Created By: NITHISHA K A
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
 
     return (
         <div >
@@ -78,6 +107,12 @@ const Landlord = () => {
         </div>
     )
 }
+/************************************************************************************
+     * property: style 
+     * Description: It is used for Landlord Detail Styling
+     * Created By: NITHISHA K A
+     * Created Date:  01-05-2021 
+ ************************************************************************************/
 
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',

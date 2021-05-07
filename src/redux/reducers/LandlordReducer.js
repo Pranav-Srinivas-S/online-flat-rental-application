@@ -1,5 +1,12 @@
 import { LandlordActionTypes } from "../constants/LandlordActionTypes"
 
+
+/************************************************************************************
+   * Function: LandlordReducer
+   * Description: Reducer for Landlord Module Services.
+   * Created By: NITHISHA KA 
+   * Created Date:  04-05-2021 
+ ************************************************************************************/
 const landlordReducerDefaultState = [];
 
 const landlordReducer = (state = landlordReducerDefaultState, action) => {

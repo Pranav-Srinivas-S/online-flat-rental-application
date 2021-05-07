@@ -6,6 +6,13 @@ import { connect } from 'react-redux';
 import { updateLandlord } from '../../../redux/actions/LandlordActions'; 
 import UpdateLandlordForm from './UpdateLandlordForm';
 
+/************************************************************************************
+     * Component: UpdateLandlord
+     * Description: It is used to navigate to UpdateLandlordForm
+     * Created By: NITHISHA K A
+     * Created Date:  03-04-2021 
+ ************************************************************************************/
+
 
 const UpdateLandlord = (props) => (
   <div >
@@ -22,6 +29,12 @@ const UpdateLandlord = (props) => (
     </div>
   </div>
 );
+/************************************************************************************
+   * property: style 
+   * Description: It is used for UpdateLandlord Styling
+   * Created By: NITHISHA KA 
+   * Created Date:  02-05-2021 
+ ************************************************************************************/
 
 const useStyles = makeStyles((theme) => ({
   root: {

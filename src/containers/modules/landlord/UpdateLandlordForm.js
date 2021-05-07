@@ -13,6 +13,13 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 
+/************************************************************************************
+     * Component: UpdateLandlordForm
+     * Description: It is a Form to update Landlord Details
+     * Created By: NITHISHA KA 
+     * Created Date:  03-04-2021 
+ ************************************************************************************/
+
 class UpdateLandlordForm extends React.Component {
     constructor(props) {
         super(props);
@@ -40,6 +47,14 @@ class UpdateLandlordForm extends React.Component {
         this.validators = LandlordValidation;
         this.resetValidators();
     }
+    
+/************************************************************************************
+     * Function: updateValidators
+     * Description: It is used for Landlord Validations 
+     * Created By:  NITHISHA KA 
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
+
 
     updateValidators = (fieldName, value) => {
         this.validators[fieldName].errors = [];
@@ -59,6 +74,14 @@ class UpdateLandlordForm extends React.Component {
             }
         });
     }
+    
+    /************************************************************************************
+     * Function: resetValidators
+     * Description: It is used reset Landlord Validations 
+     * Created By:  NITHISHA KA 
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
+
 
     resetValidators = () => {
         Object.keys(this.validators).forEach((fieldName) => {
@@ -67,6 +90,14 @@ class UpdateLandlordForm extends React.Component {
             this.validators[fieldName].valid = false;
         });
     }
+    
+    /************************************************************************************
+     * Function: displayValidators
+     * Description: It is used to display Landlord Validation messages 
+     * Created By:  NITHISHA KA 
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
+
 
     displayValidationErrors = (fieldName) => {
         const validator = this.validators[fieldName];
@@ -84,6 +115,15 @@ class UpdateLandlordForm extends React.Component {
         }
         return result;
     }
+    
+
+    /************************************************************************************
+     * Function: isFormValid
+     * Description: It is used to validate if Form is Filled or not 
+     * Created By:  NITHISHA KA 
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
+
 
     isFormValid = () => {
         let status = true;
@@ -94,6 +134,13 @@ class UpdateLandlordForm extends React.Component {
         });
         return status;
     }
+     /************************************************************************************
+     * Function: handleLandlordChange
+     * Description: It is used to handle Landlord Property inputs 
+     * Created By:  NITHISHA KA 
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
+
 
     handleLandlordChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
@@ -101,6 +148,13 @@ class UpdateLandlordForm extends React.Component {
         this.setState(newState);
         this.updateValidators(inputPropName, event.target.value);
     }
+     /************************************************************************************
+     * Function: handleFlatChange
+     * Description: It is used to handle Flat Property inputs 
+     * Created By:  NITHISHA KA 
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
+
     handleFlatChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState.flatList[inputPropName] = event.target.value;
@@ -108,18 +162,39 @@ class UpdateLandlordForm extends React.Component {
         this.updateValidators(inputPropName, event.target.value);
     }
 
+    /************************************************************************************
+     * Function: handleLandlordsChange
+     * Description: It is used to handle Landlord Address Property inputs 
+     * Created By:  NITHISHA KA 
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
+
     handleFlatAddressChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState.flatList.flatAddress[inputPropName] = event.target.value;
         this.setState(newState);
         this.updateValidators(inputPropName, event.target.value);
     }
+    /************************************************************************************
+     * Function: handleLandlordIdChange
+     * Description: It is used to handle Landlord Id Property inputs 
+     * Created By:  NITHISHA KA 
+     * Created Date:  03-05-2021 
+ ************************************************************************************/    
+
 
     onLandlordIdChange = (event, inputPropName) => {
         const newState = Object.assign({}, this.state);
         newState[inputPropName] = event.target.value;
         this.setState(newState);
     }
+    /************************************************************************************
+     * Function: onSubmit
+     * Description: It is used to Submit Update Landlord Form 
+     * Created By:  NITHISHA KA 
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
+
 
     onCancel = () => {
         this.props.history.push('/landlord');
@@ -146,6 +221,13 @@ class UpdateLandlordForm extends React.Component {
             }
         );
     }
+     /************************************************************************************
+     * Return: Update Landlord Form
+     * Description: It is used to display input fields for updating Landlord Details
+     * Created By:  NITHISHA KA 
+     * Created Date:  03-05-2021 
+ ************************************************************************************/
+
 
     render() {
         return (
@@ -288,6 +370,14 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+/************************************************************************************
+   * property: style 
+   * Description: It is used for Update Landlord Form Styling
+   * Created By: NITHISHA KA 
+   * Created Date:  03-05-2021 
+ ************************************************************************************/
+
+
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     borderRadius: 3,
@@ -298,6 +388,14 @@ const style = {
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     marginLeft: "10px",
 };
+
+/************************************************************************************
+   * property: errorStyle 
+   * Description: It is used for UpdateLandlord Form Validation Message Styling
+   * Created By:  NITHISHA KA 
+   * Created Date:  03-05-2021 
+ ************************************************************************************/
+
 
 const errorStyle = {
     color: 'red'
