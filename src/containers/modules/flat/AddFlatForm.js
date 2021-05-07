@@ -87,7 +87,16 @@ class AddFlatForm extends React.Component {
         return status;
     }
 
-    handleFlatChange(event, inputPropName) {
+
+    /************************************************************************************
+     * Function: handleFlatChange
+     * Description: It is used to handle Flat Property inputs 
+     * Created By: AJITHKUMAR A
+     * Created Date:  02-05-2021 
+ ************************************************************************************/
+
+     handleFlatChange(event, inputPropName) {
+
         const newState = Object.assign({}, this.state);
         newState[inputPropName] = event.target.value;
         this.setState(newState);

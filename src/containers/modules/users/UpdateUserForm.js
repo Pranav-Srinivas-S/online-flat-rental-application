@@ -13,6 +13,13 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 
+/****************************
+     * Component: UpdateUserForm
+     * Description: It is a Form to update User Details
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  03-04-2021 
+ ****************************/
+
 class UpdateUserForm extends React.Component {
     constructor(props) {
         super(props);
@@ -26,6 +33,12 @@ class UpdateUserForm extends React.Component {
         this.resetValidators();
     }
 
+/****************************
+     * Function: updateValidators
+     * Description: It is used for User Validations 
+     * Created By:  Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  03-05-2021 
+ ****************************/
 
 
     updateValidators = (fieldName, value) => {
@@ -47,6 +60,12 @@ class UpdateUserForm extends React.Component {
         });
     }
 
+    /****************************
+     * Function: resetValidators
+     * Description: It is used reset User Validations 
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  03-05-2021 
+ ****************************/
     resetValidators = () => {
         Object.keys(this.validators).forEach((fieldName) => {
             this.validators[fieldName].errors = [];
@@ -55,6 +74,12 @@ class UpdateUserForm extends React.Component {
         });
     }
 
+     /****************************
+     * Function: displayValidators
+     * Description: It is used to display User Validation messages 
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  03-05-2021 
+ ****************************/
     displayValidationErrors = (fieldName) => {
         const validator = this.validators[fieldName];
         const result = '';
@@ -72,6 +97,12 @@ class UpdateUserForm extends React.Component {
         return result;
     }
 
+    /****************************
+     * Function: isFormValid
+     * Description: It is used to validate if Form is Filled or not 
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  03-05-2021 
+ ****************************/
     isFormValid = () => {
         let status = true;
         Object.keys(this.validators).forEach((field) => {
@@ -82,6 +113,14 @@ class UpdateUserForm extends React.Component {
         return status;
     }
 
+    /****************************
+     * Function: handleUserChange
+     * Description: It is used to handle User Property inputs 
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  03-05-2021 
+ ****************************/
+
+
     handleUserChange(event, inputPropName) {
         const newState = Object.assign({}, this.state);
         newState[inputPropName] = event.target.value;
@@ -89,15 +128,38 @@ class UpdateUserForm extends React.Component {
         this.updateValidators(inputPropName, event.target.value);
     }
 
+    /****************************
+     * Function: handleUserIdChange
+     * Description: It is used to handle User Id Property inputs 
+     * Created By:Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  03-05-2021 
+ ****************************/ 
+
     onUserIdChange = (event, inputPropName) => {
         const newState = Object.assign({}, this.state);
         newState[inputPropName] = event.target.value;
         this.setState(newState);
     }
 
+
+    /****************************
+     * Function: onCancel
+     * Description: It is used to navigate back from Update User Form 
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  03-05-2021 
+ ****************************/
+
     onCancel = () => {
         this.props.history.push('/user');
     }
+
+
+    /****************************
+     * Function: onSubmit
+     * Description: It is used to Submit Update User Form 
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  03-05-2021 
+ ****************************/
 
     onSubmit = event => {
 
@@ -115,6 +177,13 @@ class UpdateUserForm extends React.Component {
         );
 
     }
+
+     /****************************
+     * Return: Update User Form
+     * Description: It is used to display input fields for updating User Details
+     * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+     * Created Date:  03-05-2021 
+ ****************************/
 
     render() {
         return (
@@ -163,8 +232,10 @@ class UpdateUserForm extends React.Component {
                         {this.displayValidationErrors('userType')}
                         <br />
                         <br />
-                        <Button style={style} type="submit" className={`btn btn-primary  ${this.isFormValid() ? '' : 'disabled'}`}>Update User</Button>
-                        <Button style={style} onClick={this.onCancel}>Cancel</Button>
+
+                        <Button style={style} type="submit" className={`btn btn-primary ${this.isFormValid() ? '' : 'disabled'}`}>Update User</Button>
+                        <Link to={`/user`}><Button style={style} >Cancel</Button></Link>
+
                     </form>
                 </div>
             </Container>
@@ -174,6 +245,13 @@ class UpdateUserForm extends React.Component {
 }
 
 export default connect()(UpdateUserForm);
+
+/****************************
+   * property: style 
+   * Description: It is used for Update User Form Styling
+   * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+   * Created Date:  03-05-2021 
+ ****************************/
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -197,6 +275,14 @@ const style = {
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     marginLeft: "10px",
 };
+
+/****************************
+   * property: errorStyle 
+   * Description: It is used for Update User Form Validation Message Styling
+   * Created By: Ravuru Sathya Naga Sivanandana Sai Bharath
+   * Created Date:  03-05-2021 
+ ****************************/
+
 
 const errorStyle = {
     color: 'red'
