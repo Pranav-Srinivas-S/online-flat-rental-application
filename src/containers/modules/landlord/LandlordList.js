@@ -10,6 +10,13 @@ import Button from '@material-ui/core/Button';
 import {  deleteLandlord } from '../../../redux/actions/LandlordActions';
 import { useHistory } from 'react-router';
 
+/*****************************
+   * Component: LandlordList
+   * Description: It is used to display all landlord details
+   * Created By: NITHISHA KA 
+   * Created Date:  01-05-2021 
+ *****************************/
+
 const LandlordList = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -35,6 +42,12 @@ const LandlordList = () => {
     fetchLandlords();
     history.push('/landlord');
   }
+  /****************************
+  * Return: All Landlord Details
+  * Description: It is used to display All Landlord Details
+  * Created By: Nithisha K A
+  * Created Date:  01-05-2021 
+****************************/
 
   return (
     <div className="">
@@ -75,6 +88,12 @@ const LandlordList = () => {
     </div>
   );
 }
+/****************************
+   * property: style 
+   * Description: It is used for LandlordList Table Cell Styling
+   * Created By: NITHISHA K A
+   * Created Date:  01-05-2021 
+ ****************************/
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -85,6 +104,14 @@ const StyledTableCell = withStyles((theme) => ({
     fontSize: 14,
   },
 }))(TableCell);
+
+/****************************
+   * property: style 
+   * Description: It is used for LandlordList Table Row Styling
+   * Created By: NITHISHA K A
+   * Created Date:  01-05-2021 
+ ****************************/
+
 
 const StyledTableRow = withStyles((theme) => ({
   root: {

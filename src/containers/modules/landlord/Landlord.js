@@ -6,6 +6,14 @@ import { getLandlord, deleteLandlord } from '../../../redux/actions/LandlordActi
 import { Button, Grid, List } from '@material-ui/core';
 import { Link } from "react-router-dom"
 
+/****************************
+     * Component: Landlord
+     * Description: It is used to display specific Landlord Detail By Id
+     * Created By: NITHISHA K A
+     * Created Date:  01-05-2021 
+ ****************************/
+
+
 const Landlord = () => {
     const { landlordId } = useParams();
     const dispatch = useDispatch();
@@ -14,7 +22,7 @@ const Landlord = () => {
     const [landlord, setLandlord] = useState({
         landlordName: '',
         landlordAge: '',    
-        flatList:[
+        flatList:
             {
                 flatCost: "",
                 flatAvailability: "",
@@ -29,12 +37,20 @@ const Landlord = () => {
             }
             
             }
-        ]
+        
     });
 
     useEffect(() => {
         loadLandlord();
     }, [])
+
+    /****************************
+     * Function: loadLandlord
+     * Description: It is used to fetch specific Landlord Detail using ID
+     * Created By: NITHISHA K A
+     * Created Date:  01-05-2021 
+     ****************************/
+
 
     const loadLandlord= async () => {
         
@@ -42,13 +58,26 @@ const Landlord = () => {
         dispatch(getLandlord(result.data));
         setLandlord(result.data);
     }
+    /****************************
+     * Function: deleteLandlordById
+     * Description: It is used to delete Landlord Detail using ID
+     * Created By: NITHISHA K A
+     * Created Date:  01-05-2021 
+ ****************************/
 
     const deleteLandlordById = async (landlordId) => {
         await axios.delete(`http://localhost:9191/api/ofr/delete-landlord/${landlordId}`).catch((err) => { console.log("Error", err); });
         dispatch(deleteLandlord(landlordId));
         alert("Deleted Successfully");
         history.push('/landlord')
+
     }
+    /****************************
+     * Return: Specific Landlord Details
+     * Description: It is used to display Landlord Detail using ID
+     * Created By: NITHISHA K A
+     * Created Date:  01-05-2021 
+ ****************************/
 
     return (
         <div >
@@ -57,14 +86,14 @@ const Landlord = () => {
                 <li class="list-group-item list-group-item-info"> <h3>Landlord Id : {landlord.landlordId}</h3> </li>
                 <li class="list-group-item list-group-item-info"><h3>Landlord Name : {landlord.landlordName}</h3> </li>
                 <li class="list-group-item list-group-item-info"><h3>Landlord Age : {landlord.landlordAge}</h3> </li>
-                <li class="list-group-item list-group-item-info"><h3>Flat Cost: {landlord.flatList.map( flatList=> flatList.flatCost)}</h3> </li>
-                <li class="list-group-item list-group-item-info"><h3>Flat Availability: {landlord.flatList.map( flatList=> flatList.flatAvailability)}</h3> </li>
-                <li class="list-group-item list-group-item-info"><h3>House Number : {landlord.flatList.map( flatList=>flatList.flatAddress.houseNo)}</h3> </li>
-                <li class="list-group-item list-group-item-info"><h3>Street : {landlord.flatList.map( flatList=>flatList.flatAddress.street)}</h3> </li>
-                <li class="list-group-item list-group-item-info"><h3>City :  {landlord.flatList.map( flatList=> flatList.flatAddress.city)}</h3></li>
-                <li class="list-group-item list-group-item-info"><h3>State : {landlord.flatList.map( flatList=>flatList.flatAddress.state)}</h3> </li>
-                <li class="list-group-item list-group-item-info"><h3>Pin : {landlord.flatList.map( flatList=> flatList.flatAddress.pin)}</h3> </li>
-                <li class="list-group-item list-group-item-info"><h3>Country : {landlord.flatList.map( flatList=> flatList.flatAddress.country)}</h3> </li>
+                <li class="list-group-item list-group-item-info"><h3>Flat Cost: {landlord.flatList.flatCost}</h3> </li>
+                <li class="list-group-item list-group-item-info"><h3>Flat Availability: {landlord.flatList.flatAvailability}</h3> </li>
+                <li class="list-group-item list-group-item-info"><h3>House Number : {landlord.flatList.flatAddress.houseNo}</h3> </li>
+                <li class="list-group-item list-group-item-info"><h3>Street : {landlord.flatList.flatAddress.street}</h3> </li>
+                <li class="list-group-item list-group-item-info"><h3>City :  {landlord.flatList.flatAddress.city}</h3></li>
+                <li class="list-group-item list-group-item-info"><h3>State : {landlord.flatList.flatAddress.state}</h3> </li>
+                <li class="list-group-item list-group-item-info"><h3>Pin : {landlord.flatList.flatAddress.pin}</h3> </li>
+                <li class="list-group-item list-group-item-info"><h3>Country : {landlord.flatList.flatAddress.country}</h3> </li>
                 
             </ul>
             <Grid container spacing={3}>
@@ -78,6 +107,12 @@ const Landlord = () => {
         </div>
     )
 }
+/*****************************
+     * property: style 
+     * Description: It is used for Landlord Detail Styling
+     * Created By: NITHISHA K A
+     * Created Date:  01-05-2021 
+ *****************************/
 
 const style = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
