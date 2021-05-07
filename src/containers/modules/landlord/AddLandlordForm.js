@@ -7,10 +7,6 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import LandlordValidation from './LandlordValidation';
 import { withRouter } from "react-router-dom";
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Radio from '@material-ui/core/Radio';
-
 
 class AddLandlordForm extends React.Component {
 
