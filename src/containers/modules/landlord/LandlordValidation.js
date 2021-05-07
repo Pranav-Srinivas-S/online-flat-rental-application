@@ -1,4 +1,12 @@
-const LandlordValidation = {
+/****************************
+     * Component: LandlordValidations
+     * Description: It is used to perform custtom validations for Landlord Form
+     * Created By: NITHISHA KA 
+     * Created Date:  03-04-2021 
+ ******************************/
+
+
+ const LandlordValidation = {
     landlordName: {
         rules: [
             {
@@ -73,12 +81,12 @@ const LandlordValidation = {
         rules: [
             {
                 test: /^[a-zA-Z ]*$/,
-                message: ' ',
+                message: 'Flat Availability canbe yes/no',
             },
         ],
         errors: [],
         valid: false,
-        state: ''
+        state: '',
     },
     houseNo: {
         rules: [

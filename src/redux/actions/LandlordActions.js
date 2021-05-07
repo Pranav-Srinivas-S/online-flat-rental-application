@@ -1,11 +1,26 @@
 import { LandlordActionTypes } from '../constants/LandlordActionTypes'
 import axios from '../../axios/Axios';
+/****************************
+   * Function: addLandlordSuccess 
+   * Description: Action for Landlord Module Add Service.
+   * Created By: NITHISHA KA 
+   * Created Date:  04-05-2021 
+ ****************************/
+
 
 
 const addLandlordSuccess = (landlord) => ({
     type: LandlordActionTypes.ADD_LANDLORD,
     landlord: landlord
 });
+
+/****************************
+   * Function: addLandlord
+   * Description: Service for addLandlordSuccess Action
+   * Created By: NITHISHA KA 
+   * Created Date:  04-05-2021 
+ ****************************/
+
 
 export const addLandlord = (landlordData = {
     landlordName: '',
@@ -48,10 +63,26 @@ export const addLandlord = (landlordData = {
     };
 };
 
+/****************************
+   * Function: updateLandlordSuccess 
+   * Description: Action for Landlord Module Update Service.
+   * Created By: NITHISHA K A
+   * Created Date:  04-05-2021 
+ ****************************/
+
+
 const updateLandlordSuccess = (landlord) => ({
     type: LandlordActionTypes.UPDATE_LANDLORD,
     landlord
 });
+
+/****************************
+   * Function: updateLandlord
+   * Description: Service for updateLandlordSuccess Action
+   * Created By:NITHISHA KA 
+   * Created Date:  04-05-2021 
+ ****************************/
+
 
 export const updateLandlord = (updatedLandlord = {
     landlordId: '',
@@ -87,7 +118,7 @@ export const updateLandlord = (updatedLandlord = {
            
         };
         console.log(landlord);
-        return axios.put('/update-landlord', landlord)
+        return axios.put(`/update-landlord`, landlord)
             .then(() => {
                 dispatch(updateLandlordSuccess(landlord));
             })
@@ -97,10 +128,25 @@ export const updateLandlord = (updatedLandlord = {
     }
 };
 
+/****************************
+   * Function: deleteLandlordSuccess 
+   * Description: Action for Landlord Module Delete Service.
+   * Created By:NITHISHA KA 
+   * Created Date:  04-05-2021 
+ ****************************/
+
+
 const deleteLandlordSuccess = ({ landlordId } = {}) => ({
     type: LandlordActionTypes.DELETE_LANDLORD,
     landlordId
 });
+/****************************
+   * Function: deleteLandlord
+   * Description: Service for deleteLandlordSuccess Action
+   * Created By: NITHISHA KA 
+   * Created Date:  04-05-2021 
+ ****************************/
+
 
 export const deleteLandlord = ({ landlordId } = {}) => {
     return (dispatch) => {
@@ -114,12 +160,27 @@ export const deleteLandlord = ({ landlordId } = {}) => {
     };
 };
 
+/****************************
+   * Function: getLandlordSuccess 
+   * Description: Action for Landlord Module Get Service.
+   * Created By: NITHISHA KA 
+   * Created Date:  04-05-2021 
+ ****************************/
+
+
 export const getLandlordSuccess = (landlord) => {
     return {
         type: LandlordActionTypes.GET_LANDLORD,
         payload: landlord
     }
 };
+/****************************
+   * Function: getLandlord
+   * Description: Service for getLandlordSuccess Action
+   * Created By: NITHISHA KA 
+   * Created Date:  04-05-2021 
+ ****************************/
+
 
 export const getLandlord = (landlordId) => {
     return (dispatch) => {
@@ -132,6 +193,13 @@ export const getLandlord = (landlordId) => {
             });
     };
 };
+/*****************************
+   * Function: getAllLandlord
+   * Description: Action for Landlord Module Get All Service.
+   * Created By:NITHISHA KA 
+   * Created Date:  04-05-2021 
+ *****************************/
+
 
 export const getAllLandlords = (landlords) => {
     return {
